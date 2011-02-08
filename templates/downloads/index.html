@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Download{% endblock%}
+
+{% block page_title %}
+    <img src="{{ MEDIA_URL }}img/page-download.png" class="page-name"/>
+{% endblock %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCoreEclipse.css"/>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shCore.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushBash.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/main.js"></script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+{% endblock %}
+
+{% block content %}
+
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-get-your-copy-of-androrm.png" />
+    <br /><br />
+    Androrm is an object relational mapper for android. But it does not require special android specific features.
+    It has been tested under android versions 2.1, 2.2 and 2.3, but should also run on earlier versions of the
+    operating system. 
+    
+    <br /><br />
+    
+    If you run into any truble, please <a href="#">report the error</a> or <a href="#">file a bug</a>.
+    
+    <hr />
+    
+    <h2>Get the latest official release</h2>
+    The fastest way, to get your copy of androrm, is to execute the following commands in a shell, if you
+    work on a unix based operation system like Linux or Mac OS. 
+
+    <pre class="brush: bash">
+        >> wget http://androrm.the-pixelpla.net{% url download_latest_tarball %}
+        >> tar -xvzf androrm_{{ version }}.tar.gz
+        >> cd androrm_{{ version }}
+        >> mv androrm.jar /path/to/your/lib/folder
+    </pre>
+    
+    Otherwise you can also <a href="{% url download_latest_tarball %}">download the file</a> and extract it
+    manually. 
+    
+    <hr />
+    
+    <h2>Get the latest development version</h2>
+    Androrm is completely open source and is distributed under the <a href="{% url download_license %}">MIT License</a>. It is hosted in
+    a public repository on <a href="http://github.com">github.com</a>. So if you want to check out the latest
+    development version of the code, open a shell and execute the following command: 
+    
+    <pre class="brush: shell">
+       >> git clone git://github.com/pxlplnt/Androrm.git
+    </pre>
+    
+    <hr />
+    
+    <br /><br />
+    After you downloaded the jar, have a look at the <a href="{% url documentation_installation %}">installation
+    guide</a> and <a href="{% url documentation_index %}">read the documentation</a>, to get your project up and
+    running with the support of androrm.
+
+{% endblock %}
+
+{% block content_menu %}
+
+    <img src="{{ MEDIA_URL }}img/section-download.png" class="content-menu-headline" />
+
+    <ul class="content-menu">
+        {% block menu_content %}
+        
+            <li>Available releases</li>
+            <ul>
+                {% for release in releases %}
+                    <li><a href="{% url download_release version=release.version %}">{{ release.version }}</a></li>
+                {% endfor %}
+            </ul>
+        
+        {% endblock %}
+    </ul>
+    
+    <div class="content-menu padding-bottom-menu center">
+        Androrm is <a href="http://opensource.org" target="_blank">open source</a> and distributed under the
+        <a href="{% url download_license %}">MIT License</a>.
+    </div>
+
+{% endblock %}

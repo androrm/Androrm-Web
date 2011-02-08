@@ -1,0 +1,50 @@
+{% extends "documentation/index.html" %}
+
+{% block title  %}Documentation | Beginners{% endblock %}
+
+{% block content %}
+
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-so-you-are-new-to-androrm.png" />
+    <br /><br />
+    And maybe also to ORM? No problem at all. The good thing with androrm is, that it is very easy to 
+    <a href="{% url documentation_installation %}">install</a> and to use. The following pages will guide
+    you step by step and help you set up your app with the support of androrm. 
+    
+    <br /><br />
+    
+    You ask yourself, why you should I use androrm? Well, because you can! Androrm spares you the whole
+    set-up for the database. It also keeps you away from writing big queries on your own. All you have to do, 
+    is to tell androrm which classes to handle for you and it will create and maintain the respective database tables
+    for you. Isn't that great?
+    
+    <br /><br />
+    
+    <hr />
+    
+    {% for category in categories %}
+        <h2><a href="{{ category.get_url }}">{{ category.name }}</a></h2>
+        {% autoescape off %}
+            {{ category.description }}
+        {% endautoescape %}
+        
+        {% if not forloop.last %}
+            <hr />
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block menu_content %}
+
+    <li><a href="{% url documentation_index %}">Documentation</a></li>
+    <ul>
+        <li>Beginners</li>
+        <ul>
+            {% for category in categories %}
+                 <li><a href="{{ category.get_url }}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </ul>
+
+{% endblock %}

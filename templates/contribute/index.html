@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title%}Contribute{% endblock %}
+
+{% block page_title %}
+    <img src="{{ MEDIA_URL }}img/page-contribute.png" class="page-name"/>
+{% endblock %}
+
+{% block content %}
+
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-be-part-of-the-androrm-project.png" />
+    <br /><br />
+    You think androrm is a cool tool and you also have lots of ideas on how to improve it? If yes, then this is
+    <b>your</b> section! Go ahead and fork the project on github and maybe become part of the core development
+    team. 
+    
+    <br /><br />
+    
+    Or did you find a defect or something you want to have improved? Then <a href="#">file a bug</a> or 
+    <a href="#">a feature request</a> and help finding the parts, we forgot to cover!
+
+{% endblock%}
+
+{% block content_menu %}
+
+    <img src="{{ MEDIA_URL }}img/section-contents.png" class="content-menu-headline" />
+
+{% endblock %}

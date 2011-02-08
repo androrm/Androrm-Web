@@ -1,0 +1,45 @@
+{% extends "documentation/index.html" %}
+
+{% block title %}Documentation | Field types{% endblock %}
+
+{% block page_title %}
+    <img src="{{ MEDIA_URL }}img/page-documentation.png" class="page-name" />
+{% endblock %}
+
+{% block content %}
+    {% block introduction %}
+
+        <br />
+        <img src="{{ MEDIA_URL }}img/headline-field-types.png" />
+        <br /><br />
+        Androrm comes with a variety of predefined field types, that you need to use, in order to get the cool database support. 
+        With these types androrm automatically knows, how to build the database and is also able to create relations between
+        your model classes fully automatic. So, by default there are two different types of fields. The ones, that only cope with
+        data and the ones, that define your relations.
+    {% endblock %}
+    
+    <br /><br /><br />
+    
+    {% for category in categories %}
+        <h3><a href="{{ category.url }}">{{ category.name }}</a></h3>
+        {{ category.description }}
+        {% if not forloop.last %}
+            <hr />
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block menu_content %}
+
+    <li><a href="{% url documentation_models %}">Defining Models</a></li>
+    <ul>
+        <li>Field Types</li>
+        <ul>
+            {% for category in categories %}
+                <li><a href="{{ category.url }}">{{ category.name }}</a></li>
+                
+            {% endfor %}
+        </ul>
+    </ul>
+    
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "documentation/class_descriptions.html" %}
+
+{% block title %}Documentation | Relational Fields{% endblock %}
+
+{% block introduction %}
+
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-relational-field-reference.png" />
+    <br /><br />
+    
+    This document describes the different types of relational fields, that are available in the androrm ORM. You can quick jump
+    to any field reference using the respective link in the side menu. 
+
+    <br /><br />
+    
+    <hr />
+
+{% endblock %}
+
+{% block menu_content %}
+
+    <li><a href="{% url documentation_fields %}">Field Types</a></li>
+    <ul>
+        <li>Relational Fields</li>
+        <ul>
+            {% for field in fields %}
+                <li><a href="#{{ field.name }}">{{ field.name }}</a></li>
+                <ul>
+                    {% for function in field.functions.all %}
+                        <li>
+                            <a href="#{{ field.name }}_{{ function.name }}__{{ function.id }}">
+                                {{ function.name }}
+                            </a>
+                            {{ function.params_short }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </ul>
+        <li><a href="{% url documentation_data_fields %}">Data Fields</a></li>
+        <ul>
+            {% for field in data_fields %}
+                <li><a href="{% url documentation_data_fields %}#{{ field.name }}">{{ field.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
+
+{% endblock %}

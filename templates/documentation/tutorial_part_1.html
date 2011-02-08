@@ -1,0 +1,170 @@
+{% extends "documentation/tutorials.html" %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCoreEclipse.css"/>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shCore.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushJava.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushXml.js"></script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+{% endblock %}
+
+{% block content %}
+    
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-getting-ready.png" />
+    <br /><br />
+    The first and I think most important goal of this tutorial is <b>to work</b>!
+    
+    <br /><br />
+    I was frustrated each time, I tried one of the tutorials on the android website because 9/10 times they
+    did not work. Google might be very good with search engines, but when it comes to writing tutorials they suck. 
+    Sorry... The other thing I really did not like was, that they just let you copy and paste code and then add
+    only a small description. I won't do it that way. We will build this app <b>together</b>. Let's go!
+    
+    <hr />
+    
+    <h2><a href="#models" name="models">Defining the models</a></h2>
+    Before we start hacking code, we shortly think about what we want to achieve. This should be about our own
+    little book collection. A very, very simple book collection. So what are the basic specs? I would say a
+    book should have a <i>title</i> and also an <i>author</i>. Sounds good. And just to complete the picture these
+    authors should have <i>names</i>. That's enough (I can say so, because I am the author). Hey and with this
+    little spec in mind, we can go and write our model classes. First the one, for the author. 
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial_author_class_1.java" %}</pre>
+    
+    This now might look somewhat different from what you would normally write in Java. Probably you would have 
+    chosen <pre>String</pre> for the name field and set it's visibility to <pre>private</pre>. Unfortunately 
+    androrm than wouldn't be able to 
+    <ol>
+        <li>see the field and</li>
+        <li>know how to write it to the database.</li>
+    </ol>
+    If you use the <a href="{% url documentation_fields %}">field types</a> provided by androrm we have a different situation.
+    What I've done here is 
+    <ol>
+        <li>set the visibility to <pre>protected</pre>, so that the <pre>Model</pre> class
+    can access this field</li>
+        <li>created a <b>zero-argument</b> constructor, that can be called to initialize all
+    fields</li>
+    <li>called <pre>super()</pre> in order to also set-up everything in the <pre>Model</pre> superclass and
+    <li>initialized my field providing a parameter for the maximum length. </li>
+    </ol>
+    Next up: the book model. 
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial_book_class_1.java" %}</pre>
+    
+    In the <pre>Book</pre> class we're doing basically the same. But we also define a <pre>ForeignKeyField</pre>,
+    that links the books to authors. This field is everything, that androrm needs, to handle this relation for you. 
+    
+    <hr />
+    
+    <h2><a href="#queries" name="queries">Getting ready for queries</a></h2>
+    Actually you don't have to add anything in order to get your models ready for queries. The <pre>Model</pre>
+    class already defines the <a href="{% url documentation_models %}#objects"><pre>objects()</pre> method</a>,
+    but I would say it is handy and also good style, to implement this method in every class. Normally you would
+    have to hand in a <pre>Context</pre> instance and the <pre>Class</pre> object of your model. You can easily
+    get rid of the second parameter, by implementing <i>your</i> <pre>objects()</pre> method, that will automatically
+    fill in the class for you. On the author class this looks like... 
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial_author_class_2.java" %}</pre>
+    
+    Not much work, but looks way better in the code. I think you can figure out yourself, how to do this for
+    the <pre>Book</pre> class. We'll get to the details of the <pre>objects()</pre> method and <pre>QuerySets</pre>
+    later. 
+    
+    <hr />
+    
+    <h2><a href="#tabs" name="tabs">Tabs, tabs and tabs</a></h2>
+    <img src="{{ MEDIA_URL }}img/tutorial/add_book.png" class="inline-image float-right" />
+    This is, how our activity should look like, when it's finished. So as you see, we have to create three
+    tabs and add some content to them. Luckily android gives us the <pre>TabActivity</pre>. 
+    
+    <br /><br />
+    As you might also have noted I was too lazy, to add three different pictures for the tabs and just used
+    the same one for all of them. If you want to be as lazy, as I, then go ahead and save these two images.
+    
+    <br /><br />
+    <div class="center">
+        <img src="{{ MEDIA_URL }}img/tutorial/button_selected.png" />
+        <img src="{{ MEDIA_URL }}img/tutorial/button_deselected.png" /> 
+    </div>
+    <br />
+    
+    Put these two files into the <pre>res/drawable</pre> folder of your android project. If there is no plain
+    <pre>drawable</pre> folder, create it, as we will need it anyway. 
+    
+    <br /><br />
+    In the same folder now also create a file called <pre>tab_button.xml</pre>. This will be the standard
+    layout file, we use for tabs. The first time I created an xml file in the drawable folder I was like WTF?
+    What the heck is that supposed to be. But actually it is a quite smart mechanism. You can define different
+    items, that will be used under different conditions. For the tabs that means, that we only want to see the
+    <pre>button_selected</pre> image, if the tab is actually selected. 
+    
+    <br /><br />
+    In android you do this by defining states. When looking up the file, it will compare the current state
+    with the one given in the file and stop on the first match. You don't have to define all states at all 
+    times, but only these, you care about. In our case, we want to stop the lookup, if our state is <pre>selected</pre>
+    and the tab is also selected. This is why the item for the selected state will come first in the file. 
+    
+    <br /><br />
+    
+    <pre class="brush: xml">{% include "documentation/examples/tutorial_tab_button.xml" %}</pre>
+    
+    So now, that you have created the <pre>drawable</pre> for your tabs, you have to create the actual tab
+    activity. I won't describe that here in detail, as this tutorial is actually too bad 
+    (<a href="#">check here</a>). Make sure, that you create three activities, called 
+    
+    <ul class="content-menu">
+        <li><pre>AddBook.java</pre></li>
+        <li><pre>BrowseAuthors.java</pre></li>
+        <li><pre>BrowseBooks.java</pre></li>
+    </ul>
+    
+    For now all these activities can just inherit from <pre>Activity</pre>. We'll change this later on. Also
+    <b>do not forget</b> to add all of them to the <pre>AndroidManifest.xml</pre>! I forget this all the time
+    and am wondering about the exception I'm getting. 
+    
+    <br /><br />
+    
+    The code for the plain <pre>TabActivity</pre> looks like this:
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial_tab_activity.java" %}</pre>
+    
+    The only thing, that's still missing is the correct layout in the <pre>main.xml</pre> file. I think it should
+    be very similar to the one in the google tutorial, but I'll post it here anyway. 
+    
+    <pre class="brush: xml">{% include "documentation/examples/tutorial_main.xml" %}</pre>
+    
+    What is really important it, that you choose the exact same ids for the fields, as android searches
+    exactly for them, when it handles a <pre>TabActivity</pre>. Only that way methods like <pre>getTabHost()</pre>
+    that we are using in the activity class can work. 
+    
+    <hr />
+    
+    That was the first part of our big tutorial. I hope, you had no trouble following the steps. But if you struggled
+    at some point please let me know, so that I can change it to the better. You should now have you models set-up
+    and a plain tab activity, with currently no contents, but nice tabs. 
+    
+    <br /><br />
+    To create some content, continue to <a href="{% url documentation_tutorial part=2 %}">the next step</a> of
+    the tutorial, to learn how to create a form and validate its data.
+
+{% endblock %}
+
+{% block menu_content %}
+
+    <li><a href="{% url documentation_tutorials %}">Tutorials</a></li>
+    <ul>
+        <li>Creating new objects</li>
+        <ul>
+            <li><a href="#models">Defining the models</a></li>
+            <li><a href="#queries">Getting ready for queries</a></li>
+            <li><a href="#tabs">Tabs, tabs and tabs</a></li>
+        </ul>
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"&gt;
+
+    &lt;!-- 
+        each tab activity has to contain one tab host
+        this is the overall container for the tabs bar
+        and it's contents
+    --&gt;
+    &lt;TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"&gt;
+    
+        &lt;LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"&gt;
+        
+            &lt;!-- 
+                these are the actual tabs or at least their
+                container
+            --&gt;
+            &lt;TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" /&gt;
+                
+            &lt;!--
+                last but not least the container for
+                the activities or views of each tab
+            --&gt;
+            &lt;FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" /&gt;
+        
+        &lt;/LinearLayout&gt;
+        
+    &lt;/TabHost&gt;
+
+&lt;/LinearLayout&gt;

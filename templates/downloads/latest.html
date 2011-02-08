@@ -1,0 +1,35 @@
+{% extends "downloads/index.html" %}
+
+{% block title %}Download | Latest{% endblock %}
+
+{% block content %}
+
+    <h1>Download the latest release of androrm</h1>
+    
+    <h2>Version {{ latest.version }}</h2>
+    
+    <h3>Release Notes</h3>
+    {% autoescape off %}
+        {{ latest.description }}
+    {% endautoescape %}
+    
+    <h3>Changelog</h3>
+    {% autoescape off %}
+        {{ latest.change_log }}
+    {% endautoescape %}
+
+{% endblock %}
+
+{% block menu_content %}
+
+    <li><a href="{% url download_index %}">Downloads</a></li>
+    <ul>
+        <li>All releases</li>
+        <ul>
+            {% for release in releases %}
+                <li><a href="{% url download_release version=release.version %}">{{ release.version }}</a></li>
+            {% endfor %}
+        </ul>
+    </ul>
+
+{% endblock %}

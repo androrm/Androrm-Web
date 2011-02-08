@@ -1,0 +1,134 @@
+{% extends "documentation/index.html" %}
+
+{% block title %}Documentation | Models{% endblock %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCoreEclipse.css"/>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shCore.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushJava.js"></script>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+{% endblock %}
+
+{% block content %}
+
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-defining-models.png" />
+    <br /><br />
+    
+    <h2><a name="basics" href="#basics">The Basics</a></h2>
+    In order to get your model classes ready for automatic serialization and deserialization the first and
+    <b>most</b> important step is to let them inherit from the androrm <pre>Model</pre> class. Doing so will
+    immediately give you some predefined functions like <pre>save</pre> and <pre>delete</pre>, that can be used
+    to store your models in the database or delete them, if you don't need them anymore.
+    
+    <br /><br />
+    
+    Each model class will get a <pre>mId</pre> field assigned to it, that androrm uses, to reference models. By default
+    this will be a <pre>PrimaryKey</pre> field, that is handled by the database. If you want to use your own IDs,
+    you can call the <pre>Model</pre> constructor with the <pre>suppressAutoincremt</pre> flag set to <pre>true</pre>.
+    Now you only have to look out, that when you save your model for the first time, you call the <pre>save</pre>
+    function with the additional <pre>id</pre> parameter.
+    
+    <h3>Example of model class, with autoincremented id field</h3>
+    <pre class="brush: java;">{% include "documentation/examples/model_basics_autoincrement.java" %}</pre>
+    
+    <h3>Example of model class, with manually set id</h3>
+    <pre class="brush: java;">{% include "documentation/examples/model_basics_no_autoincrement.java" %}</pre>
+    
+    <hr />
+    
+    <h2><a name="fields" href="#fields">Adding fields to your model</a></h2>
+    <h3>Basic field types</h3>
+    Of course a model also needs fields attached to it. Androrm comes with some predefined <a href="{% url documentation_fields %}">field types</a>
+    for you. As androrm doesn't determine the database column names through any annotations on the fields, but uses reflection on the model
+    classes to find the fields, these have to be at least <pre>protected</pre>, so that they are accessibale for the <pre>Model</pre> class.
+    You also have to provide a <b>zero-argument</b> constructor, in which you initialize your fields. Let's look at the next
+    example, to get things clear. 
+    
+    <pre class="brush: java;">{% include "documentation/examples/model_basics_model_book.java" %}</pre>    
+    
+    The <pre>Book</pre> class defines a <pre>CharField</pre> called <pre>mTitle</pre>. Luckily this field is also defined
+    with <pre>protected</pre> visibility. So when androrm examines this field it will create a database table called <i>book</i> 
+    and also a column called mTitle in this table.
+    
+    <br /><br />
+    Ok, books are normally written by someone. So what we would create next is the author model. That could look like the following:
+    
+    <pre class="brush: java;">{% include "documentation/examples/model_basics_model_author.java" %}</pre>    
+
+    <h3>Relational fields</h3>
+    Without androrm, you would now have to go and write all that SQL stuff, that links <pre>Book</pre> with <pre>Author</pre>. Overall,
+    a mess. You don't want to do this. You want to create your app! 
+    
+    <br /><br />
+    
+    But anyway, you want that connection between <pre>Book</pre> and <pre>Author</pre>. Here come the 
+    <a href="{% url documentation_relational_fields %}">relational fields</a> of androrm. We can now just link
+    each book to an author, by defining a <pre>ForeignKeyField</pre> inside the <pre>Book</pre> model.
+    
+    <pre class="brush: java;">{% include "documentation/examples/model_basics_model_book_with_author.java" %}</pre>
+
+    Now actually we are not only talking about the relation of <pre>Book</pre> to <pre>Author</pre>. In many cases
+    you probably also want to <a href="{% url documentation_making_queries %}">do queries</a> asking an author
+    for all of his books. Therefore androrm offers you the <pre>OneToManyField</pre>. Behind the scenes, it will
+    use the <pre>ForeignKey</pre> on <pre>Book</pre>, but that is nothing you have to worry about.  
+
+    <pre class="brush: java;">{% include "documentation/examples/model_basics_model_author_with_books.java" %}</pre>
+    
+    <hr />
+    
+    <h2><a name="objects" href="#objects">The objects method</a></h2>
+    To prepare your model for an easy to use query mechanism, you should also implement the <pre>objects</pre>
+    method on each of you model classes. By default the <pre>Model</pre> class of androrm also provides this method,
+    but here you have to hand in the class of the model you are querying all the time. So, mostly only for 
+    convenience reasons, but also to have code look nicer, implement you own <pre>objects</pre> method to be as
+    DRY as possible. 
+    
+    <pre class="brush: java;">{% include "documentation/examples/model_objects.java" %}</pre>
+    
+    Don't be confused by the return type of this function. The <a href="{% url documentation_making_queries %}">
+    Making Queries</a> section will explain everything you need to know about this androrm mechanism.
+    
+    <hr />
+    
+    <br />
+    
+    If you want to learn more about field types, relations and how to make queries, then have a look at these pages:
+    
+    <ul class="content-menu">
+        <li><a href="{% url documentation_fields %}">Field Types</a></li>
+        <li><a href="{% url documentation_relational_fields %}">Relational fields</a></li>
+        <li><a href="{% url documentation_making_queries %}">Making queries</a></li>
+    </ul>
+
+    <hr />
+    
+    {% for category in categories %}
+        <h2><a href="{{ category.url }}">{{ category.name }}</a></h2>
+        {{ category.description }}
+        {% for subcategory in category.subcategories %}
+            <h3><a href="{{ subcategory.url }}">{{ subcategory.name }}</a></h3>
+            {{ subcategory.description }}
+        {% endfor %}
+        {% if not forloop.last %}
+            <hr />
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block menu_content %}
+    <li><a href="{% url documentation_index %}">Documentation</a></li>
+    <ul>
+        <li>Defining Models</li>
+        <ul>
+            <li><a href="#basics">The Basics</a></li>
+            <li><a href="#fields">Adding fields to your model</a></li>
+            <li><a href="#objects">The <pre>objects</pre> method</a></li>
+            <li><a href="{% url documentation_fields %}">Field Types</a></li>
+        </ul>
+    </ul>
+{% endblock %}

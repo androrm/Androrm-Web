@@ -1,0 +1,1 @@
+DatabaseAdapter.setDatabaseName("My_Database_Name");

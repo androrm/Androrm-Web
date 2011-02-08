@@ -1,0 +1,55 @@
+{% extends "documentation/index.html" %}
+
+{% block content %}
+
+    {% block introduction %}{% endblock %}
+    
+    {% block description %}
+        {% for field in fields %}
+            <h2><a name="{{ field.name }}" href="#{{ field.name }}">{{ field.qualified_name }}</a></h2>
+            {% autoescape off %}
+                {{ field.description }}
+            {% endautoescape %}
+
+            <div class="function-ref">
+                {% for function in field.functions.all %}
+                    <a name="{{ field.name }}_{{ function.name }}__{{ function.id }}"></a>
+                    <h3>
+                        <span class="return-value">
+                            {% if not function.is_constructor %}
+                                {{ function.returns }}
+                            {% endif %}
+                        </span>
+                        {{ function }}
+                    </h3>
+                    {% autoescape off %}
+                        {{ function.description }}
+                    {% endautoescape %}
+
+                    {% if function.params.all %}
+                        <div class="param-ref">
+                            {% for param in function.params.all %}
+                                <h4>{{ param.name }}</h4>
+
+                                {% autoescape off %}
+                                    {{ param.description }}
+                                {% endautoescape %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% if not forloop.last %}
+                        <br /><br />
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+
+            {% if not forloop.last %}
+            <hr />
+            {% endif %}
+        {% endfor %}
+
+    {% endblock %}
+
+{% endblock %}

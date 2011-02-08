@@ -1,0 +1,85 @@
+{% extends "documentation/index.html" %}
+
+{% block title %}Documentation | Installation{% endblock %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCoreEclipse.css"/>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shCore.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushJava.js"></script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+{% endblock %}
+
+{% block content %}
+    
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-androrm-installation.png" />
+    <br /><br />
+    Adding androrm to your project is as simple as 1, 2, 3. The only descission, you have to make right
+    from the start is, whether you want to go with <a href="{% url download_latest %}">the latest stable release</a>
+    or if you want to check out the <a href="#">latest version in the repository</a>.
+    
+    <br /><br />
+    
+    Now, after you have decided for one version, the steps are exactly the same. Assuming you work within 
+    <a href="http://www.eclipse.org" target="_blank">eclipse</a> to write your android application, first 
+    create a new folder called <pre>lib</pre>. Right-click your project and choose <pre>New > Folder</pre>. 
+    
+    <br /><br />
+    <img src="{{ MEDIA_URL }}img/new-folder.jpg" />
+    <br /><br />
+    
+    After that, just copy and paste the <pre>androrm.jar</pre> file into this folder and add it to the <pre>build path</pre>. 
+    You simply do this, by right-clicking the <pre>jar</pre> and selection <pre>Build Path > Add to Build Path</pre>.
+    
+    <br /><br />
+    <img src="{{ MEDIA_URL }}img/build-path.jpg" />
+    <br /><br />
+    
+    <b>That's it!</b> You're done and can now start <a href="{% url documentation_models %}">defining your models</a>.
+    
+    <hr />
+    
+    <h2><a href="#models" name="models">Registering your models</a></h2>
+    After you added the library to your classpath you still have to tell androrm which classes, it should manage. 
+    Unfortunately you can't just hand in a package name at this stage. But this support should come in future 
+    releases. For now, there are two steps you have to take. 
+    
+    <h3>1. Choose a name for your database</h3>
+    By default androrm will create a database called <pre>my_database</pre>. If you want to change that name
+    for any reason (this might be handy if you create test databases), you can easily do so.
+    
+    <pre class="brush: java">{% include "documentation/examples/install_database_name.java" %}</pre>
+    
+    <h3>2. Register your models</h3>
+    The second and also the last step is to tell androrm exactly which classes you want to have managed. You only
+    have to do this once, preferably in your launcher activity. 
+    
+    <pre class="brush: java">{% include "documentation/examples/install_models.java" %}</pre>
+    
+    After these two steps, you are set up and ready to go!
+    
+    <hr />
+    
+    <h3>Post installation</h3>
+    
+    Now, that you have installed androrm, you may want to have a look at <a href="{% url documentation_models %}">how
+    to define models</a>. Or, if you aren't too sure about your skills, first of <a href="{% url documentation_tutorials %}">take a look at the
+    tutorial</a>.
+    
+{% endblock %}
+
+{% block menu_content %}
+
+    <li><a href="{% url documentation_beginners %}">Beginners</a></li>
+    <ul>
+        <li>Installation</li>
+        <ul>
+            <li><a href="#models">Registering your models</a></li>
+        </ul>
+    </ul>
+
+{% endblock %}

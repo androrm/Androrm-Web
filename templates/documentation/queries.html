@@ -1,0 +1,233 @@
+{% extends "documentation/index.html" %}
+
+{% block title %}Documentation | Making Queries{% endblock %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCoreEclipse.css"/>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shCore.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushJava.js"></script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+{% endblock %}
+
+
+{% block content %}
+
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-making-queries.png" />
+    <br /><br />
+    
+    Androrm does not only provide you with automatic serialization/ deserialization of your models, but also
+    gives you the opportunity, to execute complex queries on them. The only precondition to get started is, that
+    you added all the correct <a href="{% url documentation_relational_fields %}">realtional fields</a> to your 
+    models.
+    
+    <br /><br />
+    In the following examples, we assume to have the following two models set up: <pre>Book</pre> and <pre>Author</pre>.
+    
+    <pre class="brush: java">{% include "documentation/examples/query_models.java" %}</pre>
+    
+    Also note, that even though the <pre>objects()</pre> method on the <pre>Model</pre> class of androrm is public,
+    it is a good choice to have all of your model classes implementing their own <pre>objects()</pre>, that just
+    calls the one of <pre>Model</pre> and hands in the correct value for the class parameter.
+    
+    <hr />
+    
+    <h1><a name="{{ query_set.name }}" href="#{{ query_set.name }}">{{ query_set }}</a></h1>
+    {% autoescape off %}
+        {{ query_set.description }}
+    {% endautoescape %}
+
+    <div class="function-ref">
+        {% for function in query_set.functions.all %}
+            <h3>
+                <span class="return-value">
+                    {% if not function.is_constructor %}
+                        {{ function.returns }}
+                    {% endif %}
+                </span>
+                {{ function }}
+            </h3>
+            {% autoescape off %}
+                {{ function.description }}
+            {% endautoescape %}
+
+            {% if function.params.all %}
+                <div class="param-ref">
+                    {% for param in function.params.all %}
+                        <h4>{{ param.name }}</h4>
+
+                        {% autoescape off %}
+                            {{ param.description }}
+                        {% endautoescape %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if not forloop.last %}
+                <br /><br />
+            {% endif %}
+
+        {% endfor %}
+    </div>
+    
+    <hr />
+    
+    <h1><a name="filter_sets" href="#filter_sets">Filter</a></h1>
+    Again, if you already worked with <a href="http://www.djangoproject.org" target="_blank">django</a> in the past,
+    the following examples should look familiar to you. 
+    
+    <br /><br />
+    
+    The central class, when it comes to making queries is the <pre>Filter</pre> class. After you instantiated it, you will
+    be equipped with three basic methods: <pre>in</pre>, <pre>is</pre> and <pre>contains</pre>. Each accepting two parameters.
+    The first paramter hereby is a <pre>String</pre>, that describes the field, you want to look up. The second parameter is
+    the value this field should have. 
+    
+    <h3><a name="filter_in" href="#filter_in">in</a></h3>
+    If you want to specify, that a field value should be contained in a list of values, than this is the operation to go for.
+    Let's for example assume, that you want to get all books, that are either called "Awesome book" or "The boring book". First
+    of, you have to create a list, containing all your values. After that create the <pre>FilterSet</pre> instance and add the list
+    by handing it to the <pre>in</pre> function.
+    
+    <pre class="brush: java">{% include "documentation/examples/query_title_in.java" %}</pre>
+    
+    After we have set up the filter, we can then use the <pre>filter</pre> method on the <pre>Book</pre> model, to acutally execute it. 
+    Note, how I hand in the result of <pre>getApplicationContext()</pre>, to get the context I need. I do this, to not accidentially leak
+    memory. If you want to read more on this topic, I can recommend 
+    <a href="http://android-developers.blogspot.com/2009/01/avoiding-memory-leaks.html" target="_blank">this article on the android blog</a>.
+    
+    <h3><a name="filter_is" href="#filter_is">is</a></h3>
+    The most commonly used filter is the <pre>is</pre>-filter. This one let's you exactly specify, what you are looking for. For example, if
+    we only want books with the title "Awesome book", then our code would look like this:
+    
+    <pre class="brush: java">{% include "documentation/examples/query_title_is.java" %}</pre>
+    
+    <h3><a name="filter_contains" href="#filter_contains">contains</a></h3>
+    One really neat filter function, if you for example implement a keyword search is the <pre>contains</pre> method. This one will take a 
+    <pre>String</pre> and find any instance of the model, where the field value contains this string. Be <b>careful</b> here! This simply
+    translates into a <pre>field_name LIKE "%value%"</pre> on the SQLite database and SQLite doesn't care about case at all, when it comes to
+    <pre>LIKE</pre> statements. So in any case the resulting search will be <b>case insensitive</b>!
+    
+    <br /><br />
+    
+    So in this example we will search for "some book" (get the joke?).
+    
+    <pre class="brush: java">{% include "documentation/examples/query_title_contains.java" %}</pre>
+    
+    <hr />
+    
+    <h2><a href="#relations" name="relations">Spanning relationships</a></h2>
+    
+    Up till now the filter functions are cool, but nothing special actually. Why? Because writing queries for these on your own wouldn't 
+    be too hard. But this changes, if we take all the relations into account. What for example happens, if you want all books, that have a
+    author called "Dan Brown"? This is the point, where you write your first <pre>join</pre>. It get's even more complicated, if you for example
+    have suppliers, that have branches, that sell products and you only want suppliers, where some branches sell a product with a specific name. 
+    Luckily androrm helps you here. For now, we go back to our example. So, how do we get all books, that have an author who is called "Dan Brown"?
+    
+    <pre class="brush: java">{% include "documentation/examples/query_author_name_is.java" %}</pre>
+    
+    Suprised, how few changes we had to make? If you want to traverse relationships, you can do this putting two underscores between the fieldnames.
+    This mechanism scales for any number of fields, as long as the model classes are connected with the correct relations. More information on 
+    relationship fields can be found <a href="{% url documentation_relational_fields %}">in the relational field section</a>.
+    
+    <h3><a href="#implicit_relations" name="implicit_relations">Implicit field types</a></h3>
+    
+    Ok, what if you are more interested in getting all books, that are associated with a certain author? You can easily achieve this functionality,
+    by just adding a <a href="{% url documentation_relational_fields %}#OneToManyField">OneToManyField</a> to the <pre>Author</pre> class.
+    
+    <pre class="brush: java">{% include "documentation/examples/query_author_with_o2m.java" %}</pre>
+    
+    This kind of field expects a <pre>ForeignKeyField</pre> on the target class, that points back to it. Thus androrm knows how to handle it. So,
+    if you now want all authors, that wrote an awesome book, you do it like this:
+
+    <pre class="brush: java">{% include "documentation/examples/query_book_is.java" %}</pre>
+    
+    <hr />
+    
+    <h2><a href="#ordering" name="ordering">Ordering</a></h2>
+    When you call <pre>orderBy()</pre> on a query set, an instance of the <pre>OrderBy</pre> class will be created. 
+    The columns you have specified will then be handed to it's constructor. To learn, how to get the ordering right
+    take 5 minutes and read the following section.
+    
+    <h3><a href="#order_by" name="order_by">{{ order_by }}</a></h3>
+    {% autoescape off %}
+        {{ order_by.description }}
+    {% endautoescape %}
+
+    <div class="function-ref">
+        {% for function in order_by.functions.all %}
+            <h3>
+                <span class="return-value">
+                    {% if not function.is_constructor %}
+                        {{ function.returns }}
+                    {% endif %}
+                </span>
+                {{ function }}
+            </h3>
+            {% autoescape off %}
+                {{ function.description }}
+            {% endautoescape %}
+
+            {% if function.params.all %}
+                <div class="param-ref">
+                    {% for param in function.params.all %}
+                        <h4>{{ param.name }}</h4>
+
+                        {% autoescape off %}
+                            {{ param.description }}
+                        {% endautoescape %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if not forloop.last %}
+                <br /><br />
+            {% endif %}
+
+        {% endfor %}
+    </div>
+    
+    <br /><br />
+    
+    In the next example, we will get all books of an author, ordered by their title. Also we don't want them ordered
+    ascending, but rather descending. 
+    
+    <pre class="brush: java">{% include "documentation/examples/query_ordering.java" %}</pre>
+    
+    You could have also first applied a filter to the books query set, that would restrict the output further. 
+    Note that with query sets you have full power over the query at any time. 
+    
+    <hr />
+    
+    <br /><br />
+    
+    In this section you learned, how to use the <pre>objects</pre> method, to construct complex queries and to 
+    limit the results by utilizing the <pre>Filter</pre> class. You now also know, that you can easily span relationships, by only
+    providing the correct field names. Now go and try it yourself and if you find any bugs, report them!
+    
+    <br /><br />
+    
+{% endblock %}
+
+{% block menu_content %}
+    <li><a href="{% url documentation_index %}">Documentation</a></li>
+    <ul>
+        <li>Making Queries</li>
+        <ul>
+            {% for category in categories %}
+                <li><a href="{{ category.url }}">{{ category.name }}</a></li>
+                {% if category.category_set.all %}
+                    <ul>
+                        {% for subcategory in category.category_set.all %}
+                            <li><a href="{{ subcategory.url }}">{{ subcategory.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </ul>
+{% endblock %}

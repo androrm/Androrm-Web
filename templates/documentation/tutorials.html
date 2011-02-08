@@ -1,0 +1,84 @@
+{% extends "documentation/index.html" %}
+
+{% block title %}Documentation | Tutorials{% endblock %}
+
+{% block content %}
+
+    <br />
+    <img src="{{ MEDIA_URL }}img/headline-tutorials.png" />
+    <br /><br />
+    
+    The following tutorial consists of three parts. You will create an android application, that lets you manage
+    a small book collection. You will be able to add books and authors, browse all your books and also browse
+    all authors and view, which books were written by them. In the first part, you learn how to create the
+    objects from a given form and save them to the database. The second part then teaches you how to retrieve
+    objects back from the database and how to look up their fields. In the last part, you will have a look at
+    relations and how they can be used, to improve your apps. 
+    
+    <br /><br />
+    
+    Please note, that the actual androrm part in this tutorials is surprisingly small. I would see this as a
+    plus for androrm, as it is so easy to use. The more complex part will be the writing of the actual app. But anyhow,
+    it is just another chance to learn a little bit about writing android apps.  
+    
+    <h2><a href="{% url documentation_tutorial part=1 %}" name="part1">Part 1: Getting ready</a></h2>
+    Learn how to create objects from data, that has been entered into form fields of you activities and how to
+    link them together. 
+    
+    <ul class="content-menu">
+        <li>Create model classes using androrm fields</li>
+        <li>Get your model ready for queries</li>
+        <li>Create a <pre>TabActivity</pre></li>
+    </ul>
+    
+    <hr />
+    
+    <h2><a href="{% url documentation_tutorial part=2 %}" name="part2">Part 2: Forms and validation</a></h2>
+    Create a form to add new books and authors and validate the results before saving them.
+    
+    <ul class="content-menu">
+        <li>Create an activity using different fields and widgets</li>
+        <li>Create custom dialogs</li>
+        <li>Validate user inputs</li>
+    </ul>
+    
+    <hr />
+    
+    <h2><a href="{% url documentation_tutorial part=3 %}" name="part3">Part 3: Simple queries and fields</a></h2>
+    Use the objects, you created in the step before and perform your first androrm queries, to fill your app 
+    with some content.
+    
+    <ul class="content-menu">
+        <li>Create a <pre>ListActivity</pre></li>
+        <li>Create a custom adapter</li>
+        <li>Do simple queries on the models and retrieve data</li>
+    </ul>
+    
+    <hr />
+    
+    <h2><a href="{% url documentation_tutorial part=4 %}" name="part4">Part 4: Traversing relations</a></h2>
+    Last but not least, see how powerful the relational fields of androrm can be and how they can help you,
+    to build more complex views for your data with just some lines of code. 
+
+    <ul class="content-menu">
+        <li>Create a <pre>ExpandableListActivity</pre></li>
+        <li>Create a custom adapter</li>
+        <li>Do more complex queries using special androrm fields and relations</li>
+    </ul>
+
+{% endblock %}
+
+{% block menu_content %}
+
+    <li><a href="{% url documentation_index %}">Documentation</a></li>
+    <ul>
+        <li>Tutorials</li>
+        <ul>
+            <li><a href="{% url documentation_tutorial part=1 %}">Getting ready</a></li>
+            <li><a href="{% url documentation_tutorial part=2 %}">Forms and validation</a></li>
+            <li><a href="{% url documentation_tutorial part=3 %}">Simple queries and fields</a></li>
+            <li><a href="{% url documentation_tutorial part=4 %}">Traversing realtions</a></li>
+        </ul>
+    </ul>
+
+{% endblock %}
