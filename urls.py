@@ -14,6 +14,6 @@ urlpatterns = patterns('',
     (r'^contribute/', include('androrm.contribute.urls')),
     
     # delete for production
-    (r'^src/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': settings.MEDIA_ROOT}),
+    #(r'^src/(?P<path>.*)$', 'django.views.static.serve',
+    #    {'document_root': settings.MEDIA_ROOT}),
 )

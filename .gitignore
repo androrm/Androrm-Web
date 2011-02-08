@@ -1,4 +1,5 @@
 *.pyc
 androrm
+androrm.db
 *.json
 assets/

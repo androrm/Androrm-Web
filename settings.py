@@ -2,7 +2,7 @@ from os.path import abspath, dirname
 
 # Django settings for androrm project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -15,8 +15,8 @@ PROJECT_PATH = dirname(abspath(__file__))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        #'NAME': '/var/www/androrm/androrm',
-        'NAME': 'androrm',                      # Or path to database file if using sqlite3.
+        'NAME': '/var/www/androrm/androrm.db',
+        #'NAME': 'androrm.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -60,7 +60,7 @@ MEDIA_URL = '/src/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/admin-src/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'drb-kvprur*%zuia0)4mmbnm7u!x-384_y%d1o*2^*jin-j7q)'
