@@ -20,7 +20,7 @@
     <img src="{{ MEDIA_URL }}img/headline-making-queries.png" />
     <br /><br />
     
-    Androrm does not only provide you with automatic serialization/ deserialization of your models, but also
+    Androrm does not only provide automatic serialization/ deserialization of your models, but also
     gives you the opportunity, to execute complex queries on them. The only precondition to get started is, that
     you added all the correct <a href="{% url documentation_relational_fields %}">realtional fields</a> to your 
     models.
@@ -31,7 +31,7 @@
     <pre class="brush: java">{% include "documentation/examples/query_models.java" %}</pre>
     
     Also note, that even though the <pre>objects()</pre> method on the <pre>Model</pre> class of androrm is public,
-    it is a good choice to have all of your model classes implementing their own <pre>objects()</pre>, that just
+    it is a good choice to have all of your models implement their own version of <pre>objects()</pre>, that
     calls the one of <pre>Model</pre> and hands in the correct value for the class parameter.
     
     <hr />
@@ -95,7 +95,7 @@
     
     <pre class="brush: java">{% include "documentation/examples/query_title_in.java" %}</pre>
     
-    After we have set up the filter, we can then use the <pre>filter</pre> method on the <pre>Book</pre> model, to acutally execute it. 
+    After we have set up the filter, we can then use the <pre>objects(...).filter</pre> method on the <pre>Book</pre> model, to acutally execute it. 
     Note, how I hand in the result of <pre>getApplicationContext()</pre>, to get the context I need. I do this, to not accidentially leak
     memory. If you want to read more on this topic, I can recommend 
     <a href="http://android-developers.blogspot.com/2009/01/avoiding-memory-leaks.html" target="_blank">this article on the android blog</a>.
@@ -114,7 +114,7 @@
     
     <br /><br />
     
-    So in this example we will search for "some book" (get the joke?).
+    In this example we will search for "some book" (get the joke?).
     
     <pre class="brush: java">{% include "documentation/examples/query_title_contains.java" %}</pre>
     
@@ -123,8 +123,8 @@
     <h2><a href="#relations" name="relations">Spanning relationships</a></h2>
     
     Up till now the filter functions are cool, but nothing special actually. Why? Because writing queries for these on your own wouldn't 
-    be too hard. But this changes, if we take all the relations into account. What for example happens, if you want all books, that have a
-    author called "Dan Brown"? This is the point, where you write your first <pre>join</pre>. It get's even more complicated, if you for example
+    be too hard. This changes, if we take all the relations into account. What for example happens, if you want all books, that an
+    author called "Dan Brown" wrote? This is the point, where you write your first <pre>join</pre>. It get's even more complicated, if you for example
     have suppliers, that have branches, that sell products and you only want suppliers, where some branches sell a product with a specific name. 
     Luckily androrm helps you here. For now, we go back to our example. So, how do we get all books, that have an author who is called "Dan Brown"?
     

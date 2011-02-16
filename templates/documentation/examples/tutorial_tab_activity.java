@@ -28,7 +28,7 @@ public class Tabs extends TabActivity {
         TabHost tabHost = getTabHost();
         
         TabHost.TabSpec spec = tabHost
-            .newTabSpec(tabAlias.toLowerCase().replace(" ", "_"))   // this optional
+            .newTabSpec(tabAlias.toLowerCase().replace(" ", "_"))   // this is optional
             .setIndicator(tabAlias, res.getDrawable(drawable))      // sets the drawable
             .setContent(intent);                                    // should be self-explaning
         

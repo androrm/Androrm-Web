@@ -38,7 +38,7 @@
     
     This now might look somewhat different from what you would normally write in Java. Probably you would have 
     chosen <pre>String</pre> for the name field and set it's visibility to <pre>private</pre>. Unfortunately 
-    androrm than wouldn't be able to 
+    androrm then wouldn't be able to 
     <ol>
         <li>see the field and</li>
         <li>know how to write it to the database.</li>
@@ -115,8 +115,8 @@
     <pre class="brush: xml">{% include "documentation/examples/tutorial_tab_button.xml" %}</pre>
     
     So now, that you have created the <pre>drawable</pre> for your tabs, you have to create the actual tab
-    activity. I won't describe that here in detail, as this tutorial is actually too bad 
-    (<a href="#">check here</a>). Make sure, that you create three activities, called 
+    activity. I won't describe that here in detail, as this tutorial is actually not too bad 
+    (<a href="#">check here</a>). Make sure, you create three activities, called 
     
     <ul class="content-menu">
         <li><pre>AddBook.java</pre></li>
@@ -124,6 +124,7 @@
         <li><pre>BrowseBooks.java</pre></li>
     </ul>
     
+    that we will use as our different views.
     For now all these activities can just inherit from <pre>Activity</pre>. We'll change this later on. Also
     <b>do not forget</b> to add all of them to the <pre>AndroidManifest.xml</pre>! I forget this all the time
     and am wondering about the exception I'm getting. 
@@ -139,9 +140,24 @@
     
     <pre class="brush: xml">{% include "documentation/examples/tutorial_main.xml" %}</pre>
     
-    What is really important it, that you choose the exact same ids for the fields, as android searches
-    exactly for them, when it handles a <pre>TabActivity</pre>. Only that way methods like <pre>getTabHost()</pre>
+    It's really important, that you choose the exact same ids for the objects, as android searches
+    exactly for these, when it handles a <pre>TabActivity</pre>. Only that way methods like <pre>getTabHost()</pre>
     that we are using in the activity class can work. 
+    
+    <br /><br />
+    <h4>One side note</h4>
+    If you encounter the problem, that you can't read the text, because android chooses white text, for a
+    white background and grey text for the grey background, then this is <b>not</b> your fault. On some
+    phone, there seems to be an error, that produces this exact behavior. To overcome the problem add a value below
+    5 as <pre>targetSdkVersion</pre> in your <pre>AndroidManifest.xml</pre> file. 
+    
+    <pre class="brush: xml">&lt;uses-sdk 
+    android:minSdkVersion="7"
+    android:targetSdkVersion="4" /&gt;
+    </pre>
+    
+    I'm not to sure, what exactly happens. I think some compatibility features are being disabled, if you specify
+    <pre>targetSdkVersion</pre>, but at least, you got nice looking tabs afterwards. 
     
     <hr />
     

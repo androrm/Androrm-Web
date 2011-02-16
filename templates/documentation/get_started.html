@@ -15,29 +15,29 @@
     <h2><a href="#what" name="what">What is androrm?</a></h2>
     Androrm is a ORM (Object Relational Mapper) for android. This means, that it will take care of all the database 
     stuff for you like creating the right tables. It will also write your queries for you! Of course there are
-    already really good solutions for plain Java, that you would run on a server back-end, but this would be just
+    already really good solutions for plain Java, that you would run on a server back-end, but these would be just
     too much for your small phone. 
     
     <br /><br />
     
     Anyway, even on a phone the number of tables and the complexity of queries can easily become overwhelmingly 
-    large. This is where androrm can help you. But beware that this help does not come without a cost. Androrm 
+    large. That is where androrm can help you, but beware, this help does not come without a cost. Androrm 
     uses reflection, to analyze your classes and to create the correct tables and queries. This takes some time. So
-    if you need every millisecond of computing time, then androrm will probably not fit your needs. But if you
-    for example have an app, that loads data from some server and then displays it, these few milliseconds extra
-    will probably not count. 
+    if you need every millisecond of computing time, then androrm will probably not fit your needs. But if you,
+    for example, have an app, that loads data from some server and displays it, these few extra milliseconds
+    probably won't count. 
     
     <hr />
     
     <h2><a href="#where" name="where">Where to start?</a></h2>
     If you want to try androrm yourself, you first have to download it. You can grab the 
     <a href="{% url download_latest %}">latest official release</a> or browse the <a href="{% url download_index %}">download
-    section</a> for any other release. Of course it is recommended, that you go with the latest official release,
-    because the documentation is actually only maintained for this version. 
+    section</a>. Of course it is recommended, that you go with the latest official release,
+    because the documentation is only maintained for that version. 
     
     <br /><br />
     
-    After you decided for your favorite version of androrm, you should read the 
+    After you have decided for your favorite version of androrm, you should read the 
     <a href="{% url documentation_installation%}">installation guide</a> (even though it is really easy). 
     
     <br /><br />
@@ -48,8 +48,8 @@
     <br /><br />
     
     Now, that you know androrm, go ahead and set-up your android project to work with androrm. You can read about how to
-    <a href="{% url documentation_models %}">define your models</a>, that will then be automatically
-    managed by androrm and how to <a href="{% url documentation_making_queries %}">write queries</a>. 
+    <a href="{% url documentation_models %}">define your models</a>, that will then be managed by androrm and how 
+    to <a href="{% url documentation_making_queries %}">write queries</a>. 
     
 
 {% endblock %}
