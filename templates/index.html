@@ -43,7 +43,9 @@
         <h2>{{ entry.headline }}</h2>
         <span class="author">Published on: {{ entry.date }}, by <i>{{ entry.author }}</i></span>
         <br />
-        {{ entry.content|linebreaks }}
+        {% autoescape off %}
+		{{ entry.content|linebreaks }}
+	{% endautoescape %}
     
     {% endfor %}
 {% endblock %}

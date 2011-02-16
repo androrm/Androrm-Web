@@ -1,4 +1,4 @@
-html, body, #container {
+html, body {
     margin: 0px 0px 0px 0px;
     background-color: #4f4f4f;
     background-image: url(../img/background.png);
@@ -82,7 +82,6 @@ a:hover.no-line {
 
 #head {    
     height: 90px;
-    width: 100%;
     
     background-color: #474c50;
     background-image: url(../img/background-header.png);
@@ -226,6 +225,14 @@ a:hover.no-line {
     background-image: url(../img/footnote-androrm.png);
     background-repeat: no-repeat;
     background-position: 30px 3px;
+    
+    color: #c1c1c1;
+    
+    font-size: 8pt;
+}
+
+#footnote a {
+    margin-right: 10px;
 }
 
 .float-left {

@@ -45,7 +45,7 @@
     <h3>Basic field types</h3>
     Of course a model also needs fields attached to it. Androrm comes with some predefined <a href="{% url documentation_fields %}">field types</a>
     for you. As androrm doesn't determine the database column names through any annotations on the fields, but uses reflection on the model
-    classes to find the fields, these have to be at least <pre>protected</pre>, so that they are accessibale for the <pre>Model</pre> class.
+    classes to find the fields, there visibility has to be at least <pre>protected</pre>, so that they are accessibale from the <pre>Model</pre> class.
     You also have to provide a <b>zero-argument</b> constructor, in which you initialize your fields. Let's look at the next
     example, to get things clear. 
     
@@ -72,7 +72,7 @@
     
     <pre class="brush: java;">{% include "documentation/examples/model_basics_model_book_with_author.java" %}</pre>
 
-    Now actually we are not only talking about the relation of <pre>Book</pre> to <pre>Author</pre>. In many cases
+    Now actually we are not only talking about the relation of a <pre>Book</pre> to an <pre>Author</pre>. In many cases
     you probably also want to <a href="{% url documentation_making_queries %}">do queries</a> asking an author
     for all of his books. Therefore androrm offers you the <pre>OneToManyField</pre>. Behind the scenes, it will
     use the <pre>ForeignKey</pre> on <pre>Book</pre>, but that is nothing you have to worry about.  
@@ -83,9 +83,9 @@
     
     <h2><a name="objects" href="#objects">The objects method</a></h2>
     To prepare your model for an easy to use query mechanism, you should also implement the <pre>objects</pre>
-    method on each of you model classes. By default the <pre>Model</pre> class of androrm also provides this method,
+    method on each of your model classes. By default the <pre>Model</pre> class of androrm provides this method,
     but here you have to hand in the class of the model you are querying all the time. So, mostly only for 
-    convenience reasons, but also to have code look nicer, implement you own <pre>objects</pre> method to be as
+    convenience reasons, but also to have nicer looking code, implement your own <pre>objects</pre> method to be as
     DRY as possible. 
     
     <pre class="brush: java;">{% include "documentation/examples/model_objects.java" %}</pre>
