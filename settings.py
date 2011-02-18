@@ -2,7 +2,8 @@ from os.path import abspath, dirname
 
 # Django settings for androrm project.
 
-DEBUG = False
+#DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -15,8 +16,8 @@ PROJECT_PATH = dirname(abspath(__file__))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/var/www/androrm/androrm.db',
-        #'NAME': 'androrm.db',                      # Or path to database file if using sqlite3.
+        #'NAME': '/var/www/androrm/androrm.db',
+        'NAME': 'androrm',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -102,6 +103,7 @@ INSTALLED_APPS = (
     'androrm.contribute',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
