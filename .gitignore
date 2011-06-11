@@ -3,3 +3,5 @@ androrm
 androrm.db
 *.json
 assets/
+media/javadoc/
+*.tar.gz
