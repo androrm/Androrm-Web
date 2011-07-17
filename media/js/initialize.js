@@ -10,7 +10,19 @@ new function() {
         initialize: function() {
             $(document).observe("dom:loaded", function() {
                 this.initialize_menu();
+                this.deactivateInactiveItems();
             }.bind(this));
+        },
+        
+        deactivateInactiveItems: function() {
+            $A($("content").getElementsByClassName("inactive")).each(function(el) {
+                $A(el.getElementsByTagName("a")).each(function(a) {
+                    a.observe("click", function(e) {
+                        e.stop();
+                        return false;
+                    });
+                });
+            });
         },
         
         initialize_menu: function() {
