@@ -33,7 +33,58 @@
     so that we can display a label in front of each editor and a <pre>LinearLayout</pre> to place a button at
     the bottom of the form. 
     
-    <pre class="brush: xml">{% include "documentation/examples/tutorial_add_book.xml" %}</pre>
+    <pre class="brush: xml">{% include "documentation/examples/tutorial/part_2/add_book.xml" %}</pre>
+    
+    <hr />
+    
+    <h2><a href='#form_elements' name="form_elements">Setting up the form elements</a></h2>
+    
+    <h3><a href='#spinner' name='spinner'>The <pre>Spinner</pre></a></h3>
+    
+    Now that we have created the layout, we need to implement the actual <pre>Activity</pre>. Create a plain activity
+    and set its <pre>contentView</pre> to the layout file, we just created. For now, we don't need to change anything
+    on the <pre>EditText</pre> widget. But we want our authors to be displayed in the <pre>Spinner</pre>. In order
+    to achieve this, we have to first query the database for all authors. Do you think SQL right now? Forget it!
+    This line does the job: 
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/all_authors.java" %}</pre>
+    
+    Unfortunately android does not support <pre>QuerySets</pre> natively ;) We need to provide the authors, as
+    a list, that it can handle. calling <pre>toList()</pre> on the <pre>QuerySet</pre> does the job. Now we are
+    able to set up the handler android needs in order to show the <pre>Spinner</pre> correctly. 
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/spinner_handler.java" %}</pre>
+    
+    Now the spinner will show all the authors, we currently have in the database. But what happens, if there are no
+    authors in the database?
+    
+    <h3><a href='#add_author' name='add_author'>Adding authors</a></h3>
+    
+    If we don't have an author in our database, we want to give the user the opportunity to add a new one on the
+    fly. When a users clicks the "Add new author" button, a dialog should pop open, giving him the possibility,
+    to enter the name of the new author. Achieving this is trickier, than you might think. We have to implement
+    our one <pre>Dialog</pre> class. But luckily the implementation is not very hard. 
+    
+    <br /><br />
+    
+    First of all (as always), we need to define the layout for the dialog. As we only want a very simplistic one, 
+    it is not very large. 
+    
+    <pre class="brush: xml">{% include "documentation/examples/tutorial/part_2/add_author_dialog.xml" %}</pre>
+    
+    Again, we define an <pre>EditText</pre>, so that the user is able to enter the name of the new author and 
+    we add two buttons, ok and cancel, giving him the opportunity to either save the new author or cancel. 
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/add_author_dialog.java" %}</pre>
+    
+    In the <pre>Dialog</pre> class itself, note how the new author is being crated and saved using androrm. Also
+    the owner activity, which is our form is notified, that a new author has been added, so it can update the
+    <pre>Spinner</pre>. 
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/add_author_dialog_spotlight.java" %}</pre>
+    
+    We also had to assure, that no "empty" authors are saved. You see, that we check for an empty <pre>string</pre>
+    before we create and save the <pre>Author</pre> object. 
 
 {% endblock %}
 
@@ -44,6 +95,11 @@
         <li>Forms and validation</li>
         <ul>
             <li><a href="#form">Creating the form</a></li>
+            <li><a href='#form_elements'>Setting up the form elements</li>
+            <ul>
+                <li><a href='#spinner'>The <pre>Spinner</pre></li>
+                <li><a href='#add_author'>Adding authors</li>
+            </ul>
         </ul>
     </ul>
 

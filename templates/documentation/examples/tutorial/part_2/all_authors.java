@@ -1,0 +1,1 @@
+mAuthors = Author.objects(getApplicationContext()).all();
