@@ -34,10 +34,10 @@
     function with the additional <pre>id</pre> parameter.
     
     <h3>Example of model class, with autoincremented id field</h3>
-    <pre class="brush: java;">{% include "documentation/examples/model_basics_autoincrement.java" %}</pre>
+    <pre class="brush: java;">{% include "documentation/examples/models/autoincrement.java" %}</pre>
     
     <h3>Example of model class, with manually set id</h3>
-    <pre class="brush: java;">{% include "documentation/examples/model_basics_no_autoincrement.java" %}</pre>
+    <pre class="brush: java;">{% include "documentation/examples/models/no_autoincrement.java" %}</pre>
     
     <hr />
     
@@ -49,7 +49,7 @@
     You also have to provide a <b>zero-argument</b> constructor, in which you initialize your fields. Let's look at the next
     example, to get things clear. 
     
-    <pre class="brush: java;">{% include "documentation/examples/model_basics_model_book.java" %}</pre>    
+    <pre class="brush: java;">{% include "documentation/examples/models/model_book.java" %}</pre>    
     
     The <pre>Book</pre> class defines a <pre>CharField</pre> called <pre>mTitle</pre>. Luckily this field is also defined
     with <pre>protected</pre> visibility. So when androrm examines this field it will create a database table called <i>book</i> 
@@ -58,7 +58,7 @@
     <br /><br />
     Ok, books are normally written by someone. So what we would create next is the author model. That could look like the following:
     
-    <pre class="brush: java;">{% include "documentation/examples/model_basics_model_author.java" %}</pre>    
+    <pre class="brush: java;">{% include "documentation/examples/models/model_author.java" %}</pre>    
 
     <h3>Relational fields</h3>
     Without androrm, you would now have to go and write all that SQL stuff, that links <pre>Book</pre> with <pre>Author</pre>. Overall,
@@ -70,14 +70,14 @@
     <a href="{% url documentation_relational_fields %}">relational fields</a> of androrm. We can now just link
     each book to an author, by defining a <pre>ForeignKeyField</pre> inside the <pre>Book</pre> model.
     
-    <pre class="brush: java;">{% include "documentation/examples/model_basics_model_book_with_author.java" %}</pre>
+    <pre class="brush: java;">{% include "documentation/examples/models/model_book_with_author.java" %}</pre>
 
     Now actually we are not only talking about the relation of a <pre>Book</pre> to an <pre>Author</pre>. In many cases
     you probably also want to <a href="{% url documentation_making_queries %}">do queries</a> asking an author
     for all of his books. Therefore androrm offers you the <pre>OneToManyField</pre>. Behind the scenes, it will
     use the <pre>ForeignKey</pre> on <pre>Book</pre>, but that is nothing you have to worry about.  
 
-    <pre class="brush: java;">{% include "documentation/examples/model_basics_model_author_with_books.java" %}</pre>
+    <pre class="brush: java;">{% include "documentation/examples/models/model_author_with_books.java" %}</pre>
     
     <hr />
     
@@ -88,7 +88,7 @@
     convenience reasons, but also to have nicer looking code, implement your own <pre>objects</pre> method to be as
     DRY as possible. 
     
-    <pre class="brush: java;">{% include "documentation/examples/model_objects.java" %}</pre>
+    <pre class="brush: java;">{% include "documentation/examples/models/objects.java" %}</pre>
     
     Don't be confused by the return type of this function. The <a href="{% url documentation_making_queries %}">
     Making Queries</a> section will explain everything you need to know about this androrm mechanism.

@@ -34,7 +34,7 @@
     authors should have <i>names</i>. That's enough (I can say so, because I am the author). Hey and with this
     little spec in mind, we can go and write our model classes. First the one, for the author. 
     
-    <pre class="brush: java">{% include "documentation/examples/tutorial_author_class_1.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_1/author_class_1.java" %}</pre>
     
     This now might look somewhat different from what you would normally write in Java. Probably you would have 
     chosen <pre>String</pre> for the name field and set it's visibility to <pre>private</pre>. Unfortunately 
@@ -55,7 +55,7 @@
     </ol>
     Next up: the book model. 
     
-    <pre class="brush: java">{% include "documentation/examples/tutorial_book_class_1.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_1/book_class_1.java" %}</pre>
     
     In the <pre>Book</pre> class we're doing basically the same. But we also define a <pre>ForeignKeyField</pre>,
     that links the books to authors. This field is everything, that androrm needs, to handle this relation for you. 
@@ -70,7 +70,7 @@
     get rid of the second parameter, by implementing <i>your</i> <pre>objects()</pre> method, that will automatically
     fill in the class for you. On the author class this looks like... 
     
-    <pre class="brush: java">{% include "documentation/examples/tutorial_author_class_2.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_1/author_class_2.java" %}</pre>
     
     Not much work, but looks way better in the code. I think you can figure out yourself, how to do this for
     the <pre>Book</pre> class. We'll get to the details of the <pre>objects()</pre> method and <pre>QuerySets</pre>
@@ -112,7 +112,7 @@
     
     <br /><br />
     
-    <pre class="brush: xml">{% include "documentation/examples/tutorial_tab_button.xml" %}</pre>
+    <pre class="brush: xml">{% include "documentation/examples/tutorial/part_1/tab_button.xml" %}</pre>
     
     So now, that you have created the <pre>drawable</pre> for your tabs, you have to create the actual tab
     activity. I won't describe that here in detail, as this tutorial is actually not too bad 
@@ -133,12 +133,12 @@
     
     The code for the plain <pre>TabActivity</pre> looks like this:
     
-    <pre class="brush: java">{% include "documentation/examples/tutorial_tab_activity.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_1/tab_activity.java" %}</pre>
     
     The only thing, that's still missing is the correct layout in the <pre>main.xml</pre> file. I think it should
     be very similar to the one in the google tutorial, but I'll post it here anyway. 
     
-    <pre class="brush: xml">{% include "documentation/examples/tutorial_main.xml" %}</pre>
+    <pre class="brush: xml">{% include "documentation/examples/tutorial/part_1/main.xml" %}</pre>
     
     It's really important, that you choose the exact same ids for the objects, as android searches
     exactly for these, when it handles a <pre>TabActivity</pre>. Only that way methods like <pre>getTabHost()</pre>

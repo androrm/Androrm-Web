@@ -28,7 +28,7 @@
     <br /><br />
     In the following examples, we assume to have the following two models set up: <pre>Book</pre> and <pre>Author</pre>.
     
-    <pre class="brush: java">{% include "documentation/examples/query_models.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/queries/models.java" %}</pre>
     
     Also note, that even though the <pre>objects()</pre> method on the <pre>Model</pre> class of androrm is public,
     it is a good choice to have all of your models implement their own version of <pre>objects()</pre>, that
@@ -93,7 +93,7 @@
     of, you have to create a list, containing all your values. After that create the <pre>FilterSet</pre> instance and add the list
     by handing it to the <pre>in</pre> function.
     
-    <pre class="brush: java">{% include "documentation/examples/query_title_in.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/queries/title_in.java" %}</pre>
     
     After we have set up the filter, we can then use the <pre>objects(...).filter</pre> method on the <pre>Book</pre> model, to acutally execute it. 
     Note, how I hand in the result of <pre>getApplicationContext()</pre>, to get the context I need. I do this, to not accidentially leak
@@ -104,7 +104,7 @@
     The most commonly used filter is the <pre>is</pre>-filter. This one let's you exactly specify, what you are looking for. For example, if
     we only want books with the title "Awesome book", then our code would look like this:
     
-    <pre class="brush: java">{% include "documentation/examples/query_title_is.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/queries/title_is.java" %}</pre>
     
     <h3><a name="filter_contains" href="#filter_contains">contains</a></h3>
     One really neat filter function, if you for example implement a keyword search is the <pre>contains</pre> method. This one will take a 
@@ -116,7 +116,7 @@
     
     In this example we will search for "some book" (get the joke?).
     
-    <pre class="brush: java">{% include "documentation/examples/query_title_contains.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/queries/title_contains.java" %}</pre>
     
     <hr />
     
@@ -128,7 +128,7 @@
     have suppliers, that have branches, that sell products and you only want suppliers, where some branches sell a product with a specific name. 
     Luckily androrm helps you here. For now, we go back to our example. So, how do we get all books, that have an author who is called "Dan Brown"?
     
-    <pre class="brush: java">{% include "documentation/examples/query_author_name_is.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/queries/author_name_is.java" %}</pre>
     
     Suprised, how few changes we had to make? If you want to traverse relationships, you can do this putting two underscores between the fieldnames.
     This mechanism scales for any number of fields, as long as the model classes are connected with the correct relations. More information on 
@@ -139,12 +139,12 @@
     Ok, what if you are more interested in getting all books, that are associated with a certain author? You can easily achieve this functionality,
     by just adding a <a href="{% url documentation_relational_fields %}#OneToManyField">OneToManyField</a> to the <pre>Author</pre> class.
     
-    <pre class="brush: java">{% include "documentation/examples/query_author_with_o2m.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/queries/author_with_o2m.java" %}</pre>
     
     This kind of field expects a <pre>ForeignKeyField</pre> on the target class, that points back to it. Thus androrm knows how to handle it. So,
     if you now want all authors, that wrote an awesome book, you do it like this:
 
-    <pre class="brush: java">{% include "documentation/examples/query_book_is.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/queries/book_is.java" %}</pre>
     
     <hr />
     
@@ -196,7 +196,7 @@
     In the next example, we will get all books of an author, ordered by their title. Also we don't want them ordered
     ascending, but rather descending. 
     
-    <pre class="brush: java">{% include "documentation/examples/query_ordering.java" %}</pre>
+    <pre class="brush: java">{% include "documentation/examples/queries/ordering.java" %}</pre>
     
     You could have also first applied a filter to the books query set, that would restrict the output further. 
     Note that with query sets you have full power over the query at any time. 

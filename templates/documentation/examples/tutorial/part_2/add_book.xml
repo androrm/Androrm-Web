@@ -1,0 +1,84 @@
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"&gt;
+  
+  &lt;LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"&gt;
+  
+      &lt;TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"&gt;
+      
+        &lt;TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"&gt;
+        
+            &lt;TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="Title" /&gt;
+                
+            &lt;EditText
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Title..." 
+                android:layout_weight="1" /&gt;
+        
+        &lt;/TableRow&gt;
+      
+        &lt;TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"&gt;
+        
+            &lt;TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="Author" /&gt;
+            
+            &lt;LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"&gt;
+                
+                &lt;Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" /&gt;
+                    
+                &lt;Button
+                    android:id="@+id/add_author"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="New Author" /&gt;
+            
+            &lt;/LinearLayout&gt;
+        
+        &lt;/TableRow&gt;
+      
+      &lt;/TableLayout&gt;
+  
+  &lt;/LinearLayout&gt;
+
+  &lt;LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="0"&gt;
+
+      &lt;Button
+        android:id="@+id/save"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Book" /&gt;
+        
+  &lt;/LinearLayout&gt;  
+  
+&lt;/LinearLayout&gt;

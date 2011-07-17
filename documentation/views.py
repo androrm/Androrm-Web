@@ -123,6 +123,6 @@ def tutorials(request):
                               context_instance = RequestContext(request))
                               
 def tutorial(request, part):
-    return render_to_response('documentation/tutorial_part_' + str(part) + '.html',
+    return render_to_response('documentation/tutorial/part_' + str(part) + '.html',
                               locals(),
                               context_instance = RequestContext(request))
