@@ -22,6 +22,11 @@
     some mechanism to create new authors. In order to achieve all this, we need to utilize different form elements,
     that android provides and tweak them a little bit, to do exactly what we want. 
     
+    <br /><br />
+    
+    The complete source code of this tutorial can be found at:
+    <a href='{{ MEDIA_URL }}/downloads/book_tutorial.tar.gz'>http://androrm.com{{ MEDIA_URL }}downloads/book_tutorial.tar.gz</a>.
+    
     <h2><a href="#form" name="form">Creating the form</a></h2>
     
         First of all we need the layout for the form itself. So what do we want to achieve? We want to enter the name of the book. 
@@ -90,6 +95,15 @@
     <hr />
 
     <h2><a href='#saving' name="saving">Creating the new book</a></h2>
+    
+    The last step is very simple. If a user clicks on the <pre>save</pre> button at the bottom of the form, a
+    new book should be created and saved to the database. But before we blindly save books, we first have to
+    check if an author has been selected and if the user has entered a title for the book. If the provided 
+    data is correct, we can go ahead and set-up and save the book.
+    
+    <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/add_book.java" %}</pre>
+    
+    That's it! You created the form to create new books. 
 
 {% endblock %}
 
