@@ -274,14 +274,13 @@ a:hover.no-line {
 }
 
 #social {
-    margin: 20px;
-    margin-left: 40px;
+    margin: 28px;
 }
 
 #social div {
     display: inline;
 }
 
-#facebook {
+#facebook, #twitter {
     float: left;
 }
