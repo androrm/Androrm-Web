@@ -272,3 +272,16 @@ a:hover.no-line {
     background-repeat: no-repeat;
     background-position: 100% 0%;
 }
+
+#social {
+    margin: 20px;
+    margin-left: 40px;
+}
+
+#social div {
+    display: inline;
+}
+
+#facebook {
+    float: left;
+}
