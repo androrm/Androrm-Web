@@ -7,7 +7,7 @@ from androrm.settings import MEDIA_URL
 from androrm.downloads.models import Release
 
 def index(request):
-    version = Release.objects.all().order_by("-date")[0:1][0].version
+    latest_version = Release.objects.all().order_by("-date")[0:1][0].version
     releases = Release.objects.all().order_by("-version")
     
     return render_to_response('downloads/index.html',
@@ -17,6 +17,7 @@ def index(request):
 def latest(request):
     releases = Release.objects.all().order_by("-version")
     latest = releases[0]
+    latest_version = latest.version
     
     return render_to_response('downloads/latest.html',
                               locals(),
@@ -25,6 +26,8 @@ def latest(request):
 def release(request, version):
     release = get_object_or_404(Release, version = version)
     releases = Release.objects.all().order_by("-version")
+    
+    latest_version = releases[0].version
     
     return render_to_response('downloads/release.html',
                               locals(),

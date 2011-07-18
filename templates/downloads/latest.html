@@ -2,6 +2,19 @@
 
 {% block title %}Download | Latest{% endblock %}
 
+{% block script %}
+    
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/download.js"></script>
+
+    <script type="text/javascript">
+        if(!Androrm) { var Androrm = {}; }
+        if(!Androrm.Urls) { Androrm.Urls = {}; }
+        
+        Androrm.Urls.download_release = "{% url download_version version=latest_version %}";
+    </script>
+
+{% endblock %}
+
 {% block content %}
 
     <h1>Download the latest release of androrm</h1>
@@ -17,6 +30,8 @@
     {% autoescape off %}
         {{ latest.change_log }}
     {% endautoescape %}
+    
+    <div id="btn-download" class="button">Download this release</div>
 
 {% endblock %}
 
