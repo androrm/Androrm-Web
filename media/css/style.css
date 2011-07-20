@@ -284,3 +284,7 @@ a:hover.no-line {
 #facebook, #twitter {
     float: left;
 }
+
+.no-background {
+    background: transparent;
+}

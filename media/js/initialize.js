@@ -15,7 +15,7 @@ new function() {
         },
         
         deactivateInactiveItems: function() {
-            $A($("content").getElementsByClassName("inactive")).each(function(el) {
+            $A($(document).getElementsByClassName("inactive")).each(function(el) {
                 $A(el.getElementsByTagName("a")).each(function(a) {
                     a.observe("click", function(e) {
                         e.stop();
