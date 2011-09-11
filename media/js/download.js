@@ -1,7 +1,7 @@
 if(!Androrm) { var Androrm = {}; }
 if(!Androrm.Urls) { Androrm.Urls = {}; }
 
-new function() {
+(function() {
     
     $(document).observe("dom:loaded", function() {
         $("btn-download").observe("click", function() {
@@ -9,4 +9,4 @@ new function() {
         });
     });
     
-}();
+}());

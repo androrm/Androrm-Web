@@ -1,8 +1,8 @@
 if(!Androrm) { var Androrm = {}; }
 if(!Androrm.Utils) { Androrm.Utils = {}; }
 
-new function() {
+(function() {
     Androrm.Utils.go = function(url) {
         window.location.href = url;
     };
-}();
+}());

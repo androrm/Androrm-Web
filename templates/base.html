@@ -92,9 +92,12 @@
     </script>
 
     <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prototype.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/utils.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/menu.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/initialize.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/androrm.js"></script>
+    <script type="text/javascript">
+        $(document).observe("dom:loaded", function() {
+            new Androrm.Initializer();
+        })
+    </script>
     {% block script %}{% endblock %}
 </body>
 </html>
