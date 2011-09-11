@@ -3,7 +3,6 @@ from os.path import abspath, dirname
 # Django settings for androrm project.
 
 DEBUG = False
-#DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -17,7 +16,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': '/var/www/androrm/androrm.db',
-        #'NAME': 'androrm',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -63,9 +61,6 @@ MEDIA_URL = '/src/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/admin-src/'
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'drb-kvprur*%zuia0)4mmbnm7u!x-384_y%d1o*2^*jin-j7q)'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -107,3 +102,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+try:
+    from local_settings import *
+except ImportError: 
+    pass

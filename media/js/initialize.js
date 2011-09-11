@@ -1,17 +1,12 @@
 if(!Androrm) { var Androrm = {}; }
-if(!Androrm.Initialize) { Androrm.Initializer = {}; }
 
-new function() {
+(function() {
     
     Androrm.Initializer = Class.create({
         
-        menu: undefined,
-        
         initialize: function() {
-            $(document).observe("dom:loaded", function() {
-                this.initialize_menu();
-                this.deactivateInactiveItems();
-            }.bind(this));
+            this.initializeMenu();
+            this.deactivateInactiveItems();
         },
         
         deactivateInactiveItems: function() {
@@ -25,8 +20,8 @@ new function() {
             });
         },
         
-        initialize_menu: function() {
-            this.menu = new Androrm.Menu({
+        initializeMenu: function() {
+            new Androrm.Menu({
                 node: $("menu"),
                 items: [
                     {
@@ -62,6 +57,4 @@ new function() {
         }
     });
     
-    new Androrm.Initializer();
-    
-}();
+}());

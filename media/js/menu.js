@@ -1,7 +1,6 @@
 if(!Androrm) { var Androrm = {}; }
-if(!Androrm.Menu) { Androrm.Menu = {}; }
 
-new function() {
+(function() {
     
     Androrm.Menu = Class.create({
         
@@ -62,4 +61,4 @@ new function() {
         }
         
     });
-}();
+}());
