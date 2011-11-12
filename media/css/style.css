@@ -193,6 +193,15 @@ a:hover.no-line {
     cursor: pointer;
 }
 
+.inline {
+    float: left;
+    width: 220px;
+}
+
+.clear {
+    clear: both;
+}
+
 .content-menu {
     padding-left: 30px;
     padding-right:30px;
