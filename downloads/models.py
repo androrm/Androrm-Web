@@ -6,6 +6,8 @@ class Release(models.Model):
     change_log = models.TextField()
     description = models.TextField()
     previous_version = models.ForeignKey("Release", blank = True, null = True)
+    available_as_tar = models.BooleanField()
+    available_as_zip = models.BooleanField()
 
     class Meta:
         ordering = ["date"]

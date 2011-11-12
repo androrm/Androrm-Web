@@ -4,9 +4,22 @@ if(!Androrm.Urls) { Androrm.Urls = {}; }
 (function() {
     
     $(document).observe("dom:loaded", function() {
-        $("btn-download").observe("click", function() {
-            window.location.href = Androrm.Urls.download_release;
-        });
+        var tarDownload = $("btn-download-tar");
+        
+        if(tarDownload) {
+            tarDownload.observe("click", function() {
+                window.location.href = Androrm.Urls.download_release_tar;
+            });
+        }
+        
+        var zipDownload = $("btn-download-zip");
+        
+        if(zipDownload) {
+            zipDownload.observe("click", function() {
+                window.location.href = Androrm.Urls.download_release_zip;
+            });
+        }
+        
     });
     
 }());

@@ -17,11 +17,8 @@ def index(request):
 def latest(request):
     releases = Release.objects.all().order_by("-version")
     latest = releases[0]
-    latest_version = latest.version
     
-    return render_to_response('downloads/latest.html',
-                              locals(),
-                              context_instance = RequestContext(request))
+    return HttpResponseRedirect(reverse("download_release", kwargs = { "version": latest.version }))
                               
 def release(request, version):
     release = get_object_or_404(Release, version = version)
@@ -33,15 +30,26 @@ def release(request, version):
                               locals(),
                               context_instance = RequestContext(request))
                               
-def download_latest(request):
+def download_latest_tar(request):
     latest = Release.objects.all().order_by("-date")[0:1][0]
     
-    return HttpResponseRedirect(reverse('download_version', kwargs = {"version": latest.version}))
+    return HttpResponseRedirect(reverse('download_version_tar', kwargs = { "version": latest.version }))
     
-def download_version(request, version):
+def download_latest_zip(request):
+    latest = Release.objects.all().order_by("-date")[0:1][0]
+
+    return HttpResponseRedirect(reverse('download_version_zip', kwargs = { "version": latest.version }))
+
+def download_version_tar(request, version):
+    return download_version(request, version, "tar.gz")
+    
+def download_version_zip(request, version):
+    return download_version(request, version, "zip")
+
+def download_version(request, version, type):
     release = get_object_or_404(Release, version = version)
     
-    return HttpResponseRedirect(MEDIA_URL + "releases/androrm_%s.tar.gz" % version)
+    return HttpResponseRedirect(MEDIA_URL + "releases/androrm_%s.%s" % (version, type))
     
 def license(request):
     return render_to_response("downloads/license.html",
