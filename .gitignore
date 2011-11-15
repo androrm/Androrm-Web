@@ -5,4 +5,5 @@ androrm.db
 assets/
 media/javadoc/
 *.tar.gz
+*.zip
 local_settings.py
