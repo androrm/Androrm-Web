@@ -1,4 +1,4 @@
-List&lt;? extends Model&gt; models = new ArrayList&lt;? extends Model&gt;();
+List&lt;Class&lt;? extends Model&gt;&gt; models = new ArrayList&lt;Class&lt;? extends Model&gt;&gt;();
 models.add(FirstModel.class);
 models.add(SecondModel.class);
 
