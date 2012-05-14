@@ -7,3 +7,5 @@ media/javadoc/
 *.tar.gz
 *.zip
 local_settings.py
+*.tmproj
+androrm.tmproj
