@@ -8,7 +8,8 @@ from androrm.documentation.models import ClassDescription, FunctionDescription
 def index(request):
     categories = []
     
-    for category in Category.objects.filter(parent__name = "Documentation"):
+    for category in Category.objects.filter(parent__name = "Documentation",
+                                            visible = True):
         subcategories = []
         
         for subcategory in Category.objects.filter(parent__id = category.id):
@@ -43,6 +44,11 @@ def models(request):
                            "description": category.description})
     
     return render_to_response('documentation/models.html',
+                              locals(),
+                              context_instance = RequestContext(request))
+
+def migrations(request):
+    return render_to_response('documentation/migrations.html',
                               locals(),
                               context_instance = RequestContext(request))
                               

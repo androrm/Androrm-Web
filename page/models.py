@@ -6,6 +6,7 @@ class Category(models.Model):
     parent = models.ForeignKey("Category", blank = True, null = True)
     url = models.CharField(max_length = 50)
     position = models.IntegerField(null = True)
+    visible = models.BooleanField()
     
     class Meta:
         ordering = ["position"]
