@@ -2,78 +2,102 @@
 
 {% block title %}Documentation | Migrations{% endblock %}
 
-{% block style %}
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCore.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCoreEclipse.css"/>
+{% block style-before %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/prettify.css"/>
 {% endblock %}
 
 {% block script %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shCore.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushJava.js"></script>
-    <script type="text/javascript">SyntaxHighlighter.all();</script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prettify.js"></script>
+    <script type="text/javascript">
+        $(document).observe("dom:loaded", function() {
+            prettyPrint();
+        })
+    </script>
 {% endblock %}
 
 {% block content %}
+    <article>
+        <div class="a-content">
+            <p class="lead">Migrations</p>
+            
+            <p>
+                Noboy is perfect. Even developers.
+            </p>
 
-    <br />
-    <img src="{{ MEDIA_URL }}img/headline-migrations.png" />
-    <br /><br />
+            <p>
+                In every project change happens. Old models need to be updated and new ones to be added. The latter is not problem, as androrm simply recognizes your new models and creates new tables for them. The same does not hold, if you add fields to your existing models. To save time, androrm won't check each time if something has changed on your models and perform the respective updates. In the past that meant you need to manually drop the table and have it recreated by androrm. We all knew, that this is not particularly good. To overcome this issue, we introduce <em>migrations</em>. This page will teach you how to update your model classes with ease.
+            </p>
 
-    Noboy is perfect. Even developers.
+            <hr />
 
-    <br /><br />
+            <section>
+                <p class="lead">
+                    <a name="basics" href="#basics">The Basics</a>
+                </p>
 
-    In every project change happens. Old models need to be updated and new ones to be added. The latter is not problem, 
-    as androrm simply recognizes your new models and creates new tables for them. The same does not hold, if you add fields
-    to your existing models. To save time, androrm won't check each time if something has changed on your models and perform
-    the respective updates. In the past that meant you need to manually drop the table and have it recreated by androrm. 
-    We all knew, that this is not particularly good. To overcome this issue, we introduce <i>migrations</i>. This page will
-    teach you how to update your model classes with ease.
+                <p>
+                    In order to run any migration on one of your models, you need to override the <code>migrate</code> method of the <code>Model</code> class. This method will be called, when androrm initializes all the models and is used to run any kind of migration. The following example shows you, how an empty <code>migrate</code> method would look like. 
+                </p>
 
-    <h2><a name="basics" href="#basics">The Basics</a></h2>
+                <pre class="prettyprint linenums">{% include "documentation/examples/models/migrations/basic.java" %}</pre>
 
-    In order to run any migration on one of your models, you need to override the <pre>migrate</pre> method of the
-    <pre>Model</pre> class. This method will be called, when androrm initializes all the models and is used to run
-    any kind of migration. The following example shows you, how an empty <pre>migrate</pre> method would look like. 
+                <p>
+                    The <code>context</code> instance you need to hand to the method will later be used to roll out all migrations. 
+                </p>
+                
+            </section>
 
-    <pre class="brush: java">{% include "documentation/examples/models/migrations/basic.java" %}</pre>
+            <hr />
 
-    The <pre>context</pre> instance you need to hand to the method will later be used to roll out all migrations. 
+            <section>
+                <p class="lead">
+                    <a name="adding_data_fields" href="#adding_data_fields">Adding Data Fields</a>
+                </p>
 
-    <hr />
+                <p>
+                    In most cases you have defined a model with some fields on it. We did so with the <code>Author</code> model. Currently, only a name can be assigned to an author. But maybe this author also wrote some book using a synonym. So first up, we add this new field to the model itself. 
+                </p>
 
-    <h2><a name="adding_data_fields" href="#adding_data_fields">Adding Data Fields</a></h2>
+                <pre class="prettyprint linenums">{% include "documentation/examples/models/migrations/field_no_migration.java" %}</pre>
 
-    In most cases you have defined a model with some fields on it. We did so with the <pre>Author</pre> model. Currently,
-    only a name can be assigned to an author. But maybe this author also wrote some book using a synonym. So first up, we
-    add this new field to the model itself. 
+                <p>
+                    So far, so good. The problem here is, that androrm can actually not detect, that the signature of the tabel has changed and that a new field should be added. You need to help out a little bit. Using a <code>Migrator</code> instance, we will tell androrm what to do. 
+                </p>
 
-    <pre class="brush: java">{% include "documentation/examples/models/migrations/field_no_migration.java" %}</pre>
+                <pre class="prettyprint linenums">{% include "documentation/examples/models/migrations/field_migration.java" %}</pre>
 
-    So far, so good. The problem here is, that androrm can actually not detect, that the signature of the tabel has changed
-    and that a new field should be added. You need to help out a little bit. Using a <pre>Migrator</pre> instance, we
-    will tell androrm what to do. 
+                <p>
+                    Using the <code>migrator</code> we can run several migrations on the model. The good thing here is, that androrm will keep track of the migrations, you have already done and if they are necessary. So if you code runs on a fresh install were everything is right in place from minute one, no migrations will be rolled out, and if it runs on an old installation the migrations will be applied. 
+                </p>
 
-    <pre class="brush: java">{% include "documentation/examples/models/migrations/field_migration.java" %}</pre>
+                <p>
+                    What is important to mention, is that you should not remove migrations. All migrations, that you have applied to get from the first version of your model, to your current one should remain in the <code>migrate</code> method. This will make sure, that everybody who is using your app will work on the same data scheme. 
+                </p>
 
-    Using the <pre>migrator</pre> we can run several migrations on the model. The good thing here is, that androrm
-    will keep track of the migrations, you have already done and if they are necessary. So if you code runs on a fresh
-    install were everything is right in place from minute one, no migrations will be rolled out, and if it runs on an old
-    installation the migrations will be applied. 
+            </section>
 
-    <br /><br />
+            <hr />
 
-    What is important to mention, is that you should not remove migrations. All migrations, that you have applied to get 
-    from the first version of your model, to your current one should remain in the <pre>migrate</pre> method. This will
-    make sure, that everybody who is using your app will work on the same data scheme. 
+            <section>
 
-    <hr />
+                <p class="lead">
+                    <a name="adding_relational_fields" href="#adding_relational_fields">Adding Relational Fields</a>
+                </p>
 
-    <h2><a name="adding_relational_fields" href="#adding_relational_fields">Adding Relational Fields</a></h2>
+            </section>
 
-    <hr />
+            <hr />
 
-    <h2><a name="renaming_models" href="#renaming_models">Renaming Models</a></h2>
+            <section>
+
+                <p class="lead">
+                    <a name="renaming_models" href="#renaming_models">Renaming Models</a>
+                </p>
+
+            </section>
+
+        </div>
+    </article>
 
 {% endblock %}
 

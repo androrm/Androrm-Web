@@ -2,54 +2,77 @@
 
 {% block content %}
 
-    {% block introduction %}{% endblock %}
-    
-    {% block description %}
-        {% for field in fields %}
-            <h2><a name="{{ field.name }}" href="#{{ field.name }}">{{ field.qualified_name }}</a></h2>
-            {% autoescape off %}
-                {{ field.description }}
-            {% endautoescape %}
+    <div class="a-content">
+        <article>
+            {% block introduction %}{% endblock %}
+            
+            {% block description %}
+                
+                {% for field in fields %}
 
-            <div class="function-ref">
-                {% for function in field.functions.all %}
-                    <a name="{{ field.name }}_{{ function.name }}__{{ function.id }}"></a>
-                    <h3>
-                        <span class="return-value">
-                            {% if not function.is_constructor %}
-                                {{ function.returns }}
-                            {% endif %}
-                        </span>
-                        {{ function }}
-                    </h3>
-                    {% autoescape off %}
-                        {{ function.description }}
-                    {% endautoescape %}
+                    <section>
 
-                    {% if function.params.all %}
-                        <div class="param-ref">
-                            {% for param in function.params.all %}
-                                <h4>{{ param.name }}</h4>
+                        <p class="lead">
+                            <a name="{{ field.name }}" href="#{{ field.name }}">{{ field.qualified_name }}</a>
+                        </p>
+
+                        {% autoescape off %}
+                            <p>
+                                {{ field.description }}
+                            </p>
+                        {% endautoescape %}
+
+                        <div class="function-ref">
+                            {% for function in field.functions.all %}
+                                <a name="{{ field.name }}_{{ function.name }}__{{ function.id }}"></a>
+                                <h4>
+                                    <span class="return-value">
+                                        {% if not function.is_constructor %}
+                                            {{ function.returns }}
+                                        {% endif %}
+                                    </span>
+                                    {{ function }}
+                                </h4>
 
                                 {% autoescape off %}
-                                    {{ param.description }}
+                                    <p>
+                                        {{ function.description }}
+                                    </p>
                                 {% endautoescape %}
+
+                                {% if function.params.all %}
+                                    <div class="param-ref">
+                                        {% for param in function.params.all %}
+                                            <h6>{{ param.name }}</h6>
+
+                                            {% autoescape off %}
+                                                <p>
+                                                    {{ param.description }}
+                                                </p>
+                                            {% endautoescape %}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                                {% if not forloop.last %}
+                                    <hr />
+                                {% endif %}
+
                             {% endfor %}
                         </div>
-                    {% endif %}
 
-                    {% if not forloop.last %}
-                        <br /><br />
-                    {% endif %}
+                        {% if not forloop.last %}
+                            <hr />
+                        {% endif %}
+
+                    </section>
 
                 {% endfor %}
-            </div>
 
-            {% if not forloop.last %}
-            <hr />
-            {% endif %}
-        {% endfor %}
+            {% endblock %}
 
-    {% endblock %}
+        </article>
+
+    </div>
 
 {% endblock %}

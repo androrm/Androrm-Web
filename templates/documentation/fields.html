@@ -7,26 +7,40 @@
 {% endblock %}
 
 {% block content %}
-    {% block introduction %}
+    <div class="a-content">
 
-        <br />
-        <img src="{{ MEDIA_URL }}img/headline-field-types.png" />
-        <br /><br />
-        Androrm comes with a variety of predefined field types, that you need to use, in order to get the cool database support. 
-        With these fields androrm knows, how to build the database and is able to create relations between
-        your model classes. So, by default there are two different types of fields. The ones, that only cope with
-        data and the ones, that define your relations.
-    {% endblock %}
-    
-    <br /><br /><br />
-    
-    {% for category in categories %}
-        <h3><a href="{{ category.url }}">{{ category.name }}</a></h3>
-        {{ category.description }}
-        {% if not forloop.last %}
-            <hr />
-        {% endif %}
-    {% endfor %}
+        {% block introduction %}
+
+            <article>
+
+                <p class="lead">Field types</p>
+
+                <p>
+                    Androrm comes with a variety of predefined field types, that you need to use, in order to get the cool database support. With these fields androrm knows, how to build the database and is able to create relations between your model classes. So, by default there are two different types of fields. The ones, that only cope with data and the ones, that define your relations.
+                </p>
+
+            </article>
+
+        {% endblock %}
+        
+        <hr />
+
+        {% for category in categories %}
+            <section>
+
+                <p class="lead">
+                    <a href="{{ category.url }}">{{ category.name }}</a>
+                </p>
+
+                {{ category.description }}
+                {% if not forloop.last %}
+                    <hr />
+                {% endif %}
+
+            </section>
+        {% endfor %}
+
+    </div>
 {% endblock %}
 
 {% block menu_content %}
