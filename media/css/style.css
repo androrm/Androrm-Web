@@ -80,10 +80,6 @@ a:hover {
     padding-left: 141px;
 }
 
-.author {
-    display: block;
-}
-
 .a-align-right {
     text-align: right;
 }
@@ -264,6 +260,8 @@ a:hover {
 .author {
     margin-top: -15px;
     margin-bottom: 20px;
+
+    opacity: 0.7;
 }
 
 .a-content {
@@ -277,7 +275,30 @@ a:hover {
 }
 
 .a-tagline {
-    padding-top: 10px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+
+    font-size: 50px;
+    font-weight: bold;
+
+    letter-spacing: -1px;
+
+    text-align: center;
+}
+
+.a-tagline p {
+    display: block;
+
+    text-align: center;
+
+    padding-top: 20px;
+
+    opacity: 0.5;
+
+    line-height: 27px;
+
+    font-size: 20px;
+    font-weight: normal;
 }
 
 .a-code-caption {
@@ -299,4 +320,32 @@ a:hover {
 .function-ref hr {
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #efefef;
+}
+
+.a-news-entry small {
+    display: block;
+
+    text-align: right;
+
+    color: #999;
+}
+
+.a-news-entry small:before {
+    content: "— \00A0";
+}
+
+.a-main-title {
+    margin-bottom: 60px;
+}
+
+.a-main-title small {
+    display: block;
+
+    text-align: right;
+
+    content: #999;
+}
+
+.a-main-title small:before {
+    content: "— \00A0";
 }
