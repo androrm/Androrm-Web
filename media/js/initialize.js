@@ -5,7 +5,7 @@ if(!Androrm) { var Androrm = {}; }
     Androrm.Initializer = Class.create({
         
         initialize: function() {
-            this.initializeMenu();
+            //this.initializeMenu();
             this.deactivateInactiveItems();
         },
         

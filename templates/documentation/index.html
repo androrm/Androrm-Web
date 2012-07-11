@@ -9,62 +9,69 @@
 {% block path %}/documentation{% endblock %}
 
 {% block content %}
-    <br />
+    
+    <div class="row">     
+        <div class="span5">
+            <div class="a-content-condensed">
+                <p class="lead">Get Started</p>
 
-    <table cellspacing="0" cellpadding="0">
-        <tr>
-            <td><img src="{{ MEDIA_URL }}img/headline-get-started.png" /></td>
-            <td><img src="{{ MEDIA_URL }}img/headline-developer.png" /></td>
-        </tr>
-        <tr>
-            <td class="half-size">
-                <br />
                 If you are new to androrm or the world of object relational mapping (ORM), the 
                 <a href="{% url documentation_kick_start %}">get started guide</a> is probably what you
                 are looking for. If that one has convinced you, check out the 
                 <a href="{% url documentation_installation %}">installation guide</a> or kick-start 
                 with our <a href="{% url documentation_tutorials %}">tutorial</a>.
-            </td>
-            <td class="half-size">
-                <br />
+            </div>
+        </div>
+
+        <div class="span4">
+            <div class="a-content-condensed">
+                <p class="lead">Developer?</p>
+
                 You are looking for more detailed information about classes and functions? Check out the <a href="/documentation/javadoc/">javadoc</a> 
                 for the whole project or get more information in the <a href="{% url contribute_index %}">contribute section</a>.
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
 
-    <br /><br /><br />
+    <div class="a-content">
+        <p class="lead">All other folks...</p>
+        
+        <p>
+            ...just have a look in the side menu. There you'll find information about <a href='{% url documentation_models %}'>basic model functions</a>, detailed descriptions of all <a href="{% url documentation_fields %}">field types</a> and (maybe the best part) how to <a href="{% url documentation_making_queries %}">write queries</a>. Spoiler alert! No SQL here. 
+        </p>
 
-    <img src="{{ MEDIA_URL }}img/headline-all-other-folks.png" />
-    <br /><br />
-    ...just have a look in the side menu. There you'll find information about <a href='{% url documentation_models %}'>basic model functions</a>,
-    detailed descriptions of all <a href="{% url documentation_fields %}">field types</a> and (maybe the best part) 
-    how to <a href="{% url documentation_making_queries %}">write queries</a>. Spoiler alert! No SQL here. 
+        <p>
+            What you might recognize is, that the whole androrm API resembles <a href="http://www.djangoproject.com" target="_blank">django</a>.This indeed was intentional. I think django is just a great web-framework and even this site here was written using it. So, if you are familiar with their way of doing things, you won't have any problems, to use androrm for your android app. Enjoy!
+        </p>
+        
+        <p>
+            And if you should ever have any trouble working with androrm, please do not hesitate to contact us under <a href="mailto:contact@androrm.com">contact@androrm.com</a>.
+        </P>
 
-    <br /><br />
-    What you might recognize is, that the whole androrm API resembles <a href="http://www.djangoproject.com" target="_blank">django</a>.
-    This indeed was intentional. I think django is just a great web-framework and even this site here was written using it. So, if
-    you are familiar with their way of doing things, you won't have any problems, to use androrm for your android app. Enjoy!
-    
-    <br /><br />
-    And if you should ever have any trouble working with androrm, please do not hesitate to contact us under
-    <a href="mailto:contact@androrm.com">contact@androrm.com</a>.
+        <hr />
 
-    <hr />
+        {% for category in categories %}
+            <section>
+                <p class="lead">
+                    <a href="{{ category.url }}">{{ category.name }}</a>
+                </p>
 
-    {% for category in categories %}
-        <h2><a href="{{ category.url }}">{{ category.name }}</a></h2>
-        {{ category.description }}
-        {% if not forloop.last %}
-            <hr />
-        {% endif %}
-    {% endfor %}
+                <p>
+                    {{ category.description }}
+                </p>
+                
+                {% if not forloop.last %}
+                    <hr />
+                {% endif %}
+            </section>
+        {% endfor %}
+    </div>
     
 {% endblock %}
 
 {% block content_menu %}
 
-    <img src="{{ MEDIA_URL }}img/section-contents.png" class="content-menu-headline">
+    <p class="lead">Contents</p>
 
     <ul class="content-menu">
         {% block menu_content %}

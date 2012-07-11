@@ -1,10 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Androrm - {% block title %}{% endblock %}</title>
+    
+    {% block style-before %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/lib/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css" />
 	{% block style %}{% endblock %}
 	
@@ -22,54 +23,92 @@
 	</script>
 </head>
 <body>
+        
+    <a name="top"></a>
+    
+    <div class="header">    
+                         
+        <div class="container">
 
-    <div id="container">        
-        
-        <a name="top"></a>
-        
-        <div id="head">    
-                             
-            <div id="logo">
-                {% block page_title %}{% endblock %}
-            </div>
-            
-            <div id="menu"></div>      
-                   
-        </div>                
-        
-        <div id="content-wrap">
-            
-            <div id="content">
-                {% block content %}{% endblock %}
-            </div>
-            
-            <div id="content-menu">
-                <div id="content-menu-background">
-                    {% block content_menu %}{% endblock %}
+            <div class="row">
+                <div class="span4 logo">
+                    {% block page_title %}{% endblock %}
                 </div>
                 
-                <div id="social">
-                    <div id="facebook">
-                        <iframe src="http://www.facebook.com/plugins/like.php?app_id=165137226893224&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FAndrorm%2F254676521226195&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+                <div class="span6 offset2">
+                    <div class="a-align-right">
+                        <div class="menu-item">
+                            <a href="{% url index %}" class="no-line">
+                                Home
+                            </a>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <a href="{% url documentation_index %}" class="no-line">
+                                Documentation
+                            </a>
+                        </div>
+
+                        <div class="menu-item">
+                            <a href="{% url download_index %}" class="no-line">
+                                Downloads
+                            </a>
+                        </div>
+
+                        <div class="menu-item">
+                            <a href="{% url contribute_index %}" class="no-line">
+                                Contribute
+                            </a>
+                        </div>   
                     </div>
-                    <div id="twitter">
-                        <a href="http://twitter.com/androrm" class="twitter-follow-button" data-button="grey" data-text-color="#4f4f4f" data-link-color="#49738b" data-width="145px" data-show-count="false">Follow @androrm</a>
-                        <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+                </div>
+            </div>
+        </div> 
+    </div>    
+
+    <div class="container">
+        <div class="row content-wrap">
+            
+            <div class="span9">
+                <div class="content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+            
+            <div class="span3">
+                <div class="content-menu">
+                    <div class="content-menu-background a-list">
+                        {% block content_menu %}{% endblock %}
                     </div>
                 </div>
             </div>
             
         </div>
         
-        <div id="footnote">
+        <div class="row">
+            <div class="span12">
+                <div class="row a-footnote">
 
-            <a href="http://github.com/pxlplnt/androrm" class="no-line" target="_blank">
-                <img src="{{ MEDIA_URL}}img/footnote-github.png" alt="androrm on github" />
-            </a>
-            
-            Django is a registered trademark of the Django Foundation.
-            Android is a registered trademark of Google Inc.
+                    <a href="http://github.com/pxlplnt/androrm" class="no-line" target="_blank">
+                        <img src="{{ MEDIA_URL}}img/footnote-github.png" alt="androrm on github" />
+                    </a>
+                    
+                    <p>
+                        Django is a registered trademark of the Django Foundation.
+                        Android is a registered trademark of Google Inc.
+                    </p>
 
+                    <div class="social">
+                        <div class="social-facebook">
+                            <iframe src="http://www.facebook.com/plugins/like.php?app_id=165137226893224&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FAndrorm%2F254676521226195&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+                        </div>
+                        <div class="social-twitter">
+                            <a href="http://twitter.com/androrm" class="twitter-follow-button" data-button="grey" data-text-color="#4f4f4f" data-link-color="#49738b" data-width="145px" data-show-count="false">Follow @androrm</a>
+                            <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -88,7 +127,16 @@
     </script>
 
     <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prototype.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/androrm.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/bootstrap.min.js"></script>
+
+    {% if DEBUG %}
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/utils.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/menu.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/initialize.js"></script>
+    {% else %}
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/androrm.js"></script>
+    {% endif %}
+    
     <script type="text/javascript">
         $(document).observe("dom:loaded", function() {
             new Androrm.Initializer();

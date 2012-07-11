@@ -3,35 +3,35 @@
 {% block title  %}Documentation | Beginners{% endblock %}
 
 {% block content %}
+    <div class="a-content">
+        <p class="lead">So, you are new to androrm?</p>
 
-    <br />
-    <img src="{{ MEDIA_URL }}img/headline-so-you-are-new-to-androrm.png" />
-    <br /><br />
-    And maybe also to object relational mapping (ORM)? No problem at all. The good thing with androrm is, that it is very easy to 
-    <a href="{% url documentation_installation %}">install</a> and to use. The following pages will guide
-    you step by step and help you set up your app with the support of androrm. 
-    
-    <br /><br />
-    
-    You ask yourself "why you should I use androrm?" Well, because you can! Androrm spares you the whole
-    set-up for the database. It also keeps you away from writing big queries on your own. All you have to do, 
-    is to tell androrm which classes to handle and it will create and maintain the respective database tables. 
-    Isn't that great?
-    
-    <br /><br />
-    
-    <hr />
-    
-    {% for category in categories %}
-        <h2><a href="{{ category.get_url }}">{{ category.name }}</a></h2>
-        {% autoescape off %}
-            {{ category.description }}
-        {% endautoescape %}
+        <p>
+            And maybe also to object relational mapping (ORM)? No problem at all. The good thing with androrm is, that it is very easy to <a href="{% url documentation_installation %}">install</a> and to use. The following pages will guide you step by step and help you set up your app with the support of androrm. 
+        </p>
         
-        {% if not forloop.last %}
-            <hr />
-        {% endif %}
-    {% endfor %}
+        <p>
+            You ask yourself "why you should I use androrm?" Well, because you can! Androrm spares you the whole set-up for the database. It also keeps you away from writing big queries on your own. All you have to do,  is to tell androrm which classes to handle and it will create and maintain the respective database tables. Isn't that great?
+        </p>
+        
+        <hr />
+        
+        {% for category in categories %}
+            <section>
+                <p class="lead"><a href="{{ category.get_url }}">{{ category.name }}</a></p>
+                
+                {% autoescape off %}
+                    <p>
+                        {{ category.description }}
+                    </p>
+                {% endautoescape %}
+            </section>
+
+            {% if not forloop.last %}
+                <hr />
+            {% endif %}
+        {% endfor %}
+    </div>
 
 {% endblock %}
 

@@ -11,50 +11,50 @@
 {% endblock %}
 
 {% block content %}
-    <br /><br />
+    <div class="a-content">
+        <div class="a-tagline">
+            <img src="{{ MEDIA_URL}}img/home-headline.png" /><br />
+            Androrm offers an easy to use solution to most of your problems.
+        </div>
 
-    <img src="{{ MEDIA_URL}}img/home-headline.png" /><br />
-    Androrm offers an easy to use solution to most of your problems.
-    
-    <hr />
-    
-    <br /><br />
-    
-    Androrm is an <i>object relational mapper</i> especially for android. It will help you develop your
-    applications faster, by taking care of all database related actions, such as table creation, object
-    serialization and deserialization and lookups. Define your models using the classes, that androrm provides,
-    define relationships between them and instantly write queries spanning as many model classes as you want in a one-liner.
-    
-    <br /><br />
-    
-    Click the button on the side, to download the <a href="{% url download_latest %}">latest release</a>, 
-    <a href="{% url documentation_installation %}">read the installation guide</a>, do one 
-    <a href='{% url documentation_tutorials %}'>tutorial</a>
-    to get you familiarized with how androrm works and keep your application 
-    <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a> as you no longer
-    have to write SQL alongside your class definitions. 
-    
-    <br /><br />
-    
-    <hr />
-    
-    {% for entry in entries %}
-    
-        <h2>{{ entry.headline }}</h2>
-        <span class="author">Published on: {{ entry.date }}, by <i>{{ entry.author }}</i></span>
-        <br />
-        {% autoescape off %}
-		{{ entry.content|linebreaks }}
-	{% endautoescape %}
-    
-    {% endfor %}
+        <hr />
+        
+        Androrm is an <i>object relational mapper</i> especially for android. It will help you develop your
+        applications faster, by taking care of all database related actions, such as table creation, object
+        serialization and deserialization and lookups. Define your models using the classes, that androrm provides,
+        define relationships between them and instantly write queries spanning as many model classes as you want in a one-liner.
+
+        <br /><br />
+        
+        Click the button on the side, to download the <a href="{% url download_latest %}">latest release</a>, 
+        <a href="{% url documentation_installation %}">read the installation guide</a>, do one 
+        <a href='{% url documentation_tutorials %}'>tutorial</a>
+        to get you familiarized with how androrm works and keep your application 
+        <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a> as you no longer
+        have to write SQL alongside your class definitions. 
+
+        <hr />
+        
+        {% for entry in entries %}
+            <article>
+                <p class="lead">{{ entry.headline }}</p>
+                <p class="author">Published on: {{ entry.date }}, by <i>{{ entry.author }}</i></p>
+                
+                {% autoescape off %}
+                    <p>
+                        {{ entry.content|linebreaks }}
+                    </p>
+                {% endautoescape %}
+            </article>
+        {% endfor %}
+    </div>
 {% endblock %}
 
 {% block content_menu %}
     
-    <img src="{{ MEDIA_URL }}img/section-download.png" class="content-menu-headline" />
+    <p class="lead">Download</p>
     
-    <div id="button-latest-release" class="button">Latest release {{ version }}</div>
+    <a href="{% url download_latest %}" class="btn btn-androrm no-line">Latest release {{ version }}</a>
 
     <ul class="content-menu">
         <li><a href="http://github.com/pxlplnt/Androrm" target="_blank">Latest from repository</a></li>

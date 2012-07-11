@@ -86,6 +86,11 @@ TEMPLATE_DIRS = (
     PROJECT_PATH + "/templates"
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'page.context_processors.page_conf',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
