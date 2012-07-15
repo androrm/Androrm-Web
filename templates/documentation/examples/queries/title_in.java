@@ -1,6 +1,6 @@
 List&lt;String&gt; values = Arrays.asList(new String[] {
-		"Awesome book",
-		"The boring book"
+    "Awesome book",
+    "The boring book"
 });
 
 Filter filter = new Filter();

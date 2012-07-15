@@ -349,3 +349,7 @@ a:hover {
 .a-main-title small:before {
     content: "— \00A0";
 }
+
+section section p.lead {
+    font-size: 17px;
+}
