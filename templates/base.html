@@ -6,7 +6,7 @@
     
     {% block style-before %}{% endblock %}
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/lib/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css" />
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/androrm.css" />
 	{% block style %}{% endblock %}
 	
 	<script type="text/javascript">
@@ -126,10 +126,9 @@
 
     </script>
 
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prototype.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/bootstrap.min.js"></script>
-
     {% if DEBUG %}
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prototype.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/bootstrap.min.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/utils.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/menu.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/initialize.js"></script>

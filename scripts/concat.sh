@@ -6,6 +6,7 @@ then
     TARGET=$1
 fi
 
-cat $ROOT/utils.js\
-    $ROOT/menu.js\
+cat $ROOT/lib/prototype.js\
+	$ROOT/lib/boostrap.min.js
+	$ROOT/utils.js\
     $ROOT/initialize.js > $TARGET

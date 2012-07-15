@@ -7,6 +7,13 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}js/main.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}js/download.js"></script>
 
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prettify.js"></script>
+    <script type="text/javascript">
+        $(document).observe("dom:loaded", function() {
+            prettyPrint();
+        })
+    </script>
+
     <script type="text/javascript">
         if(!Androrm) { var Androrm = {}; }
         if(!Androrm.Urls) { Androrm.Urls = {}; }
@@ -19,29 +26,48 @@
 
 {% block content %}
 
-    <h1>Release version {{ version }}</h1>
-    
-    <h3>Release Notes</h3>
-    {% autoescape off %}
-        {{ release.description }}
-    {% endautoescape %}
-    
-    <h3>Changelog</h3>
-    {% autoescape off %}
-        {{ release.change_log }}
-    {% endautoescape %}
-    
-    <div class="btn-wrap">
-    
-        {% if release.available_as_tar %}
-            <div id="btn-download-tar" class="button inline">Download this release (tar.gz)</div>
-        {% endif %}
-    
-        {% if release.available_as_zip %}
-            <div id="btn-download-zip" class="button inline">Download this release (zip)</div>
-        {% endif %}
+    <div class="a-content">
+        <article>
+            <section>
+                <p class="lead">
+                    Release version {{ version }}
+                </p>
+        
+                {% autoescape off %}
+                    <p>
+                        {{ release.description }}
+                    </p>
+                {% endautoescape %}
+            </section>
 
-        <div class="clear"></div>
+            <section>
+                <p class="lead">
+                    Changelog
+                </p>
+
+                {% autoescape off %}
+                    <p>
+                        {{ release.change_log }}
+                    </p>
+                {% endautoescape %}
+                
+                <div class="btn-wrap">
+                
+                    {% if release.available_as_tar %}
+                        <div id="btn-download-tar" class="button inline">Download this release (tar.gz)</div>
+                    {% endif %}
+                
+                    {% if release.available_as_zip %}
+                        <div id="btn-download-zip" class="button inline">Download this release (zip)</div>
+                    {% endif %}
+
+                    <div class="clear"></div>
+
+                </div>
+
+            </section>
+
+        </article>
 
     </div>
 
