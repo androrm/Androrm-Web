@@ -12,7 +12,8 @@ def index(request):
                                             visible = True):
         subcategories = []
         
-        for subcategory in Category.objects.filter(parent__id = category.id):
+        for subcategory in Category.objects.filter(parent__id = category.id,
+                                                   visible = True):
             subcategories.append({"id": subcategory.id,
                                   "name": subcategory.name,
                                   "description": subcategory.description,
