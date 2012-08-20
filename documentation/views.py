@@ -38,7 +38,8 @@ def models(request):
     categories = []
     
     
-    for category in Category.objects.filter(parent__name__contains = "Defining Models"):
+    for category in Category.objects.filter(parent__name__contains = "Defining Models",
+                                            visible = True):
         categories.append({"name": category.name,
                            "id": category.id,
                            "url": category.url,
@@ -99,21 +100,21 @@ def queries(request):
 
     order_by = ClassDescription.objects.get(pk = 11)
     
-    categories = Category.objects.filter(parent__name = "Making Queries")
+    categories = Category.objects.filter(parent__name = "Making Queries", visible = True)
 
     return render_to_response('documentation/queries.html',
                               locals(),
                               context_instance = RequestContext(request))
 
 def beginners(request):
-    categories = Category.objects.filter(parent__name = "Beginners")
+    categories = Category.objects.filter(parent__name = "Beginners", visible = True)
 
     return render_to_response('documentation/beginners.html',
                               locals(),
                               context_instance = RequestContext(request))
 
 def installation(request):
-    categories = Category.objects.filter(parent__name = "Beginners")
+    categories = Category.objects.filter(parent__name = "Beginners", visible = True)
 
     return render_to_response('documentation/installation.html',
                               locals(),
