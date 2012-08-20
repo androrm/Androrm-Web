@@ -1,109 +1,133 @@
 {% extends "documentation/tutorials.html" %}
 
-{% block style %}
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCore.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/shCoreEclipse.css"/>
+{% block style-before %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/prettify.css"/>
 {% endblock %}
 
 {% block script %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shCore.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushJava.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/shBrushXml.js"></script>
-    <script type="text/javascript">SyntaxHighlighter.all();</script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prettify.js"></script>
+    <script type="text/javascript">
+        $(document).observe("dom:loaded", function() {
+            prettyPrint();
+        })
+    </script>
 {% endblock %}
 
 {% block content %}
 
-    <br />
-    <img src="{{ MEDIA_URL }}img/headline-forms-and-validation.png" />
-    <br /><br />
+    <article>
+        <div class="a-content">
+            <p class="lead">Forms and Validation</p>
     
-    In the second part of the tutorial we want to create the form to add new books to the library. We also need 
-    some mechanism to create new authors. In order to achieve all this, we need to utilize different form elements,
-    that android provides and tweak them a little bit, to do exactly what we want. 
+            <section>
+                <p>
+                    In the second part of the tutorial we want to create the form to add new books to the library. We also need some mechanism to create new authors. In order to achieve all this, we need to utilize different form elements, that android provides and tweak them a little bit, to do exactly what we want. 
+                </p>
     
-    <br /><br />
-    
-    The complete source code of this tutorial can be found at:
-    <a href='{{ MEDIA_URL }}/downloads/book_tutorial.tar.gz'>http://androrm.com{{ MEDIA_URL }}downloads/book_tutorial.tar.gz</a>.
-    
-    <h2><a href="#form" name="form">Creating the form</a></h2>
-    
-        First of all we need the layout for the form itself. So what do we want to achieve? We want to enter the name of the book. 
-        Also the authors should be selectable from a list of all authors, that we know. And last but not least, we also need to buttons.
-        One to show a dialog to create a new author and one to save the book to the database. 
+                <p>
+                    The complete source code of this tutorial can be found <a href='{{ MEDIA_URL }}/downloads/book_tutorial.tar.gz'>here</a>.
+                </p>
+            </section>
 
-        Entering text is easy. Android provides a class called <pre>EditText</pre>, that will do exactly, what we need. 
-        We can also create the item for the authors pretty easy, by using the <pre>Spinner</pre> class. All the other stuff in the
-        following layout file is basically getting the items to their correct position. We use a <pre>TableLayout</pre>
-        so that we can display a label in front of each editor and a <pre>LinearLayout</pre> to place a button at
-        the bottom of the form. 
-    
-        <pre class="brush: xml">{% include "documentation/examples/tutorial/part_2/add_book.xml" %}</pre>
-    
-    <hr />
-    
-    <h2><a href='#form_elements' name="form_elements">Setting up the form elements</a></h2>
-    
-        <h3><a href='#spinner' name='spinner'>The <pre>Spinner</pre></a></h3>
-    
-            Now that we have created the layout, we need to implement the actual <pre>Activity</pre>. Create a plain activity
-            and set its <pre>contentView</pre> to the layout file, we just created. For now, we don't need to change anything
-            on the <pre>EditText</pre> widget. But we want our authors to be displayed in the <pre>Spinner</pre>. In order
-            to achieve this, we have to first query the database for all authors. Do you think SQL right now? Forget it!
-            This line does the job: 
-    
-            <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/all_authors.java" %}</pre>
-    
-            Unfortunately android does not support <pre>QuerySets</pre> natively ;) We need to provide the authors, as
-            a list, that it can handle. calling <pre>toList()</pre> on the <pre>QuerySet</pre> does the job. Now we are
-            able to set up the handler android needs in order to show the <pre>Spinner</pre> correctly. 
-    
-            <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/spinner_handler.java" %}</pre>
-    
-            Now the spinner will show all the authors, we currently have in the database. But what happens, if there are no
-            authors in the database?
-    
-        <h3><a href='#add_author' name='add_author'>Adding authors</a></h3>
-    
-            If we don't have an author in our database, we want to give the user the opportunity to add a new one on the
-            fly. When a users clicks the "Add new author" button, a dialog should pop open, giving him the possibility,
-            to enter the name of the new author. Achieving this is trickier, than you might think. We have to implement
-            our one <pre>Dialog</pre> class. But luckily the implementation is not very hard. 
-    
-            <br /><br />
-    
-            First of all (as always), we need to define the layout for the dialog. As we only want a very simplistic one, 
-            it is not very large. 
-    
-            <pre class="brush: xml">{% include "documentation/examples/tutorial/part_2/add_author_dialog.xml" %}</pre>
-    
-            Again, we define an <pre>EditText</pre>, so that the user is able to enter the name of the new author and 
-            we add two buttons, ok and cancel, giving him the opportunity to either save the new author or cancel. 
-    
-            <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/add_author_dialog.java" %}</pre>
-    
-            In the <pre>Dialog</pre> class itself, note how the new author is being crated and saved using androrm. Also
-            the owner activity, which is our form is notified, that a new author has been added, so it can update the
-            <pre>Spinner</pre>. 
-    
-            <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/add_author_dialog_spotlight.java" %}</pre>
-    
-            We also had to assure, that no "empty" authors are saved. You see, that we check for an empty <pre>string</pre>
-            before we create and save the <pre>Author</pre> object. 
+            <hr />
 
-    <hr />
+            <section>
+                <p class="lead">
+                    <a href="#form" name="form">Creating the form</a>
+                </p>
 
-    <h2><a href='#saving' name="saving">Creating the new book</a></h2>
+                <p>
+                    First of all we need the layout for the form itself. So what do we want to achieve? We want to enter the name of the book. Also the authors should be selectable from a list of all authors, that we know. And last but not least, we also need to buttons. One to show a dialog to create a new author and one to save the book to the database. 
+                </p>
+
+                <p>
+                    Entering text is easy. Android provides a class called <code>EditText</code>, that will do exactly, what we need. We can also create the item for the authors pretty easy, by using the <code>Spinner</code> class. All the other stuff in the following layout file is basically getting the items to their correct position. We use a <code>TableLayout</code> so that we can display a label in front of each editor and a <code>LinearLayout</code> to place a button at the bottom of the form. 
+                </p>
     
-    The last step is very simple. If a user clicks on the <pre>save</pre> button at the bottom of the form, a
-    new book should be created and saved to the database. But before we blindly save books, we first have to
-    check if an author has been selected and if the user has entered a title for the book. If the provided 
-    data is correct, we can go ahead and set-up and save the book.
+                <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_2/add_book.xml" %}</pre>
+            </section>
+            
+            <hr />
+
+            <section>
+                <p class="lead">
+                    <a href='#form_elements' name="form_elements">Setting up the form elements</a>
+                </p>
+
+                <section>
+                    <p class="lead">
+                        <a href='#spinner' name='spinner'>The Spinner</a>
+                    </p>
     
-    <pre class="brush: java">{% include "documentation/examples/tutorial/part_2/add_book.java" %}</pre>
+                    <p>
+                        Now that we have created the layout, we need to implement the actual <code>Activity</code>. Create a plain activity and set its <code>contentView</code> to the layout file, we just created. For now, we don't need to change anything on the <code>EditText</code> widget. But we want our authors to be displayed in the <code>Spinner</code>. In order to achieve this, we have to first query the database for all authors. Do you think SQL right now? Forget it! This line does the job: 
+                    </p>
     
-    That's it! You created the form to create new books. 
+                    <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_2/all_authors.java" %}</pre>
+    
+                    <p>
+                        Unfortunately android does not support <code>QuerySets</code> natively ;) We need to provide the authors, as a list, that it can handle. calling <code>toList()</code> on the <code>QuerySet</code> does the job. Now we are able to set up the handler android needs in order to show the <code>Spinner</code> correctly. 
+                    </p>
+    
+                    <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_2/spinner_handler.java" %}</pre>
+    
+                    <p>
+                        Now the spinner will show all the authors, we currently have in the database. But what happens, if there are no authors in the database?
+                    </p>
+                </section>
+
+                <section>
+                    <p class="lead">
+                        <a href='#add_author' name='add_author'>Adding authors</a>
+                    </p>
+    
+                    <p>
+                        If we don't have an author in our database, we want to give the user the opportunity to add a new one on the fly. When a users clicks the "Add new author" button, a dialog should pop open, giving him the possibility, to enter the name of the new author. Achieving this is trickier, than you might think. We have to implement our one <code>Dialog</code> class. But luckily the implementation is not very hard. 
+                    </p>
+    
+                    <p>
+                        First of all (as always), we need to define the layout for the dialog. As we only want a very simplistic one, it is not very large. 
+                    </p>
+    
+                    <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_2/add_author_dialog.xml" %}</pre>
+    
+                    <p>
+                        Again, we define an <code>EditText</code>, so that the user is able to enter the name of the new author and we add two buttons, ok and cancel, giving him the opportunity to either save the new author or cancel. 
+                    </p>
+    
+                    <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_2/add_author_dialog.java" %}</pre>
+    
+                    <p>
+                        In the <code>Dialog</code> class itself, note how the new author is being crated and saved using androrm. Also the owner activity, which is our form is notified, that a new author has been added, so it can update the <code>Spinner</code>. 
+                    </p>
+    
+                    <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_2/add_author_dialog_spotlight.java" %}</pre>
+    
+                    <p>
+                        We also had to assure, that no "empty" authors are saved. You see, that we check for an empty <code>string</code> before we create and save the <code>Author</code> object. 
+                    </p>
+                </section>
+            </section>
+
+            <hr />
+
+            <section>
+                <p class="lead">
+                    <a href='#saving' name="saving">Creating the new book</a>
+                </p>
+    
+                <p>
+                    The last step is very simple. If a user clicks on the <code>save</code> button at the bottom of the form, a new book should be created and saved to the database. But before we blindly save books, we first have to check if an author has been selected and if the user has entered a title for the book. If the provided data is correct, we can go ahead and set-up and save the book.
+                </p>
+    
+                <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_2/add_book.java" %}</pre>
+    
+                <p>
+                    That's it! You created the form to create new books. 
+                </p>
+            </section>
+        </div>
+    </article>
 
 {% endblock %}
 
@@ -116,7 +140,7 @@
             <li><a href="#form">Creating the form</a></li>
             <li><a href='#form_elements'>Setting up the form elements</li>
             <ul>
-                <li><a href='#spinner'>The <pre>Spinner</pre></li>
+                <li><a href='#spinner'>The Spinner</li>
                 <li><a href='#add_author'>Adding authors</li>
             </ul>
             <li><a href='#saving'>Creating the new book</a></li>
