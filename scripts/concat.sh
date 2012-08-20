@@ -7,6 +7,8 @@ then
 fi
 
 cat $ROOT/lib/prototype.js\
-	$ROOT/lib/boostrap.min.js
+	$ROOT/lib/jquery.min.js\
+	$ROOT/no_conflict.js\
+	$ROOT/lib/boostrap.min.js\
 	$ROOT/utils.js\
     $ROOT/initialize.js > $TARGET

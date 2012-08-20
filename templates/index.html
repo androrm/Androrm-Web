@@ -6,10 +6,6 @@
     <img src="{{ MEDIA_URL }}img/page-home.png" class="page-name" />
 {% endblock %}
 
-{% block script %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/main.js"></script>
-{% endblock %}
-
 {% block content %}
     <div class="a-content">
         <div class="a-tagline">
@@ -56,7 +52,9 @@
     
     <p class="lead">Download</p>
     
-    <a href="{% url download_latest %}" class="btn btn-androrm no-line">Latest release {{ version }}</a>
+    <div class="btn-wrap lead-button">
+        <button class="btn btn-large btn-success btn-latest-release">Latest release {{ version }}</button>
+    </div>
 
     <ul class="content-menu">
         <li><a href="http://github.com/pxlplnt/Androrm" target="_blank">Latest from repository</a></li>

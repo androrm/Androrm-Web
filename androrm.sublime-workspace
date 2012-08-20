@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"ex",
+				"examples"
+			],
+			[
+				"dow",
+				"downloads"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"font-",
+				"font-style"
+			],
+			[
 				"clo",
 				"close"
 			],
@@ -43,7 +59,39 @@
 			"file": "settings.py",
 			"settings":
 			{
-				"buffer_size": 3597,
+				"buffer_size": 3724,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/downloads/examples/download.sh",
+			"settings":
+			{
+				"buffer_size": 190,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Phil/Workspace/Androrm-Web/androrm/templates/downloads/release.html",
+			"settings":
+			{
+				"buffer_size": 2724,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Phil/Workspace/Androrm-Web/androrm/templates/base.html",
+			"settings":
+			{
+				"buffer_size": 5725,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Phil/Workspace/Androrm-Web/androrm/templates/downloads/license.html",
+			"settings":
+			{
+				"buffer_size": 1606,
 				"line_ending": "Unix"
 			}
 		},
@@ -53,6 +101,34 @@
 			{
 				"buffer_size": 2297,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Phil/Workspace/Androrm-Web/androrm/templates/downloads/index.html",
+			"settings":
+			{
+				"buffer_size": 3572,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "html, body {\n    background-color: #4f4f4f;\n    background-image: url(../img/background.png);\n}\n\np {\n    text-align: justify;\n}\n\nimg {\n    border: 0px solid;\n}\n\ntd {\n    vertical-align: top;\n    \n    padding-right: 20px;\n}\n\nli a:hover {\n    border-bottom: 0px solid;\n}\n\n.a-list ul, .a-list ol {\n    margin-left: 10px;\n}\n\n.a-list ul {\n    padding-bottom: 10px;\n}\n\n.a-list li {\n    min-height: 20px;\n}\n\n.a-list ul li {\n    list-style-image: url(../img/top-level-bullet.png);\n}\n\n.a-list ul ul {\n    padding-top: 10px;\n}\n\n.a-list ul ul li {\n    list-style-image: url(../img/second-level-bullet.png);\n}\n\na:link, a:active, a:visited {\n    color: #49738b;\n    text-decoration: none;\n}\n\na:hover {\n    border: 0px solid;\n    border-bottom: 1px solid #49738b;\n    border-style: dotted;\n}\n\n.no-line:hover {\n    border-bottom: 0px solid;\n}\n\n.header {    \n    height: 50px;\n    \n    background-color: #474c50;\n    background-image: url(../img/background-header.png);\n    background-repeat: repeat-x;\n    background-position: 0% 100%;\n}\n\n.logo {    \n    background-image: url(../img/logo-typo.png);\n    background-repeat: no-repeat;\n    background-position: 5px 8px;\n}\n\n.logo img {\n    padding-top: 23px;\n    padding-left: 141px;\n}\n\n.a-align-right {\n    text-align: right;\n}\n\n.menu-item {  \n    display: inline-block;\n\n    height: 30px;\n\n    padding-left: 20px;\n    padding-right: 20px;\n    padding-top: 18px;\n    \n    text-align: center;\n}\n\n.menu-item a {\n    color: #b8b8b8 !important;\n}\n\n.menu-item:hover {\n    background-color: #5b6063;\n}\n\n.menu-item:hover a {\n    color: #ffffff !important;\n\n    text-shadow: 0px 1px 0px #2f3234;\n}\n\n.content-wrap {    \n    background-color: #E8E8E8;\n    background-image: url(../img/content-corner.png);\n    background-position: 100% 100%;\n    background-repeat: no-repeat;\n}\n\n.content {\n    height: inherit;\n\n    /*padding-left: 30px;\n    padding-right: 30px;\n    padding-top: 20px;\n    padding-bottom: 30px;*/\n    \n    background-color: #ffffff;\n    border-right: 1px solid #EEE;\n\n    margin-left: -20px;\n}\n\n.content-menu {\n    margin-right: 20px;\n}\n\n.content-menu-background {\n    padding-top: 20px;\n    margin-bottom: 20px;\n}\n\n.content-menu-headline {\n    display: block;\n\n    padding-top: 10px;\n    padding-bottom: 20px;\n    padding-left: 15px;\n}\n\n.bt-androrm {\n    background-image: url(../img/button-background.png);\n    background-repeat: no-repeat;\n    background-position: 50% 0%;\n    \n    text-shadow: 1px 1px 0px #5b6469;\n    color: #d9dee2;\n}\n\n.button:hover {\n    cursor: pointer;\n}\n\n.inline {\n    float: left;\n    width: 220px;\n}\n\n.clear {\n    clear: both;\n}\n\n.center {\n    text-align: center;\n}\n\n\n\n.param-ref {\n    padding-left: 20px;\n}\n\n.return-value {\n    color: #898989;\n}\n\n.a-footnote {    \n    margin-top: 10px;\n    \n    padding-bottom: 10px;\n    padding-left: 90px;\n    \n    background-image: url(../img/footnote-androrm.png);\n    background-repeat: no-repeat;\n    background-position: 30px 7px;\n    \n    color: #c1c1c1;\n    \n    font-size: 8pt;\n}\n\n#footnote a {\n    margin-right: 10px;\n}\n\n.float-left {\n    float:left;\n}\n\n.half-size {\n    text-align: justify;\n    \n    width: 50%;\n}\n\n.inline-image {\n    margin-right: 20px;\n    margin-left: 20px;\n    \n    -moz-box-shadow: 0px 0px 30px #e8e8e8;\n    -webkit-box-shadow: 0px 0px 30px #e8e8e8;\n}\n\n.float-left {\n    float: left; \n}\n\n.float-right {\n    float: right;\n}\n\n.padding-bottom-menu {\n    padding-bottom: 20px;\n}\n\n.inactive {\n    opacity: 0.5;\n    \n    background-image: url(../img/coming-soon.png);\n    background-repeat: no-repeat;\n    background-position: 100% 0%;\n}\n\n.social div {\n    opacity: 0.5;\n}\n\n.social div:hover {\n    opacity: 1;\n}\n\n.social-facebook, .social-twitter {\n    display: inline-block;\n}\n\n.no-background {\n    background: transparent;\n}\n\n.author {\n    margin-top: -15px;\n    margin-bottom: 20px;\n\n    opacity: 0.7;\n}\n\n.a-content {\n    padding: 30px;\n}\n\n.a-content-condensed {\n    padding-left: 30px;\n    padding-right: 30px;\n    padding-top: 30px;\n}\n\n.a-tagline {\n    margin-top: 50px;\n    margin-bottom: 70px;\n\n    font-size: 50px;\n    font-weight: normal;\n\n    letter-spacing: -1px;\n\n    text-align: center;\n}\n\n.a-tagline p {\n    display: block;\n\n    text-align: center;\n\n    padding-top: 20px;\n\n    opacity: 0.5;\n\n    line-height: 27px;\n\n    font-size: 20px;\n    font-weight: lighter;\n}\n\n.a-code-caption {\n    padding-top: 10px;\n    padding-bottom: 10px;\n    padding-left: 40px;\n}\n\n.function-ref {\n    padding: 10px;\n    padding-bottom: 2px;\n\n    background-color: #efefef;\n\n    -moz-border-radius: 10px;\n    -webkit-border-radius: 10px;\n}\n\n.function-ref hr {\n    border-top: 1px solid #e8e8e8;\n    border-bottom: 1px solid #efefef;\n}\n\n.a-news-entry small {\n    display: block;\n\n    text-align: right;\n\n    color: #999;\n}\n\n.a-news-entry small:before {\n    content: \"— \\00A0\";\n}\n\n.a-main-title {\n    margin-bottom: 60px;\n}\n\n.a-main-title small {\n    display: block;\n\n    text-align: right;\n\n    content: #999;\n}\n\n.a-main-title small:before {\n    content: \"— \\00A0\";\n}\n\nsection section p.lead {\n    font-size: 17px;\n}",
+			"file": "/Users/Phil/Workspace/Androrm-Web/androrm/media/css/androrm.css",
+			"file_size": 5044,
+			"file_write_time": 1342390971000000,
+			"settings":
+			{
+				"buffer_size": 5040,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Applications/XAMPP/xamppfiles/htdocs/frames/index.html",
+			"settings":
+			{
+				"buffer_size": 454,
+				"line_ending": "Unix",
+				"name": "<html>"
 			}
 		}
 	],
@@ -80,7 +156,22 @@
 	},
 	"file_history":
 	[
+		"/Users/phil/Workspace/Signavio/Trunk/signavio/jstest/resources/qunit.js",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/__init__.py",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/templates/documentation/index.html",
+		"/Users/phil/Workspace/Androrm-Web/androrm/templates/downloads/examples/github.sh",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/templates/documentation/models.html",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/templates/documentation/queries.html",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/templates/base.html",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/media/js/initialize.js",
 		"/Users/Phil/Workspace/Androrm-Web/androrm/scripts/compress.sh",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/scripts/concat.sh",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/media/js/androrm.js",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/media/css/androrm.css",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/templates/documentation/examples/queries/author_with_o2m.java",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/templates/documentation/examples/queries/title_in.java",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/templates/documentation/examples/queries/models.java",
+		"/Users/Phil/Workspace/Androrm-Web/androrm/templates/documentation/get_started.html",
 		"/Users/Phil/Dropbox/TUK2/Paper/abstract.tex",
 		"/Users/Phil/Dropbox/TUK2/Paper/introduction.text",
 		"/Users/Phil/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
@@ -108,6 +199,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"testSuites",
+			"li",
 			"drop_table",
 			"drop",
 			"ruler",
@@ -129,7 +222,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -137,15 +230,15 @@
 					"file": "settings.py",
 					"settings":
 					{
-						"buffer_size": 3597,
+						"buffer_size": 3724,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1081,
-								1081
+								1176,
+								1176
 							]
 						],
 						"settings":
@@ -159,15 +252,125 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "templates/downloads/examples/download.sh",
+					"settings":
+					{
+						"buffer_size": 190,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								147,
+								147
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/Phil/Workspace/Androrm-Web/androrm/templates/downloads/release.html",
+					"settings":
+					{
+						"buffer_size": 2724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1538,
+								1538
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/Phil/Workspace/Androrm-Web/androrm/templates/base.html",
+					"settings":
+					{
+						"buffer_size": 5725,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2464,
+								2464
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/Phil/Workspace/Androrm-Web/androrm/templates/downloads/license.html",
+					"settings":
+					{
+						"buffer_size": 1606,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								126,
+								126
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
-					"buffer": 1,
+					"buffer": 5,
 					"file": "downloads/views.py",
 					"settings":
 					{
@@ -178,8 +381,8 @@
 						"selection":
 						[
 							[
-								1255,
-								1255
+								521,
+								521
 							]
 						],
 						"settings":
@@ -187,6 +390,89 @@
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/Phil/Workspace/Androrm-Web/androrm/templates/downloads/index.html",
+					"settings":
+					{
+						"buffer_size": 3572,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								306,
+								306
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/Phil/Workspace/Androrm-Web/androrm/media/css/androrm.css",
+					"settings":
+					{
+						"buffer_size": 5040,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4311,
+								4311
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3497.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/Applications/XAMPP/xamppfiles/htdocs/frames/index.html",
+					"settings":
+					{
+						"buffer_size": 454,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								66,
+								66
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<html>",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -245,6 +531,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"andror",
+				"media/css/androrm.css"
+			],
+			[
+				"base",
+				"templates/base.html"
+			],
 			[
 				"view",
 				"downloads/views.py"

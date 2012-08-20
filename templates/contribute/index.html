@@ -8,95 +8,40 @@
 
 {% block content %}
 
-    <br />
-    <img src="{{ MEDIA_URL }}img/headline-be-part-of-the-androrm-project.png" />
-    <br /><br />
-    You think androrm is a cool tool and you also have lots of ideas on how to improve it? If yes, then this is
-    <b>your</b> section! Go ahead and fork the project on github and maybe become part of the core development
-    team. 
-    
-    <br /><br />
-    
-    Or did you find a defect or something you want to have improved? Then <a href="http://phabricator.the-pixelpla.net">file a bug</a> or 
-    <a href="http://phabricator.the-pixelpla.net">a feature request</a> and help finding the parts, we forgot to cover!
-    
-    <br /><br />
-    
-    Please note, that we are using <a href="http://phabricator.org">Phabricator</a> for everything from issue tracking,
-    till task management. It is an open source tool, that was build at <a href="http://facebook.com">facebook</a>. 
-    As androrm, it is in a very early stage, but we are very confident. Plus: you can easily log in, using your
-    facebook account!
-    
-    <hr />
-    
-    <br />
-    
-    <img src="{{ MEDIA_URL }}img/headline-phabricator.png" />
-    <br /><br />
-    
-    We recently got some feedback, that the structure of phabricator is hard to understand. Well, they kind of 
-    refused to use the terms, that you would normally expect in a project management tool. So here's a quick
-    start guidline. 
-    
-    <h2>Login</h2>
-    
-    In order to file anything you have to log in. You can do so with your facebook account. Don't worry, we are not at
-    all interested in you personal data or pictures. This is just for convenience. Plus, it is way easier to get
-    back to you, if any questions concerning your reported bug come up. 
-    
-    <img src="{{ MEDIA_URL }}img/phabricator/login.png" />
-    
-    <h2>Core Components</h2>
-    
-    I think this is the part where most people get lost. The fancy naming of things. So to make things clear, most
-    of the time you will want to use one of these features:
-    
-    <ul class="content-menu">
-        <li>Differential - Submitting diffs of your code, that might fix a problem</li>
-        <li>Diffusion - Browse through the androrm repo and view version history</li>
-        <li>Maniphest - This is the task tracker. Any reports go in this section</li>
-        <li>Herald - A tool, that watches for certain patterns and "looks for danger"</li>
-        <li>Phriction - The wiki</li>
-    </ul>
-    
-    <img src="{{ MEDIA_URL }}img/phabricator/workflow.png" />
-    
-    <h2>Creating a Bug-Report</h2>
-    
-    In order to create a bug-report go to Maniphest on the main page. 
-    
-    <h3>Step 1</h3>
-    
-    You are presented with a list of Tasks, that are currently assigned to you. So by default, you shouldn't see
-    that much. No just go straight ahead and click the neat green button, that says "Create Task".
-    
-    <br /><br />
-    
-    <img src="{{ MEDIA_URL }}img/phabricator/create-task-1.png" />
-    
-    <h3>Step 2</h3>
-    
-    After that, please provide as much information as possible. Also make sure, that you assigned the task to
-    <i>Philipp</i> and that you have chose androrm as the project. If you have a stack tracce, please insert it. 
-    If you have any images or other files, that could support your report, please do not hesitate to upload them.
-    
-    <br /><br />
-    
-    <img src="{{ MEDIA_URL }}img/phabricator/create-task-2.png" />
-    
-    <br /><br />
-    
-    That should be it! If you have any trouble in this process or want to get in touch with us directly, please
-    send a mail to <a href="mailto:contact@androrm.com">contact@androrm.com</a>.
+    <div class="a-content">
+        <p class="lead">Be part of the androrm project</p>
+
+        <p>
+            You think androrm is a cool tool and you also have lots of ideas on how to improve it? If yes, then this is <strong>your</strong> section! Go ahead and fork the project on github and maybe become part of the core development team. 
+        </p>
+        
+        <p>        
+            Or did you find a defect or something you want to have improved? Then <a href="https://github.com/pxlplnt/androrm/issues">file a bug</a> or <a href="https://github.com/pxlplnt/androrm/issues">a feature request</a> and help finding the parts, we forgot to cover!
+        </p>
+        
+        <hr />
+        
+        <p class="lead">GitHub Issues</p>
+        
+        <p>
+            If you've been here before, you might notice, that we don't longer use phabricator. Back then it seemed like a good idea but it turned out, that most people didn't get it. This is a huge problem, if you as a developer want to get feedback. So now, if you want to add a feature request or report a bug, please use <a href="https://github.com/pxlplnt/androrm/issues">GitHub issues</a>. This is also where the code is, so tracking is much easier.
+        </p>
+
+        <p>
+            THANK YOU!
+        </p>
+    </div>
 
 {% endblock%}
 
 {% block content_menu %}
 
-    <img src="{{ MEDIA_URL }}img/section-contents.png" class="content-menu-headline" />
+    <p class="lead">contents</p>
     
     <ul class="content-menu">
-        <li><a href="http://phabricator.the-pixelpla.net">Phabricator</a></li>
+        <li>
+            <a href="https://github.com/pxlplnt/androrm/issues">GitHub Issues</a>
+        </li>
     </ul>
 
 {% endblock %}

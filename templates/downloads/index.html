@@ -79,7 +79,9 @@
 
     <p class="lead">download</p>
 
-    <div id="button-latest-release" class="button">Latest release {{ latest_version }}</div>
+    <div class="btn-wrap lead-button">
+        <button class="btn btn-large btn-success btn-latest-release">Latest release {{ latest_version }}</button>
+    </div>
 
     <ul class="content-menu">
         {% block menu_content %}

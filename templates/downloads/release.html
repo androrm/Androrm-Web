@@ -40,6 +40,8 @@
                 {% endautoescape %}
             </section>
 
+            <hr />
+
             <section>
                 <p class="lead">
                     Changelog
@@ -51,14 +53,16 @@
                     </p>
                 {% endautoescape %}
                 
+                <hr />
+
                 <div class="btn-wrap">
                 
                     {% if release.available_as_tar %}
-                        <div id="btn-download-tar" class="button inline">Download this release (tar.gz)</div>
+                        <button id="btn-download-tar" class="btn">Download as <strong>tar.gz</strong></button>
                     {% endif %}
                 
                     {% if release.available_as_zip %}
-                        <div id="btn-download-zip" class="button inline">Download this release (zip)</div>
+                        <button id="btn-download-zip" class="btn">Download as <strong>zip</strong></button>
                     {% endif %}
 
                     <div class="clear"></div>

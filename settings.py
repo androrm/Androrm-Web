@@ -6,7 +6,7 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Philipp Giese', 'giese.philipp@gmail.com'),
+    ('Philipp Giese', 'philipp.giese@andorm.com'),
 )
 
 MANAGERS = ADMINS
@@ -56,11 +56,6 @@ MEDIA_ROOT = PROJECT_PATH + "/media"
 MEDIA_URL = '/src/'
 #MEDIA_URL = '/androrm/src/'
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/admin-src/'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -91,6 +86,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'page.context_processors.page_conf',
 )
 
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -104,6 +104,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'south',
+    'django.contrib.staticfiles',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

@@ -266,6 +266,7 @@ a:hover {
 
 .a-content {
     padding: 30px;
+    min-height: 450px;
 }
 
 .a-content-condensed {
@@ -352,4 +353,13 @@ a:hover {
 
 section section p.lead {
     font-size: 17px;
+}
+
+.btn-wrap {
+    text-align: center;
+}
+
+.lead-button {
+    margin-bottom: 20px;
+    margin-top: 20px;
 }

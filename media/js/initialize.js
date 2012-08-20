@@ -6,6 +6,16 @@ if(!Androrm) { var Androrm = {}; }
         
         initialize: function() {
             this.deactivateInactiveItems();
+            this.enableButtons();
+        },
+
+        enableButtons: function() {
+            $$("button.btn-latest-release").each(function(btn) {
+                $(btn).observe("click", function() {
+                
+                    Androrm.Utils.go("/downloads/latest/");
+                });
+            });
         },
         
         deactivateInactiveItems: function() {
