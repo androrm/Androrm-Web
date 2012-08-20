@@ -11,3 +11,4 @@ local_settings.py
 androrm.tmproj
 .sublime-*
 static/
+media/admin/
