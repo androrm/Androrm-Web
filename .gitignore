@@ -12,3 +12,5 @@ androrm.tmproj
 .sublime-*
 static/
 media/admin/
+*.sublime*
+androrm.sublime-workspace
