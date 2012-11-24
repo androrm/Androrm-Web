@@ -1,16 +1,16 @@
-public class Author() {
+public class Authro extends Model {
 
     protected CharField mName;
     protected CharField mSynonym;
 
-    public Author() {
+    public Authro() {
         mName = new CharField();
         mSynonym = new CharField();
     }
 
     @Override
     protected void migrate(Context context) {
-        Migrator&lt;Author> migrator = new Migrator&lt;Author>(Author.class);
+        Migrator&lt;Authro> migrator = new Migrator&lt;Authro>(Authro.class);
 
         // tell the name of the field an the type
         migrator.addField("mSynonym", new CharField());

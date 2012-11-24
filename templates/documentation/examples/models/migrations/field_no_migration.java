@@ -1,9 +1,9 @@
-public class Author {
+public class Authro extends Model {
 
     protected CharField mName;
     protected CharField mSynonym;
 
-    public Author() {
+    public Authro() {
         mName = new CharField();
         mSynonym = new CharField();
     }
