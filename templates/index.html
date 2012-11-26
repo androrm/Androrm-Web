@@ -14,7 +14,7 @@
                 Androrm offers an easy to use solution to most of your problems.
             </p>
         </div>
-        
+
         <blockquote class="a-main-title">
 
             Androrm is an <em>object relational mapper</em> especially for android. It will help you develop your applications faster, by taking care of all database related actions, such as table creation, object serialization and deserialization and lookups. Define your models using the classes, that androrm provides, define relationships between them and instantly write queries spanning as many model classes as you want in a one-liner.
@@ -24,16 +24,16 @@
         </blockquote>
 
         <p>
-            Click the button on the side, to download the <a href="{% url download_latest %}">latest release</a>, <a href="{% url documentation_installation %}">read the installation guide</a>, do one <a href='{% url documentation_tutorials %}'>tutorial</a> to get you familiarized with how androrm works and keep your application <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a> as you no longer have to write SQL alongside your class definitions. 
+            Click the button on the side, to download the <a href="{% url download_latest %}">latest release</a>, <a href="{% url documentation_installation %}">read the installation guide</a>, do one <a href='{% url documentation_tutorials %}'>tutorial</a> to get you familiarized with how androrm works and keep your application <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a> as you no longer have to write SQL alongside your class definitions.
         </p>
 
         <hr />
-        
+
         {% for entry in entries %}
             <article class="a-news-entry">
                 <p class="lead">{{ entry.headline }}</p>
                 <p class="author">{{ entry.date }}</p>
-                
+
                 {% autoescape off %}
                         {{ entry.content|linebreaks }}
 
@@ -49,23 +49,23 @@
 {% endblock %}
 
 {% block content_menu %}
-    
+
     <p class="lead">Androrm</p>
-    
+
     <div class="btn-wrap lead-button">
         <button class="btn btn-large btn-success btn-latest-release">Latest release {{ version }}</button>
     </div>
 
     <ul class="content-menu">
-        <li><a href="http://github.com/pxlplnt/Androrm" target="_blank">Latest from repository</a></li>
-        <li><a href="http://github.com/pxlplnt/Androrm/tree/develop">Current development version</a></li>
+        <li><a href="http://github.com/androrm/androrm" target="_blank">Latest from repository</a></li>
+        <li><a href="http://github.com/androrm/androrm/tree/develop">Current development version</a></li>
     </ul>
-    
+
     <br /><br />
-    
+
     <div class="content-menu padding-bottom-menu center">
         Androrm is <a href="http://opensource.org" target="_blank">open source</a> and distributed under the
         <a href="{% url download_license %}">MIT License</a>.
     </div>
-    
+
 {% endblock %}
