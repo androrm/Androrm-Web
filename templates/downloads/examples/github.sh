@@ -1,1 +1,1 @@
-git clone git://github.com/pxlplnt/androrm.git
+git clone git://github.com/androrm/androrm.git
