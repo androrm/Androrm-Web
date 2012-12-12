@@ -12,4 +12,16 @@
     With transaction you can perform an arbitrary number of operations on the database and androrm will only open and close the connection once. Also if something goes wrong in between all your actions are rolled back automatically in order to leave your data in a consistent state. The following example will show you how to use <code>transactions</code>.
 </p>
 
-<pre class="prettyprint linenums"></pre>
+<pre class="prettyprint linenums">{% include "documentation/queries/examples/transaction.java" %}</pre>
+
+<p>
+    As you can see in the above example androrm somehow needs to know that you want to perform a complex transaction. You inform androrm about your plans by calling <code>beginTransaction</code> on a <code>DatabaseAdapter</code> instance.
+</p>
+
+<p>
+    <span class="label label-info">Behold!</span> In order for transactions to work you need to use the <code>DatabaseAdapter</code> class as a singleton. In order to do so <emph>only</emph> retrieve an instance of it with the <code>getInstance</code> method.
+</p>
+
+<p>
+    After you called <code>beginTransaction</code> everything that follows will be wrapped into a transaction. That means that if some error occurs during any of the operations you perform, <emph>all</emph> of them will be rolled back! It is also very important that you commit each transaction by calling <code>commitTransaction</code>. If you monitor your running code and wish to rollback the transaction manually, you can do so by calling <code>rollbackTransaction</code> on the <code>DatabaseAdapter</code> instance.
+</p>
