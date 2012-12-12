@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block content %}
-    
+
     <article>
         <div class="a-content">
             <p class="lead">Getting Ready</p>
@@ -23,40 +23,40 @@
                 <p>
                     The first and I think most important goal of this tutorial is <strong>to work</strong>!
                 </p>
-                
+
                 <p>
                     I was frustrated each time, I tried one of the tutorials on the android website because 9/10 times they did not work. Google might be very good with search engines, but when it comes to writing tutorials they suck. Sorry... The other thing I really did not like was, that they just let you copy and paste code and then add only a small description. I won't do it that way. We will build this app <strong>together</strong>. Let's go!
                 </p>
-                
+
                 <p>
                     The complete source code of this tutorial can be found <a href='{{ MEDIA_URL }}/downloads/book_tutorial.tar.gz'>here</a>.
                 </p>
             </section>
 
             <hr />
-            
+
             <section>
                 <p class="lead">
                     <a href="#models" name="models">Defining the models</a>
                 </p>
 
                 <p>
-                    Before we start hacking code, we shortly think about what we want to achieve. This should be about our own little book collection. A very, very simple book collection. So what are the basic specs? I would say a book should have a <emph>title</emph> and also an <emph>author</emph>. Sounds good. And just to complete the picture these authors should have <emph>names</emph>. That's enough (I can say so, because I am the author). Hey and with this little spec in mind, we can go and write our model classes. First the one, for the author. 
+                    Before we start hacking code, we shortly think about what we want to achieve. This should be about our own little book collection. A very, very simple book collection. So what are the basic specs? I would say a book should have a <emph>title</emph> and also an <emph>author</emph>. Sounds good. And just to complete the picture these authors should have <emph>names</emph>. That's enough (I can say so, because I am the author). Hey and with this little spec in mind, we can go and write our model classes. First the one, for the author.
                 </p>
-            
-                <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_1/author_class_1.java" %}</pre>
-            
+
+                <pre class="prettyprint linenums">{% include "documentation/tutorial/examples/part_1/author_class_1.java" %}</pre>
+
                 <p>
-                    This now might look somewhat different from what you would normally write in Java. Probably you would have chosen <code>String</code> for the name field and set it's visibility to <code>private</code>. Unfortunately androrm then wouldn't be able to 
+                    This now might look somewhat different from what you would normally write in Java. Probably you would have chosen <code>String</code> for the name field and set it's visibility to <code>private</code>. Unfortunately androrm then wouldn't be able to
                 </p>
-                
+
                 <ol>
                     <li>see the field and</li>
                     <li>know how to write it to the database.</li>
                 </ol>
 
                 <p>
-                    If you use the <a href="{% url documentation_fields %}">field types</a> provided by androrm we have a different situation. What I've done here is 
+                    If you use the <a href="{% url documentation_fields %}">field types</a> provided by androrm we have a different situation. What I've done here is
                 </p>
 
                 <ol>
@@ -67,36 +67,36 @@
                 </ol>
 
                 <p>
-                    Next up: the book model. 
+                    Next up: the book model.
                 </p>
-            
-                <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_1/book_class_1.java" %}</pre>
-            
+
+                <pre class="prettyprint linenums">{% include "documentation/tutorial/examples/part_1/book_class_1.java" %}</pre>
+
                 <p>
                     In the <code>Book</code> class we're doing basically the same. But we also define a <code>ForeignKeyField</code>, that links the books to authors. This field is everything, that androrm needs, to handle this relation for you.
-                </p> 
+                </p>
             </section>
 
             <hr />
-            
+
             <section>
                 <p class="lead">
                     <a href="#queries" name="queries">Getting ready for queries</a>
                 </p>
 
                 <p>
-                    Actually you don't have to add anything in order to get your models ready for queries. The <code>Model</code>class already defines the <a href="{% url documentation_models %}#objects"><code>objects()</code> method</a>, but I would say it is handy and also good style, to implement this method in every class. Normally you would have to hand in a <code>Context</code> instance and the <code>Class</code> object of your model. You can easily get rid of the second parameter, by implementing <emph>your</emph> <code>objects()</code> method, that will automatically fill in the class for you. On the author class this looks like... 
+                    Actually you don't have to add anything in order to get your models ready for queries. The <code>Model</code>class already defines the <a href="{% url documentation_models %}#objects"><code>objects()</code> method</a>, but I would say it is handy and also good style, to implement this method in every class. Normally you would have to hand in a <code>Context</code> instance and the <code>Class</code> object of your model. You can easily get rid of the second parameter, by implementing <emph>your</emph> <code>objects()</code> method, that will automatically fill in the class for you. On the author class this looks like...
                 </p>
-            
-                <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_1/author_class_2.java" %}</pre>
-            
+
+                <pre class="prettyprint linenums">{% include "documentation/tutorial/examples/part_1/author_class_2.java" %}</pre>
+
                 <p>
-                    Not much work, but looks way better in the code. I think you can figure out yourself, how to do this for the <code>Book</code> class. We'll get to the details of the <code>objects()</code> method and <code>QuerySets</code> later. 
+                    Not much work, but looks way better in the code. I think you can figure out yourself, how to do this for the <code>Book</code> class. We'll get to the details of the <code>objects()</code> method and <code>QuerySets</code> later.
                 </p>
             </section>
-            
+
             <hr />
-            
+
             <section>
                 <p class="lead">
                     <a href="#tabs" name="tabs">Tabs, tabs and tabs</a>
@@ -109,83 +109,80 @@
                 </figure>
 
                 <p>
-                    This is, how our activity should look like, when it's finished. So as you see, we have to create three tabs and add some content to them. Luckily android gives us the <code>TabActivity</code>. 
+                    This is, how our activity should look like, when it's finished. So as you see, we have to create three tabs and add some content to them. Luckily android gives us the <code>TabActivity</code>.
                 </p>
-            
+
                 <p>
                     As you might also have noted I was too lazy, to add three different pictures for the tabs and just used the same one for all of them. If you want to be as lazy, as I, then go ahead and save these two images.
                 </p>
-            
+
                 <div class="center">
                     <img src="{{ MEDIA_URL }}img/tutorial/button_selected.png" />
-                    <img src="{{ MEDIA_URL }}img/tutorial/button_deselected.png" /> 
+                    <img src="{{ MEDIA_URL }}img/tutorial/button_deselected.png" />
                 </div>
-            
+
                 <p>
-                    Put these two files into the <code>res/drawable</code> folder of your android project. If there is no plain <code>drawable</code> folder, create it, as we will need it anyway. 
+                    Put these two files into the <code>res/drawable</code> folder of your android project. If there is no plain <code>drawable</code> folder, create it, as we will need it anyway.
                 </p>
-            
+
                 <p>
-                    In the same folder now also create a file called <code>tab_button.xml</code>. This will be the standard layout file, we use for tabs. The first time I created an xml file in the drawable folder I was like WTF? What the heck is that supposed to be. But actually it is a quite smart mechanism. You can define different items, that will be used under different conditions. For the tabs that means, that we only want to see the <code>button_selected</code> image, if the tab is actually selected. 
+                    In the same folder now also create a file called <code>tab_button.xml</code>. This will be the standard layout file, we use for tabs. The first time I created an xml file in the drawable folder I was like WTF? What the heck is that supposed to be. But actually it is a quite smart mechanism. You can define different items, that will be used under different conditions. For the tabs that means, that we only want to see the <code>button_selected</code> image, if the tab is actually selected.
                 </p>
-            
+
                 <p>
-                    In android you do this by defining states. When looking up the file, it will compare the current state with the one given in the file and stop on the first match. You don't have to define all states at all  times, but only these, you care about. In our case, we want to stop the lookup, if our state is <code>selected</code> and the tab is also selected. This is why the item for the selected state will come first in the file. 
+                    In android you do this by defining states. When looking up the file, it will compare the current state with the one given in the file and stop on the first match. You don't have to define all states at all  times, but only these, you care about. In our case, we want to stop the lookup, if our state is <code>selected</code> and the tab is also selected. This is why the item for the selected state will come first in the file.
                 </p>
-            
-                <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_1/tab_button.xml" %}</pre>
-            
+
+                <pre class="prettyprint linenums">{% include "documentation/tutorial/examples/part_1/tab_button.xml" %}</pre>
+
                 <p>
-                    So now, that you have created the <code>drawable</code> for your tabs, you have to create the actual tab activity. I won't describe that here in detail, as this tutorial is actually not too bad (<a href="#">check here</a>). Make sure, you create three activities, called 
+                    So now, that you have created the <code>drawable</code> for your tabs, you have to create the actual tab activity. I won't describe that here in detail, as this tutorial is actually not too bad (<a href="#">check here</a>). Make sure, you create three activities, called
                 </p>
-            
+
                 <ul class="content-menu">
                     <li><code>AddBook.java</code></li>
                     <li><code>BrowseAuthors.java</code></li>
                     <li><code>BrowseBooks.java</code></li>
                 </ul>
-            
+
                 <p>
-                    that we will use as our different views. For now all these activities can just inherit from <code>Activity</code>. We'll change this later on. Also <strong>do not forget</strong> to add all of them to the <code>AndroidManifest.xml</code>! I forget this all the time and am wondering about the exception I'm getting. 
+                    that we will use as our different views. For now all these activities can just inherit from <code>Activity</code>. We'll change this later on. Also <strong>do not forget</strong> to add all of them to the <code>AndroidManifest.xml</code>! I forget this all the time and am wondering about the exception I'm getting.
                 </p>
-            
+
                 <p>
                     The code for the plain <code>TabActivity</code> looks like this:
                 </p>
-            
-                <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_1/tab_activity.java" %}</pre>
-            
+
+                <pre class="prettyprint linenums">{% include "documentation/tutorial/examples/part_1/tab_activity.java" %}</pre>
+
                 <p>
-                    The only thing, that's still missing is the correct layout in the <code>main.xml</code> file. I think it should be very similar to the one in the google tutorial, but I'll post it here anyway. 
+                    The only thing, that's still missing is the correct layout in the <code>main.xml</code> file. I think it should be very similar to the one in the google tutorial, but I'll post it here anyway.
                 </p>
-            
-                <pre class="prettyprint linenums">{% include "documentation/examples/tutorial/part_1/main.xml" %}</pre>
-        
-                <p>        
-                    It's really important, that you choose the exact same ids for the objects, as android searches exactly for these, when it handles a <code>TabActivity</code>. Only that way methods like <code>getTabHost()</code> that we are using in the activity class can work. 
-                </p>
-            
+
+                <pre class="prettyprint linenums">{% include "documentation/tutorial/examples/part_1/main.xml" %}</pre>
+
                 <p>
-                    <span class="label label-info">One side note</span> If you encounter the problem, that you can't read the text, because android chooses white text, for a white background and grey text for the grey background, then this is <strong>not</strong> your fault. On some phone, there seems to be an error, that produces this exact behavior. To overcome the problem add a value below 5 as <code>targetSdkVersion</code> in your <code>AndroidManifest.xml</code> file. 
+                    It's really important, that you choose the exact same ids for the objects, as android searches exactly for these, when it handles a <code>TabActivity</code>. Only that way methods like <code>getTabHost()</code> that we are using in the activity class can work.
                 </p>
-            
-                <pre class="prettyprint linenums">&lt;uses-sdk 
-                android:minSdkVersion="7"
-                android:targetSdkVersion="4" /&gt;
-                </pre>
-            
+
                 <p>
-                    I'm not to sure, what exactly happens. I think some compatibility features are being disabled, if you specify <code>targetSdkVersion</code>, but at least, you got nice looking tabs afterwards. 
+                    <span class="label label-info">One side note</span> If you encounter the problem, that you can't read the text, because android chooses white text, for a white background and grey text for the grey background, then this is <strong>not</strong> your fault. On some phone, there seems to be an error, that produces this exact behavior. To overcome the problem add a value below 5 as <code>targetSdkVersion</code> in your <code>AndroidManifest.xml</code> file.
+                </p>
+
+                <pre class="prettyprint linenums">{% include "documentation/tutorial/examples/part_1/uses_sdk.xml" %}</pre>
+
+                <p>
+                    I'm not to sure, what exactly happens. I think some compatibility features are being disabled, if you specify <code>targetSdkVersion</code>, but at least, you got nice looking tabs afterwards.
                 </p>
             </section>
-            
+
             <hr />
-            
+
             <section>
                 <p>
-                    That was the first part of our tutorial. I hope, you had no trouble following the steps. If you struggled at some point please let me know, so that I can change it to the better. You should now have you models set-up and a plain tab activity, with currently no contents, but nice tabs. 
+                    That was the first part of our tutorial. I hope, you had no trouble following the steps. If you struggled at some point please let me know, so that I can change it to the better. You should now have you models set-up and a plain tab activity, with currently no contents, but nice tabs.
                 </p>
-            
+
                 <p>
                     To create some content, continue to <a href="{% url documentation_tutorial part=2 %}">the next step</a> of the tutorial, to learn how to create a form and validate its data.
                 </p>

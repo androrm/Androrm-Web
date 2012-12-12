@@ -8,13 +8,13 @@
     In most cases you have defined a model with some fields on it. We did so with the <code>Author</code> model. Currently, only a name can be assigned to an author. But maybe this author also wrote some book using a synonym. So first up, we add this new field to the model itself.
 </p>
 
-<pre class="prettyprint linenums">{% include "documentation/examples/models/migrations/field_no_migration.java" %}</pre>
+<pre class="prettyprint linenums">{% include "documentation/models/migrations/examples/field_no_migration.java" %}</pre>
 
 <p>
     So far, so good. The problem here is that androrm can not detect, that the signature of the table has changed and that a new field should be added. You need to help out a little bit. Using a <code>Migrator</code> instance, we will tell androrm what to do.
 </p>
 
-<pre class="prettyprint linenums">{% include "documentation/examples/models/migrations/field_migration.java" %}</pre>
+<pre class="prettyprint linenums">{% include "documentation/models/migrations/examples/field_migration.java" %}</pre>
 
 <p>
     Using the <code>migrator</code> we can run several migrations on the model. The good thing here is that androrm will keep track of the migrations, you have already rolled out and if they are necessary. So if your code runs on a fresh install were everything is right in place from minute one, no migrations will be run, and if it runs on an old installation the migrations will be applied.

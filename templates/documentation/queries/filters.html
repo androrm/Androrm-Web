@@ -5,11 +5,11 @@
 </header>
 
 <p>
-    Again, if you already worked with <a href="http://www.djangoproject.org" target="_blank">django</a> in the past, the following examples should look familiar to you. 
+    Again, if you already worked with <a href="http://www.djangoproject.org" target="_blank">django</a> in the past, the following examples should look familiar to you.
 </p>
 
 <p>
-    The central class, when it comes to making queries is the <code>Filter</code> class. After you instantiated it, you will be equipped with three basic methods: <code>in</code>, <code>is</code> and <code>contains</code>. Each accepting two parameters. The first paramter hereby is a <code>String</code>, that describes the field, you want to look up. The second parameter is the value this field should have. 
+    The central class, when it comes to making queries is the <code>Filter</code> class. After you instantiated it, you will be equipped with three basic methods: <code>in</code>, <code>is</code> and <code>contains</code>. Each accepting two parameters. The first paramter hereby is a <code>String</code>, that describes the field, you want to look up. The second parameter is the value this field should have.
 </p>
 
 <section>
@@ -17,14 +17,14 @@
         <p class="lead">
             <a name="filter_in" href="#filter_in">in</a>
         </p>
-    </header>   
+    </header>
 
     <p>
         If you want to specify, that a field value should be contained in a list of values, than this is the operation to go for. Let's for example assume, that you want to get all books, that are either called "Awesome book" or "The boring book". First of, you have to create a list, containing all your values. After that create the <code>FilterSet</code> instance and add the list by handing it to the <code>in</code> function.
     </p>
-    
-    <pre class="prettyprint linenums">{% include "documentation/examples/queries/title_in.java" %}</pre>
-    
+
+    <pre class="prettyprint linenums">{% include "documentation/queries/examples/title_in.java" %}</pre>
+
     <p>
         After we have set up the filter, we can then use the <code>objects(...).filter</code> method on the <code>Book</code> model, to acutally execute it. Note, how I hand in the result of <code>getApplicationContext()</code>, to get the context I need. I do this, to not accidentially leakmemory. If you want to read more on this topic, I can recommend <a href="http://android-developers.blogspot.com/2009/01/avoiding-memory-leaks.html" target="_blank">this article on the android blog</a>.
     </p>
@@ -43,9 +43,9 @@
     <p>
         The most commonly used filter is the <code>is</code>-filter. This one let's you exactly specify, what you are looking for. For example, if we only want books with the title "Awesome book", then our code would look like this:
     </p>
-    
-    <pre class="prettyprint linenums">{% include "documentation/examples/queries/title_is.java" %}</pre>
-    
+
+    <pre class="prettyprint linenums">{% include "documentation/queries/examples/title_is.java" %}</pre>
+
 </section>
 
 <hr />
@@ -60,11 +60,11 @@
     <p>
         One really neat filter function, if you for example implement a keyword search is the <code>contains</code> method. This one will take a <code>String</code> and find any instance of the model, where the field value contains this string. Be <strong>careful</strong> here! This simply translates into a <code>field_name LIKE "%value%"</code> on the SQLite database and SQLite doesn't care about case at all, when it comes to <code>LIKE</code> statements. So in any case the resulting search will be <strong>case insensitive</strong>!
     </p>
-    
-    <p>                    
+
+    <p>
         In this example we will search for "some book" (get the joke?).
     </p>
-    
-    <pre class="prettyprint linenums">{% include "documentation/examples/queries/title_contains.java" %}</pre>
+
+    <pre class="prettyprint linenums">{% include "documentation/queries/examples/title_contains.java" %}</pre>
 
 </section>

@@ -8,7 +8,7 @@
     If you renamed one of your model classes you run into one big problem. Even though androrm recognizes the new class it will only create a new, empty table for it. With migrations you can now simply tell androrm that you have renamed one of your tables and it will make sure that all of your previous data is right in place.
 </p>
 
-<pre class="prettyprint linenums">{% include "documentation/examples/models/migrations/rename_model.java" %}</pre>
+<pre class="prettyprint linenums">{% include "documentation/models/migrations/examples/rename_model.java" %}</pre>
 
 <p>
     As you might have noticed one small error occurred while I was writing this document :) Unfortunately I misspelled <code>Author</code>. To get rid of that mistake we will now apply a migration to rename the existing table for the model <code>Authro</code> to the correct value <code>Author</code>. To do so, we call <code>renameModel</code> on the <code>migrator</code> instance, tell it the name of the old model, and hand in the <code>class</code> of the new one.

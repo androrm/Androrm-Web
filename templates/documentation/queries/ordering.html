@@ -31,7 +31,7 @@
                 </span>
                 {{ function }}
             </h4>
-            
+
             {% autoescape off %}
                 <p>
                     {{ function.description }}
@@ -58,16 +58,16 @@
 
         {% endfor %}
     </div>
-    
+
     <hr />
 
-    <p>                    
-        In the next example, we will get all books of an author, ordered by their title. Also we don't want them ordered ascending, but rather descending. 
-    </p>
-    
-    <pre class="prettyprint linenums">{% include "documentation/examples/queries/ordering.java" %}</pre>
-    
     <p>
-        You could have also first applied a filter to the books query set, that would restrict the output further. Note that with query sets you have full power over the query at any time. 
+        In the next example, we will get all books of an author, ordered by their title. Also we don't want them ordered ascending, but rather descending.
+    </p>
+
+    <pre class="prettyprint linenums">{% include "documentation/queries/examples/ordering.java" %}</pre>
+
+    <p>
+        You could have also first applied a filter to the books query set, that would restrict the output further. Note that with query sets you have full power over the query at any time.
     </p>
 </section>

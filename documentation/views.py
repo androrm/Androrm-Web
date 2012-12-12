@@ -54,7 +54,7 @@ def models(request):
 
 
 def migrations(request):
-    return render_to_response('documentation/migrations/index.html',
+    return render_to_response('documentation/models/migrations/index.html',
                               locals(),
                               context_instance=RequestContext(request))
 

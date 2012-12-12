@@ -4,4 +4,12 @@
     </p>
 </header>
 
-content...
+<p>
+    Androrm is designed in a way that each time you call save on one of your model classes a discrete connection to the database is opened up, the necessary actions are performed, and the connection is closed again. This mechanism prevents you from accidently corrupting your data. The downside of this approach comes to light if you try to save or modify large amounts of data. You will most certainly <i>feel</i> the overhead produced by handling all the different connections. But fortunately there is a solution to that problem.
+</p>
+
+<p>
+    With transaction you can perform an arbitrary number of operations on the database and androrm will only open and close the connection once. Also if something goes wrong in between all your actions are rolled back automatically in order to leave your data in a consistent state. The following example will show you how to use <code>transactions</code>.
+</p>
+
+<pre class="prettyprint linenums"></pre>

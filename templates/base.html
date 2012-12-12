@@ -3,27 +3,27 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Androrm - {% block title %}{% endblock %}</title>
-    
+
     {% block style-before %}{% endblock %}
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/lib/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/androrm.css" />
 	{% block style %}{% endblock %}
-	
+
 	<script type="text/javascript">
-	
+
 	    if(!Androrm) { var Androrm = {}; }
-	    
+
 	    Androrm.Urls = {
 	        home: "{% url index %}",
 	        documentation: "{% url documentation_index %}",
 	        download: "{% url download_index %}",
 	        contribute: "{% url contribute_index %}"
 	    };
-	    
+
 	</script>
 </head>
 <body>
-        
+
     <a name="top"></a>
 
     <div class="banner-container">
@@ -31,16 +31,16 @@
             <a href="http://www.github.com/androrm/androrm/">Fork me on GitHub</a>
         </div>
     </div>
-    
-    <div class="header">    
-                         
+
+    <div class="header">
+
         <div class="container">
 
             <div class="row">
                 <div class="span4 logo">
                     {% block page_title %}{% endblock %}
                 </div>
-                
+
                 <div class="span6 offset2">
                     <div class="a-align-right">
                         <div class="menu-item">
@@ -48,7 +48,7 @@
                                 Home
                             </a>
                         </div>
-                        
+
                         <div class="menu-item">
                             <a href="{% url documentation_index %}" class="no-line">
                                 Documentation
@@ -65,22 +65,22 @@
                             <a href="{% url contribute_index %}" class="no-line">
                                 Contribute
                             </a>
-                        </div>   
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> 
-    </div>    
+        </div>
+    </div>
 
     <div class="container">
         <div class="row content-wrap">
-            
+
             <div class="span9">
                 <div class="content">
                     {% block content %}{% endblock %}
                 </div>
             </div>
-            
+
             <div class="span3">
                 <div class="content-menu">
                     <div class="content-menu-background a-list">
@@ -88,9 +88,9 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
-        
+
         <div class="row">
             <div class="span12">
                 <div class="row a-footnote">
@@ -98,7 +98,7 @@
                     <a href="http://github.com/androrm/androrm" class="no-line" target="_blank">
                         <img src="{{ MEDIA_URL}}img/footnote-github.png" alt="androrm on github" />
                     </a>
-                    
+
                     <p>
                         Django is a registered trademark of the Django Foundation.
                         Android is a registered trademark of Google Inc.
@@ -117,7 +117,7 @@
             </div>
         </div>
     </div>
-    
+
     <script type="text/javascript">
 
       var _gaq = _gaq || [];
@@ -142,7 +142,7 @@
     {% else %}
         <script type="text/javascript" src="{{ MEDIA_URL }}js/androrm.js"></script>
     {% endif %}
-    
+
     <script type="text/javascript">
         $(document).observe("dom:loaded", function() {
             new Androrm.Initializer();

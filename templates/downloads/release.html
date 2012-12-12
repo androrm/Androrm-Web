@@ -15,9 +15,9 @@
     </script>
 
     <script type="text/javascript">
-        if(!Androrm) { var Androrm = {}; }
+        if(!window.Androrm) { var Androrm = {}; }
         if(!Androrm.Urls) { Androrm.Urls = {}; }
-        
+
         Androrm.Urls.download_release_tar = "{% url download_version_tar version=version %}";
         Androrm.Urls.download_release_zip = "{% url download_version_zip version=version %}";
     </script>
@@ -32,7 +32,7 @@
                 <p class="lead">
                     Release version {{ version }}
                 </p>
-        
+
                 {% autoescape off %}
                     <p>
                         {{ release.description }}
@@ -52,15 +52,15 @@
                         {{ release.change_log }}
                     </p>
                 {% endautoescape %}
-                
+
                 <hr />
 
                 <div class="btn-wrap">
-                
+
                     {% if release.available_as_tar %}
                         <button id="btn-download-tar" class="btn">Download as <strong>tar.gz</strong></button>
                     {% endif %}
-                
+
                     {% if release.available_as_zip %}
                         <button id="btn-download-zip" class="btn">Download as <strong>zip</strong></button>
                     {% endif %}

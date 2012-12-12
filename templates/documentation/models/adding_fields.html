@@ -9,7 +9,7 @@
     Of course a model also needs fields attached to it. Androrm comes with some predefined <a href="{% url documentation_fields %}">field types</a> for you. As androrm doesn't determine the database column names through any annotations on the fields, but uses reflection on the model classes to find the fields, there visibility has to be at least <code>protected</code>, so that they are accessibale from the <code>Model</code> class. You also have to provide a <strong>zero-argument</strong> constructor, in which you initialize your fields. Let's look at the next example, to get things clear.
 </p>
 
-<pre class="prettyprint linenums">{% include "documentation/examples/models/model_book.java" %}</pre>
+<pre class="prettyprint linenums">{% include "documentation/models/examples/model_book.java" %}</pre>
 
 <p>
     The <code>Book</code> class defines a <code>CharField</code> called <code>mTitle</code>. Luckily this field is also defined with <code>protected</code> visibility. So when androrm examines this field it will create a database table called <em>book</em> and also a column called mTitle in this table.
@@ -19,7 +19,7 @@
     Ok, books are normally written by someone. So what we would create next is the author model. That could look like the following:
 </p>
 
-<pre class="prettyprint linenums">{% include "documentation/examples/models/model_author.java" %}</pre>
+<pre class="prettyprint linenums">{% include "documentation/models/examples/model_author.java" %}</pre>
 
 <h3>Relational fields</h3>
 
@@ -31,10 +31,10 @@
     But anyway, you want that connection between <code>Book</code> and <code>Author</code>. Here come the <a href="{% url documentation_relational_fields %}">relational fields</a> of androrm. We can now just link each book to an author, by defining a <code>ForeignKeyField</code> inside the <code>Book</code> model.
 </p>
 
-<pre class="prettyprint linenums">{% include "documentation/examples/models/model_book_with_author.java" %}</pre>
+<pre class="prettyprint linenums">{% include "documentation/models/examples/model_book_with_author.java" %}</pre>
 
 <p>
     Now actually we are not only talking about the relation of a <code>Book</code> to an <code>Author</code>. In many cases you probably also want to <a href="{% url documentation_making_queries %}">do queries</a> asking an author for all of his books. Therefore androrm offers you the <code>OneToManyField</code>. Behind the scenes, it will use the <code>ForeignKey</code> on <code>Book</code>, but that is nothing you have to worry about.
 </p>
 
-<pre class="prettyprint linenums">{% include "documentation/examples/models/model_author_with_books.java" %}</pre>
+<pre class="prettyprint linenums">{% include "documentation/models/examples/model_author_with_books.java" %}</pre>

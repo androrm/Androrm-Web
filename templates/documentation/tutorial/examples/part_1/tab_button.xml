@@ -3,7 +3,7 @@
 
     &lt;item android:drawable="@drawable/button_selected"
           android:state_selected="true" /&gt;
-          
+
     &lt;item android:drawable="@drawable/button_deselected" /&gt;
-    
+
 &lt;/selector&gt;
