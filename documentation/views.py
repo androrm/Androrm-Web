@@ -78,7 +78,7 @@ def fields(request):
                    "url": reverse('documentation_relational_fields'),
                    "fields": relation_fields}]
 
-    return render_to_response('documentation/fields/index.html',
+    return render_to_response('documentation/models/fields/index.html',
                               locals(),
                               context_instance=RequestContext(request))
 
@@ -87,7 +87,7 @@ def data_fields(request):
     fields=ClassDescription.objects.filter(is_field=True, is_data_field=True)
     relational_fields = ClassDescription.objects.filter(is_field=True, is_data_field=False)
 
-    return render_to_response('documentation/fields/data.html',
+    return render_to_response('documentation/models/fields/data.html',
                               locals(),
                               context_instance=RequestContext(request))
 
@@ -97,7 +97,7 @@ def relational_fields(request):
 
     data_fields = ClassDescription.objects.filter(is_field=True, is_data_field=True)
 
-    return render_to_response('documentation/fields/relational.html',
+    return render_to_response('documentation/models/fields/relational.html',
                               locals(),
                               context_instance=RequestContext(request))
 
