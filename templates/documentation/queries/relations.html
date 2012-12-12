@@ -1,0 +1,36 @@
+<header>
+    <p class="lead">
+        <a href="#relations" name="relations">Spanning relationships</a>
+    </p>
+</header>
+
+<p>
+    Up till now the filter functions are cool, but nothing special actually. Why? Because writing queries for these on your own wouldn't be too hard. This changes, if we take all the relations into account. What for example happens, if you want all books, that an author called "Dan Brown" wrote? This is the point, where you write your first <code>join</code>. It get's even more complicated, if you for example have suppliers, that have branches, that sell products and you only want suppliers, where some branches sell a product with a specific name. Luckily androrm helps you here. For now, we go back to our example. So, how do we get all books, that have an author who is called "Dan Brown"?
+</p>
+
+<pre class="prettyprint linenums">{% include "documentation/examples/queries/author_name_is.java" %}</pre>
+
+<p>
+    Suprised, how few changes we had to make? If you want to traverse relationships, you can do this putting two underscores between the fieldnames. This mechanism scales for any number of fields, as long as the model classes are connected with the correct relations. More information on relationship fields can be found <a href="{% url documentation_relational_fields %}">in the relational field section</a>.
+</p>
+
+<section>
+    <header>
+        <p class="lead">
+            <a href="#implicit_relations" name="implicit_relations">Implicit field types</a>
+        </p>
+    </header>
+    
+    <p>
+        Ok, what if you are more interested in getting all books, that are associated with a certain author? You can easily achieve this functionality, by just adding a <a href="{% url documentation_relational_fields %}#OneToManyField">OneToManyField</a> to the <code>Author</code> class.
+    </p>
+    
+    <pre class="prettyprint linenums">{% include "documentation/examples/queries/author_with_o2m.java" %}</pre>
+    
+    <p>
+        This kind of field expects a <code>ForeignKeyField</code> on the target class, that points back to it. Thus androrm knows how to handle it. So, if you now want all authors, that wrote an awesome book, you do it like this:
+    </p>
+
+    <pre class="prettyprint linenums">{% include "documentation/examples/queries/book_is.java" %}</pre>
+
+</section>

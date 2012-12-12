@@ -1,0 +1,29 @@
+<header>
+    <p class="lead">
+        <a href="#models" name="models">Registering your models</a>
+    </p>
+</header>
+
+<p>
+    After you added the library to your classpath you still have to tell androrm which classes, it should manage. Unfortunately you can't just hand in a package name at this stage. But this support should come in future releases. For now, there are two steps you have to take.
+</p>
+
+<h4>1. Choose a name for your database</h4>
+
+<p>
+    By default androrm will create a database called <code>my_database</code>. If you want to change that name for any reason (this might be handy if you create test databases), you can easily do so.
+</p>
+
+<pre class="prettyprint linenums">{% include "documentation/examples/installation/database_name.java" %}</pre>
+
+<h4>2. Register your models</h4>
+
+<p>
+    The second and also the last step is to tell androrm exactly which classes you want to have managed. You only have to do this once, preferably in your launcher activity.
+</p>
+
+<pre class="prettyprint linenums pre-scrollable">{% include "documentation/examples/installation/models.java" %}</pre>
+
+<p>
+    After these two steps, you are set up and ready to go!
+</p>

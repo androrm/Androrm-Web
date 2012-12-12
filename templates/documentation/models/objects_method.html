@@ -1,0 +1,15 @@
+<header>
+    <p class="lead">
+        <a name="objects" href="#objects">The objects method</a>
+    </p>
+</header>
+
+<p>
+    To prepare your model for an easy to use query mechanism, you should also implement the <code>objects</code> method on each of your model classes. By default the <code>Model</code> class of androrm provides this method, but here you have to hand in the class of the model you are querying all the time. So, mostly only for convenience reasons, but also to have nicer looking code, implement your own <code>objects</code> method to be as DRY as possible.
+</p>
+
+<pre class="prettyprint linenums">{% include "documentation/examples/models/objects.java" %}</pre>
+
+<p>
+    Don't be confused by the return type of this function. The <a href="{% url documentation_making_queries %}"> Making Queries</a> section will explain everything you need to know about this androrm mechanism.
+</p>

@@ -1,0 +1,19 @@
+<header>
+    <p class="lead">
+        <a name="basics" href="#basics">The Basics</a>
+    </p>
+</header>
+
+<p>
+    In order to get your model classes ready for automatic serialization and deserialization the first and <strong>most</strong> important step is to let them inherit from the androrm <code>Model</code> class. Doing so will immediately give you some predefined functions like <code>save</code> and <code>delete</code>, that can be used to store your models in the database or delete them, if you don't need them anymore.
+</p>
+
+<p>
+    Each model class will get a <code>mId</code> field assigned to it, that androrm uses, to reference models. By default this will be a <code>PrimaryKey</code> field, that is handled by the database. If you want to use your own IDs, you can call the <code>Model</code> constructor with the <code>suppressAutoincremt</code> flag set to <code>true</code>. Now you only have to look out, that when you save your model for the first time, you call the <code>save</code> function with the additional <code>id</code> parameter.
+</p>
+
+<h4 class="a-code-caption">Example of model class, with autoincremented id field</h4>
+<pre class="prettyprint linenums">{% include "documentation/examples/models/autoincrement.java" %}</pre>
+
+<h4 class="a-code-caption">Example of model class, with manually set id</h4>
+<pre class="prettyprint linenums">{% include "documentation/examples/models/no_autoincrement.java" %}</pre>

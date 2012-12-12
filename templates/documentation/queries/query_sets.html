@@ -1,0 +1,49 @@
+<header>
+    <p class="lead">
+        <a name="{{ query_set.name }}" href="#{{ query_set.name }}">{{ query_set }}</a>
+    </p>
+</header>
+
+{% autoescape off %}
+    <p>
+        {{ query_set.description }}
+    </p>
+{% endautoescape %}
+
+<div class="function-ref">
+    {% for function in query_set.functions.all %}
+        <h4>
+            <span class="return-value">
+                {% if not function.is_constructor %}
+                    {{ function.returns }}
+                {% endif %}
+            </span>
+            {{ function }}
+        </h4>
+
+        {% autoescape off %}
+            <p>
+                {{ function.description }}
+            </p>
+        {% endautoescape %}
+
+        {% if function.params.all %}
+            <div class="param-ref">
+                {% for param in function.params.all %}
+                    <h6>{{ param.name }}</h6>
+
+                    {% autoescape off %}
+                        <p>
+                            {{ param.description }}
+                        </p>
+                    {% endautoescape %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if not forloop.last %}
+            <hr />
+        {% endif %}
+
+    {% endfor %}
+</div>

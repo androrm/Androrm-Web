@@ -1,0 +1,73 @@
+<header>
+    <p class="lead">
+        <a href="#ordering" name="ordering">Ordering</a>
+    </p>
+</header>
+
+<p>
+    When you call <code>orderBy()</code> on a query set, an instance of the <code>OrderBy</code> class will be created. The columns you have specified will then be handed to it's constructor. To learn, how to get the ordering right take 5 minutes and read the following section.
+</p>
+
+<section>
+    <header>
+        <p class="lead">
+            <a href="#order_by" name="order_by">{{ order_by }}</a>
+        </p>
+    </header>
+
+    {% autoescape off %}
+        <p>
+            {{ order_by.description }}
+        </p>
+    {% endautoescape %}
+
+    <div class="function-ref">
+        {% for function in order_by.functions.all %}
+            <h4>
+                <span class="return-value">
+                    {% if not function.is_constructor %}
+                        {{ function.returns }}
+                    {% endif %}
+                </span>
+                {{ function }}
+            </h4>
+            
+            {% autoescape off %}
+                <p>
+                    {{ function.description }}
+                </p>
+            {% endautoescape %}
+
+            {% if function.params.all %}
+                <div class="param-ref">
+                    {% for param in function.params.all %}
+                        <h6>{{ param.name }}</h6>
+
+                        {% autoescape off %}
+                            <p>
+                                {{ param.description }}
+                            </p>
+                        {% endautoescape %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if not forloop.last %}
+                <hr />
+            {% endif %}
+
+        {% endfor %}
+    </div>
+    
+    <hr />
+
+    <p>                    
+        In the next example, we will get all books of an author, ordered by their title. Also we don't want them ordered ascending, but rather descending. 
+    </p>
+    
+    <pre class="prettyprint linenums">{% include "documentation/examples/queries/ordering.java" %}</pre>
+    
+    <p>
+        You could have also first applied a filter to the books query set, that would restrict the output further. Note that with query sets you have full power over the query at any time. 
+    </p>
+</section>

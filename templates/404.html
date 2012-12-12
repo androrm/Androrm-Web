@@ -3,11 +3,10 @@
 {% block title %}OMG WTF!?{% endblock %}
 
 {% block page_title %}
-<img src="{{ MEDIA_URL }}img/page-error.png" class="page-name" />
+    <img src="{{ MEDIA_URL }}img/page-error.png" class="page-name" />
 {% endblock %}
 
 {% block content %}
-<h1>Whoa!</h1>
-That error came out of nowhere! I mean... did you expect that to happen? Better go <a href='{% url index %}'> play
-somewhere else</a>.
+    <h1>Whoa!</h1>
+    That error came out of nowhere! I mean... did you expect that to happen? Better go <a href='{% url index %}'> play somewhere else</a>.
 {% endblock %}

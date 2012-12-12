@@ -1,0 +1,15 @@
+<header>
+    <p class="lead">
+        <a name="basics" href="#basics">The Basics</a>
+    </p>
+</header>
+
+<p>
+    In order to run any migration on one of your models, you need to override the <code>migrate</code> method of the <code>Model</code> class. This method will be called after androrm has initialized all the models and is used to run any kind of migration. The following example shows you, how an empty <code>migrate</code> method would look like.
+</p>
+
+<pre class="prettyprint linenums">{% include "documentation/examples/models/migrations/basic.java" %}</pre>
+
+<p>
+    The <code>context</code> instance you need to hand to the method will later be used to roll out all migrations.
+</p>

@@ -1,0 +1,98 @@
+{% extends "documentation/index.html" %}
+
+{% block title %}Documentation | Models{% endblock %}
+
+{% block style-before %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/prettify.css"/>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prettify.js"></script>
+    <script type="text/javascript">
+        $(document).observe("dom:loaded", function() {
+            prettyPrint();
+        })
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <article>
+        <div class="a-content">
+            <header>
+                <p class="lead">Defining Models</p>
+            </header>
+
+            <section>
+                {% include "documentation/models/basics.html" %}
+            </section>
+
+            <hr />
+
+            <section>
+                {% include "documentation/models/adding_fields.html" %}
+            </section>
+
+            <hr />
+
+            <section>
+                {% include "documentation/models/objects_method.html" %}
+            </section>
+
+            <hr />
+
+            <footer>
+                <p>
+                    If you want to learn more about field types, relations and how to make queries, then have a look at these pages:
+                </p>
+
+                <div class="a-list">
+                    <ul class="content-menu">
+                        <li><a href="{% url documentation_fields %}">Field Types</a></li>
+                        <li><a href="{% url documentation_relational_fields %}">Relational fields</a></li>
+                        <li><a href="{% url documentation_making_queries %}">Making queries</a></li>
+                    </ul>
+                </div>
+            </footer>
+
+            <hr />
+
+            {% for category in categories %}
+                <section>
+                    <p class="lead">
+                        <a href="{{ category.url }}">{{ category.name }}</a>
+                    </p>
+
+                    <p>
+                        {{ category.description }}
+                    </p>
+
+                   {% for subcategory in category.subcategories %}
+                        <h4><a href="{{ subcategory.url }}">{{ subcategory.name }}</a></h4>
+
+                        <p>
+                            {{ subcategory.description }}
+                        </p>
+                    {% endfor %}
+                    {% if not forloop.last %}
+                        <hr />
+                    {% endif %}
+                </section>
+            {% endfor %}
+        </div>
+    </article>
+{% endblock %}
+
+{% block menu_content %}
+    <li><a href="{% url documentation_index %}">Documentation</a></li>
+    <ul>
+        <li>Defining Models</li>
+        <ul>
+            <li><a href="#basics">The Basics</a></li>
+            <li><a href="#fields">Adding fields to your model</a></li>
+            <li><a href="#objects">The objects method</a></li>
+            <li><a href="{% url documentation_fields %}">Field Types</a></li>
+            <!--li><a href="{% url documentation_migrations %}">Migrations</a></li-->
+        </ul>
+    </ul>
+{% endblock %}
