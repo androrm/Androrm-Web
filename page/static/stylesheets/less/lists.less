@@ -1,0 +1,33 @@
+@import "constants";
+
+.a-list {
+    ul, ol {
+        margin-left: 10px;
+    }
+
+    ul {
+        padding-bottom: 10px;
+
+        li {
+            min-height: 20px;
+
+            a {
+                &:hover {
+                    border-bottom: 0 solid;
+                }
+            }
+        }
+
+        & > li {
+            list-style-image: url("@{img-path}/top-level-bullet.png");
+        }
+
+        ul {
+            padding-top: 10px;
+
+            li {
+                list-style-image: url("@{img-path}/second-level-bullet.png");
+            }
+        }
+    }
+}

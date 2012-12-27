@@ -1,24 +1,41 @@
 {% extends "base.html" %}
 
+{% block style-before %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}stylesheets/css/lib/prettify.css"/>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stylesheets/css/documentation.css" />
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/lib/prettify.js"></script>
+    <script type="text/javascript">
+        $(document).observe("dom:loaded", function() {
+            prettyPrint();
+        })
+    </script>
+{% endblock %}
+
 {% block title %}Documentation{% endblock %}
 
 {% block page_title %}
-    <img src="{{ MEDIA_URL }}img/page-documentation.png" class="page-name"/>
+    <img src="{{ STATIC_URL }}img/page-documentation.png" class="page-name"/>
 {% endblock %}
 
 {% block path %}/documentation{% endblock %}
 
 {% block content %}
-    
-    <div class="row">     
+
+    <div class="row">
         <div class="span5">
             <div class="a-content-condensed">
                 <p class="lead">Get Started</p>
 
-                If you are new to androrm or the world of object relational mapping (ORM), the 
+                If you are new to androrm or the world of object relational mapping (ORM), the
                 <a href="{% url documentation_kick_start %}">get started guide</a> is probably what you
-                are looking for. If that one has convinced you, check out the 
-                <a href="{% url documentation_installation %}">installation guide</a> or kick-start 
+                are looking for. If that one has convinced you, check out the
+                <a href="{% url documentation_installation %}">installation guide</a> or kick-start
                 with our <a href="{% url documentation_tutorials %}">tutorial</a>.
             </div>
         </div>
@@ -27,7 +44,7 @@
             <div class="a-content-condensed">
                 <p class="lead">Developer?</p>
 
-                You are looking for more detailed information about classes and functions? Check out the <a href="/documentation/javadoc/">javadoc</a> 
+                You are looking for more detailed information about classes and functions? Check out the <a href="/documentation/javadoc/">javadoc</a>
                 for the whole project or get more information in the <a href="{% url contribute_index %}">contribute section</a>.
             </div>
         </div>
@@ -35,15 +52,15 @@
 
     <div class="a-content">
         <p class="lead">All other folks...</p>
-        
+
         <p>
-            ...just have a look in the side menu. There you'll find information about <a href='{% url documentation_models %}'>basic model functions</a>, detailed descriptions of all <a href="{% url documentation_fields %}">field types</a> and (maybe the best part) how to <a href="{% url documentation_making_queries %}">write queries</a>. Spoiler alert! No SQL here. 
+            ...just have a look in the side menu. There you'll find information about <a href='{% url documentation_models %}'>basic model functions</a>, detailed descriptions of all <a href="{% url documentation_fields %}">field types</a> and (maybe the best part) how to <a href="{% url documentation_making_queries %}">write queries</a>. Spoiler alert! No SQL here.
         </p>
 
         <p>
             What you might recognize is, that the whole androrm API resembles <a href="http://www.djangoproject.com" target="_blank">django</a>.This indeed was intentional. I think django is just a great web-framework and even this site here was written using it. So, if you are familiar with their way of doing things, you won't have any problems, to use androrm for your android app. Enjoy!
         </p>
-        
+
         <p>
             And if you should ever have any trouble working with androrm, please do not hesitate to contact us under <a href="mailto:contact@androrm.com">contact@androrm.com</a>.
         </P>
@@ -59,14 +76,14 @@
                 <p>
                     {{ category.description }}
                 </p>
-                
+
                 {% if not forloop.last %}
                     <hr />
                 {% endif %}
             </section>
         {% endfor %}
     </div>
-    
+
 {% endblock %}
 
 {% block content_menu %}
@@ -84,7 +101,7 @@
                     {% endfor %}
                     </ul>
                 {% endif %}
-            
+
             {% endfor %}
         {% endblock %}
     </ul>

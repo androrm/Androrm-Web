@@ -3,15 +3,15 @@
 {% block title %}Download{% endblock%}
 
 {% block page_title %}
-    <img src="{{ MEDIA_URL }}img/page-download.png" class="page-name"/>
+    <img src="{{ STATIC_URL }}img/page-download.png" class="page-name"/>
 {% endblock %}
 
 {% block style-before %}
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/lib/prettify.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}stylesheets/css/lib/prettify.css"/>
 {% endblock %}
 
 {% block script %}
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/lib/prettify.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/lib/prettify.js"></script>
     <script type="text/javascript">
         $(document).observe("dom:loaded", function() {
             prettyPrint();
@@ -25,49 +25,49 @@
         <p class="lead">
             Get your copy of androrm
         </p>
-        
+
         <p>
             Androrm is an object relational mapper for android. But it does not require special android specific features. It has been tested under android versions 2.1 up to 4.0.
         </p>
-        
-        <p>    
+
+        <p>
             If you run into any truble, please <a href="#">report the error</a> or <a href="#">file a bug</a>.
         </p>
-        
+
         <hr />
-        
+
         <p class="lead">
             Get the latest official release
         </p>
 
         <p>
-            The fastest way, to get your copy of androrm, is to execute the following commands in a shell, if you work on a unix based operation system like Linux or Mac OS. 
+            The fastest way, to get your copy of androrm, is to execute the following commands in a shell, if you work on a unix based operation system like Linux or Mac OS.
         </p>
 
         <pre class="prettyprint linenums">{% include "downloads/examples/download.sh" %}</pre>
-        
+
         <p>
-            Otherwise you can also <a href="{% url download_latest_tarball %}">download the file</a> and extract it manually. 
+            Otherwise you can also <a href="{% url download_latest_tarball %}">download the file</a> and extract it manually.
         </p>
-        
+
         <p>
             Those of you, that aren't too comfortable with tar.gz files, can now also use the <a href="{% url download_latest_zip %}">zip download</a> to acquire the latest release.
         </p>
-        
+
         <hr />
-        
+
         <p class="lead">
             Get the latest development version
         </p>
 
         <p>
-            Androrm is completely open source and is distributed under the <a href="{% url download_license %}">MIT License</a>. It is hosted in a public repository on <a href="http://github.com">github.com</a>. So if you want to check out the latest development version of the code, open a shell and execute the following command: 
+            Androrm is completely open source and is distributed under the <a href="{% url download_license %}">MIT License</a>. It is hosted in a public repository on <a href="http://github.com">github.com</a>. So if you want to check out the latest development version of the code, open a shell and execute the following command:
         </p>
-        
+
         <pre class="prettyprint linenums">{% include "downloads/examples/github.sh" %}</pre>
-        
+
         <hr />
-        
+
         <p>
             After you downloaded the jar, have a look at the <a href="{% url documentation_installation %}">installation guide</a> and <a href="{% url documentation_index %}">read the documentation</a>, to get your project up and running with the support of androrm.
         </p>
@@ -85,17 +85,17 @@
 
     <ul class="content-menu">
         {% block menu_content %}
-        
+
             <li>Available releases</li>
             <ul>
                 {% for release in releases %}
                     <li><a href="{% url download_release version=release.version %}">{{ release.version }}</a></li>
                 {% endfor %}
             </ul>
-        
+
         {% endblock %}
     </ul>
-    
+
     <div class="content-menu padding-bottom-menu center">
         Androrm is <a href="http://opensource.org" target="_blank">open source</a> and distributed under the
         <a href="{% url download_license %}">MIT License</a>.

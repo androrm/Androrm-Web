@@ -1,0 +1,22 @@
+@import "constants";
+
+.a-news-entry {
+    small {
+        display: block;
+
+        text-align: right;
+
+        color: @font-color;
+
+        &:before {
+            content: "— \00A0";
+        }
+    }
+
+    .author {
+        margin-top: -15px;
+        margin-bottom: 20px;
+
+        opacity: 0.7;
+    }
+}

@@ -1,0 +1,53 @@
+@import "utils";
+
+@banner-height: 149px;
+@banner-width: 149px;
+
+.banner-container {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    .banner {
+        height: @banner-height;
+        width: @banner-width;
+
+        overflow:hidden;
+
+        padding: 0;
+        margin: 0;
+
+        a {
+            display: block;
+            position:relative;
+
+            padding: 5px 15px 5px 25px;
+
+            left: 20px;
+            top: -37px;
+
+            width: 190px;
+
+            font-size: 14px;
+            font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT",
+                "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma,
+                Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+
+            word-spacing: 2px;
+            text-decoration: none;
+            text-align: center;
+            text-shadow: 0px 0px 9px rgba(255, 255, 255, .5);
+
+            color: #FFF;
+
+            background-color: rgba(255, 255, 255, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, .3);
+            border-bottom: 1px solid rgba(255, 255, 255, .6);
+
+            .transform-origin();
+            .rotate(45deg);
+            .shadow(1px, 1px, 10px, 1px, rgba(0, 0, 0, .3));
+        }
+    }
+}

@@ -1,0 +1,146 @@
+@import "constants";
+@import "banner";
+@import "lists";
+@import "header";
+@import "utils";
+@import "footer";
+@import "news";
+
+html, body {
+    background-color: @androrm-background;
+    background-image: url("@{img-path}/background.png");
+}
+
+p {
+    text-align: justify;
+}
+
+img {
+    border: 0px solid;
+}
+
+td {
+    vertical-align: top;
+
+    padding-right: 20px;
+}
+
+a {
+    &:link, &:active, &:visited {
+        color: @link-color;
+        text-decoration: none;
+    }
+
+    &:hover {
+        border: 0 solid;
+        border-bottom: 1px solid @link-color;
+        border-style: dotted;
+    }
+}
+
+section {
+    section {
+        .lead {
+            font-size: 17px;
+        }
+    }
+}
+
+.no-line:hover {
+    border-bottom: 0px solid;
+}
+
+.a-align-right {
+    text-align: right;
+}
+
+.content-wrap {
+    background-color: @content-background;
+    background-image: url("@{img-path}/content-corner.png");
+    background-position: 100% 100%;
+
+    .no-repeat();
+
+    .content {
+        height: inherit;
+
+        background-color: #ffffff;
+        border-right: 1px solid #EEE;
+
+        margin-left: -20px;
+
+        .a-content {
+            padding: 30px;
+            min-height: 450px;
+        }
+    }
+}
+
+#footnote a {
+    margin-right: 10px;
+}
+
+.content-menu {
+    margin-right: 20px;
+
+    .content-menu-background {
+        padding-top: 20px;
+        margin-bottom: 20px;
+
+        .lead-button {
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    }
+
+    .content-menu-headline {
+        display: block;
+
+        padding-top: 10px;
+        padding-bottom: 20px;
+        padding-left: 15px;
+    }
+}
+
+.a-tagline {
+    margin-top: 50px;
+    margin-bottom: 70px;
+
+    font-size: 50px;
+    font-weight: normal;
+
+    letter-spacing: -1px;
+
+    text-align: center;
+
+    p {
+        display: block;
+
+        text-align: center;
+
+        padding-top: 20px;
+
+        opacity: 0.5;
+
+        line-height: 27px;
+
+        font-size: 20px;
+        font-weight: lighter;
+    }
+}
+
+.a-main-title {
+    margin-bottom: 60px;
+
+    small {
+        display: block;
+
+        text-align: right;
+
+        content: @font-color;
+
+        &:before {
+            content: "— \00A0";
+        }
+    }
+}
