@@ -2,6 +2,10 @@
 
 {% block title%}Contribute{% endblock %}
 
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stylesheets/css/contribute.css" />
+{% endblock %}
+
 {% block page_title %}
     <img src="{{ STATIC_URL }}img/page-contribute.png" class="page-name"/>
 {% endblock %}
@@ -9,27 +13,69 @@
 {% block content %}
 
     <div class="a-content">
-        <p class="lead">Be part of the androrm project</p>
+        <section>
+            <header>
+                <p class="lead">Be part of the androrm project</p>
+            </header>
 
-        <p>
-            You think androrm is a cool tool and you also have lots of ideas on how to improve it? If yes, then this is <strong>your</strong> section! Go ahead and fork the project on github and maybe become part of the core development team.
-        </p>
+            <p>
+                You think androrm is a cool tool and you also have lots of ideas on how to improve it? If yes, then this is <strong>your</strong> section! Go ahead and fork the project on github and maybe become part of the core development team.
+            </p>
 
-        <p>
-            Or did you find a defect or something you want to have improved? Then <a href="https://github.com/androrm/androrm/issues">file a bug</a> or <a href="https://github.com/androrm/androrm/issues">a feature request</a> and help finding the parts, we forgot to cover!
-        </p>
+            <p>
+                Or did you find a defect or something you want to have improved? Then <a href="https://github.com/androrm/androrm/issues">file a bug</a> or <a href="https://github.com/androrm/androrm/issues">a feature request</a> and help finding the parts, we forgot to cover!
+            </p>
+
+        </section>
 
         <hr />
 
-        <p class="lead">GitHub Issues</p>
+        <section>
+            <header>
+                <p class="lead">GitHub Issues</p>
+            </header>
 
-        <p>
-            If you've been here before, you might notice, that we don't longer use phabricator. Back then it seemed like a good idea but it turned out, that most people didn't get it. This is a huge problem, if you as a developer want to get feedback. So now, if you want to add a feature request or report a bug, please use <a href="https://github.com/androrm/androrm/issues">GitHub issues</a>. This is also where the code is, so tracking is much easier.
-        </p>
+            <p>
+                If you've been here before, you might notice, that we don't longer use phabricator. Back then it seemed like a good idea but it turned out, that most people didn't get it. This is a huge problem, if you as a developer want to get feedback. So now, if you want to add a feature request or report a bug, please use <a href="https://github.com/androrm/androrm/issues">GitHub issues</a>. This is also where the code is, so tracking is much easier.
+            </p>
 
-        <p>
-            THANK YOU!
-        </p>
+            <p>
+                THANK YOU!
+            </p>
+        </section>
+
+        <hr />
+
+        <section>
+            <header>
+                <p class="lead">Make a donation</p>
+            </header>
+
+            <p>
+                Androrm is <em>and will always</em> be free. No matter what! Anyway, if you like that warm feeling in your heart if you give something, please support this project by making a small donation. It will definitively help to keep this project alive and to push it forward.
+            </p>
+
+            <p>
+                You can either make a donation using <a href="http://www.flattr.com">Flattr</a> or by using the donation function provided by <a href="http://www.paypal.com">PayPal</a>. In every way you decide what amount to give!
+            </p>
+
+            <div class="donation center">
+                <a class="FlattrButton" style="display:none;" href="http://www.androrm.com"></a>
+                <noscript>
+                    <a href="http://flattr.com/thing/1080392/Androrm" target="_blank">
+                        <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
+                    </a>
+                </noscript>
+
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="3THUAV94XTTC2">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+                </form>
+
+            </div>
+        </section>
     </div>
 
 {% endblock%}
