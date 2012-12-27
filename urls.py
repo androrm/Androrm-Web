@@ -13,6 +13,4 @@ urlpatterns = patterns('',
     (r'^downloads/', include('androrm.downloads.urls')),
     (r'^contribute/', include('androrm.contribute.urls')),
     
-    (r'^src/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': settings.MEDIA_ROOT}),
 )

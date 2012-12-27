@@ -83,7 +83,7 @@ TEMPLATE_DIRS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
-    'page.context_processors.page_conf',
+    'androrm.page.context_processors.page_conf',
 )
 
 STATICFILES_FINDERS = (

@@ -1,7 +1,8 @@
 import os
 import sys
 
-sys.path.append('/var/www')
+if not '/var/www' in sys.path:
+    sys.path.append('/var/www')
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'androrm.settings'
 
