@@ -3,7 +3,7 @@ androrm
 androrm.db
 *.json
 assets/
-media/javadoc/
+media/
 *.tar.gz
 *.zip
 local_settings.py
@@ -11,6 +11,6 @@ local_settings.py
 androrm.tmproj
 .sublime-*
 static/
-media/admin/
+!*/static/
 *.sublime*
 androrm.sublime-workspace

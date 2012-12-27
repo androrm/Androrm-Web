@@ -3,7 +3,7 @@
 {% block title %}Documentation | Field types{% endblock %}
 
 {% block page_title %}
-    <img src="{{ MEDIA_URL }}img/page-documentation.png" class="page-name" />
+    <img src="{{ STATIC_URL }}img/page-documentation.png" class="page-name" />
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,7 @@
             </article>
 
         {% endblock %}
-        
+
         <hr />
 
         {% for category in categories %}
@@ -51,9 +51,9 @@
         <ul>
             {% for category in categories %}
                 <li><a href="{{ category.url }}">{{ category.name }}</a></li>
-                
+
             {% endfor %}
         </ul>
     </ul>
-    
+
 {% endblock %}
