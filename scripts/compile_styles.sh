@@ -1,6 +1,6 @@
 #!/bin/sh -f
 
-CURRENT_DIR=${pwd}
+CURRENT_DIR=$PWD
 
 if [ ! -d "$CURRENT_DIR/../css" ]
 then

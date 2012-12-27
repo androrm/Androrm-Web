@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 
-from androrm.settings import MEDIA_URL
+from androrm.settings import STATIC_URL
 from androrm.downloads.models import Release
 
 def index(request):
@@ -58,13 +58,13 @@ def download_version_zip(request, version):
 
 
 def download_version_source(request, version):
-    return HttpResponseRedirect("%sreleases/androrm.source_%s.zip" % (MEDIA_URL, version))
+    return HttpResponseRedirect("%sreleases/androrm.source_%s.zip" % (STATIC_URL, version))
 
 
 def download_version(request, version, type):
     release = get_object_or_404(Release, version=version)
 
-    return HttpResponseRedirect("%sreleases/androrm_%s.%s" % (MEDIA_URL, version, type))
+    return HttpResponseRedirect("%sreleases/androrm_%s.%s" % (STATIC_URL, version, type))
 
 
 def license(request):
