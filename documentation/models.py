@@ -74,7 +74,7 @@ class FunctionDescription(Description):
         for param in self.params.all():
             p.append(str(param))
 
-        param_list = "(" + ", ".join(p) + ")"
+        param_list = "( " + ", ".join(p) + " )"
 
         return self.name + descriptor_list + " " + param_list
 
@@ -84,7 +84,7 @@ class FunctionDescription(Description):
         for p in self.params.all():
             types.append(str(p.type))
 
-        return "(" + ", ".join(types) + ")"
+        return "( " + ", ".join(types) + " )"
 
 
 class ClassDescriptor(models.Model):
