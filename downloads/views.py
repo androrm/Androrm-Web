@@ -68,6 +68,8 @@ def download_version(request, version, type):
 
 
 def license(request):
+    latest_version = Release.objects.all().order_by("-date")[0:1][0].version
+
     return render_to_response("downloads/license.html",
                               locals(),
                               context_instance=RequestContext(request))

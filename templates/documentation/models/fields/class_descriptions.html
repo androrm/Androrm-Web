@@ -5,15 +5,22 @@
     <div class="a-content">
         <article>
             {% block introduction %}{% endblock %}
-            
+
             {% block description %}
-                
+
                 {% for field in fields %}
 
-                    <section>
+                    <section class="class-description">
 
                         <p class="lead">
-                            <a name="{{ field.name }}" href="#{{ field.name }}">{{ field.qualified_name }}</a>
+                            <a name="{{ field.name }}" href="#{{ field.name }}">    {{ field.qualified_name }}
+                            </a>
+
+                            {% if field.from_version %}
+                                <span class="since-version pull-right">
+                                    Since version {{ field.from_version.version }}
+                                </span>
+                            {% endif %}
                         </p>
 
                         {% autoescape off %}
