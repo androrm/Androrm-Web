@@ -12,9 +12,9 @@
     <header>
         <p class="lead">
             <a href="#order_by" name="order_by">{{ order_by }}</a>
-        </p>
 
-        <span class="since-version pull-right">{{ order_by.from_version.version }}</span>
+            <span class="since-version pull-right">Since version {{ order_by.from_version.version }}</span>
+        </p>
     </header>
 
     {% autoescape off %}
