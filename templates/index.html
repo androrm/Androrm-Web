@@ -27,15 +27,25 @@
 
         <hr />
 
-        {% for entry in entries %}
+        {% for article in articles %}
             <article class="a-news-entry">
-                <p class="lead">{{ entry.headline }}</p>
-                <p class="author">{{ entry.date }}</p>
+                <header>
+                    <p class="lead">{{ article.headline }}</p>
+                    <p class="date">
+                        <datetime>
+                            {{ article.date }}
+                        <datetime>
+                    </p>
+                </header>
 
                 {% autoescape off %}
-                        {{ entry.content|linebreaks }}
 
-                        <small>{{ entry.author }}</small>
+                    {{ article.content|linebreaks }}
+
+                    <author>
+                        {{ article.author }}
+                    </author>
+
                 {% endautoescape %}
 
                 {% if not forloop.last %}
@@ -43,6 +53,22 @@
                 {% endif %}
             </article>
         {% endfor %}
+
+        <hr />
+
+        <ul class="pager">
+            {% if articles.has_previous %}
+                <li class="previous">
+                    <a href="?page={{ articles.previous_page_number }}">&larr; Fresher news</a>
+                </li>
+            {% endif %}
+
+            {% if articles.has_next %}
+                <li class="next">
+                    <a href="?page={{ articles.next_page_number }}">Older news &rarr;</a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
 {% endblock %}
 
@@ -55,8 +81,16 @@
     </div>
 
     <ul class="content-menu">
-        <li><a href="http://github.com/androrm/androrm" target="_blank">Latest from repository</a></li>
-        <li><a href="http://github.com/androrm/androrm/tree/develop">Current development version</a></li>
+        <li>
+            <a href="http://github.com/androrm/androrm" target="_blank">
+                Latest from repository
+            </a>
+        </li>
+        <li>
+            <a href="http://github.com/androrm/androrm/tree/develop">
+                Current development version
+            </a>
+        </li>
     </ul>
 
     <br /><br />
