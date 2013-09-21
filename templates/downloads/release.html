@@ -17,9 +17,9 @@
         if(!window.Androrm) { var Androrm = {}; }
         if(!Androrm.Urls) { Androrm.Urls = {}; }
 
-        Androrm.Urls.download_release_tar = "{% url download_version_tar version=version %}";
-        Androrm.Urls.download_release_zip = "{% url download_version_zip version=version %}";
-        Androrm.Urls.download_source = "{% url download_version_source version=version %}";
+        Androrm.Urls.download_release_tar = "{% url 'downloads.views.download_version_tar' version=version %}";
+        Androrm.Urls.download_release_zip = "{% url 'downloads.views.download_version_zip' version=version %}";
+        Androrm.Urls.download_source = "{% url 'downloads.views.download_version_source' version=version %}";
     </script>
 
 {% endblock%}
@@ -82,7 +82,7 @@
 {% endblock %}
 
 {% block menu_content %}
-    <li><a href="{% url download_index %}">Downloads</a></li>
+    <li><a href="{% url 'downloads.views.index' %}">Downloads</a></li>
     <ul>
         <li>Releases</li>
         <ul>
@@ -91,7 +91,7 @@
                     {% if release.version == version %}
                         {{ version }}
                     {% else %}
-                        <a href="{% url download_release version=release.version %}">{{ release.version }}</a>
+                        <a href="{% url 'downloads.views.release' version=release.version %}">{{ release.version }}</a>
                     {% endif %}
                 </li>
             {% endfor %}

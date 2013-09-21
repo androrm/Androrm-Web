@@ -24,7 +24,7 @@
 
 {% block menu_content %}
 
-    <li><a href="{% url documentation_fields %}">Field Types</a></li>
+    <li><a href="{% url 'documentation.views.fields' %}">Field Types</a></li>
     <ul>
         <li>Data Fields</li>
         <ul>
@@ -42,10 +42,10 @@
                 </ul>
             {% endfor %}
         </ul>
-        <li><a href="{% url documentation_relational_fields %}">Relational Fields</a></li>
+        <li><a href="{% url 'documentation.views.relational_fields' %}">Relational Fields</a></li>
         <ul>
             {% for field in relational_fields %}
-                <li><a href="{% url documentation_relational_fields %}#{{ field.name }}">{{ field.name }}</a></li>
+                <li><a href="{% url 'documentation.views.relational_fields' %}#{{ field.name }}">{{ field.name }}</a></li>
             {% endfor %}
         </ul>
     </ul>

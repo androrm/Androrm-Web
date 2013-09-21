@@ -19,7 +19,7 @@
 
 {% block menu_content %}
 
-    <li><a href="{% url documentation_fields %}">Field Types</a></li>
+    <li><a href="{% url 'documentation.views.fields' %}">Field Types</a></li>
     <ul>
         <li>Relational Fields</li>
         <ul>
@@ -37,10 +37,10 @@
                 </ul>
             {% endfor %}
         </ul>
-        <li><a href="{% url documentation_data_fields %}">Data Fields</a></li>
+        <li><a href="{% url 'documentation.views.data_fields' %}">Data Fields</a></li>
         <ul>
             {% for field in data_fields %}
-                <li><a href="{% url documentation_data_fields %}#{{ field.name }}">{{ field.name }}</a></li>
+                <li><a href="{% url 'documentation.views.data_fields' %}#{{ field.name }}">{{ field.name }}</a></li>
             {% endfor %}
         </ul>
     </li>

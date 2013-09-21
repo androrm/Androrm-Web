@@ -30,15 +30,15 @@
             <p class="lead"><a href="#where" name="where">Where to start?</a></p>
             
             <p>
-                If you want to try androrm yourself, you first have to download it. You can grab the <a href="{% url download_latest %}">latest official release</a> or browse the <a href="{% url download_index %}">download section</a>. Of course it is recommended, that you go with the latest official release, because the documentation is only maintained for that version. 
+                If you want to try androrm yourself, you first have to download it. You can grab the <a href="{% url 'downloads.views.latest' %}">latest official release</a> or browse the <a href="{% url 'downloads.views.index' %}">download section</a>. Of course it is recommended, that you go with the latest official release, because the documentation is only maintained for that version. 
             </p>
             
             <p>
-                After you have decided for your favorite version of androrm, you should read the <a href="{% url documentation_installation%}">installation guide</a> (even though it is really easy). 
+                After you have decided for your favorite version of androrm, you should read the <a href="{% url 'documentation.views.installation' %}">installation guide</a> (even though it is really easy). 
             </p>
             
             <p>
-                For a safe start, we recommend visiting the <a href="{% url documentation_tutorials %}">tutorials</a> section first. Follow the steps to write your first androrm powered android app and see how to create models and work with them. 
+                For a safe start, we recommend visiting the <a href="{% url 'documentation.views.tutorials' %}">tutorials</a> section first. Follow the steps to write your first androrm powered android app and see how to create models and work with them. 
             </p>
             
         </section>
@@ -46,7 +46,7 @@
         <hr />
 
         <p>    
-            Now, that you know androrm, go ahead and set-up your android project to work with androrm. You can read about how to <a href="{% url documentation_models %}">define your models</a>, that will then be managed by androrm and how to <a href="{% url documentation_making_queries %}">write queries</a>. 
+            Now, that you know androrm, go ahead and set-up your android project to work with androrm. You can read about how to <a href="{% url 'documentation.views.models' %}">define your models</a>, that will then be managed by androrm and how to <a href="{% url 'documentation.views.queries' %}">write queries</a>. 
         </p>
         
     </div>
@@ -55,7 +55,7 @@
 
 {% block menu_content %}
 
-    <li><a href="{% url documentation_beginners %}">Beginners</a></li>
+    <li><a href="{% url 'documentation.views.beginners' %}">Beginners</a></li>
     <ul>
         <li>Get Started Guide</li>
         <ul>

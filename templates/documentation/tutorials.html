@@ -20,7 +20,7 @@
 
             <section>
                 <p class="lead">
-                    <a href="{% url documentation_tutorial part=1 %}" name="part1">Part 1: Getting ready</a>
+                    <a href="{% url 'documentation.views.tutorial' part=1 %}" name="part1">Part 1: Getting ready</a>
                 </p>
 
                 <p>
@@ -42,7 +42,7 @@
             <section>
             
                 <p class="lead">
-                    <a href="{% url documentation_tutorial part=2 %}" name="part2">Part 2: Forms and validation</a>
+                    <a href="{% url 'documentation.views.tutorial' part=2 %}" name="part2">Part 2: Forms and validation</a>
                 </p>
                 
                 <p>
@@ -64,7 +64,7 @@
             <section class="inactive">
 
                 <p class="lead">
-                    <a href="{% url documentation_tutorial part=3 %}" name="part3">Part 3: Simple queries and fields</a>
+                    <a href="{% url 'documentation.views.tutorial' part=3 %}" name="part3">Part 3: Simple queries and fields</a>
                 </p>
 
                 <p>
@@ -86,7 +86,7 @@
             <section class="inactive">
 
                 <p class="lead">
-                    <a href="{% url documentation_tutorial part=4 %}" name="part4">Part 4: Traversing relations</a>
+                    <a href="{% url 'documentation.views.tutorial' part=4 %}" name="part4">Part 4: Traversing relations</a>
                 </p>
 
                 <p>
@@ -109,14 +109,14 @@
 
 {% block menu_content %}
 
-    <li><a href="{% url documentation_index %}">Documentation</a></li>
+    <li><a href="{% url 'documentation.views.index' %}">Documentation</a></li>
     <ul>
         <li>Tutorials</li>
         <ul>
-            <li><a href="{% url documentation_tutorial part=1 %}">Getting ready</a></li>
-            <li><a href="{% url documentation_tutorial part=2 %}">Forms and validation</a></li>
-            <li class="inactive no-background"><a href="{% url documentation_tutorial part=3 %}">Simple queries and fields</a></li>
-            <li class="inactive no-background"><a href="{% url documentation_tutorial part=4 %}">Traversing realtions</a></li>
+            <li><a href="{% url 'documentation.views.tutorial' part=1 %}">Getting ready</a></li>
+            <li><a href="{% url 'documentation.views.tutorial' part=2 %}">Forms and validation</a></li>
+            <li class="inactive no-background"><a href="{% url 'documentation.views.tutorial' part=3 %}">Simple queries and fields</a></li>
+            <li class="inactive no-background"><a href="{% url 'documentation.views.tutorial' part=4 %}">Traversing realtions</a></li>
         </ul>
     </ul>
 

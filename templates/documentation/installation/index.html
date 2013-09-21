@@ -10,7 +10,7 @@
 
             <section>
                 <p>
-                    Adding androrm to your project is as simple as 1, 2, 3. The only descission, you have to make right from the start is, whether you want to go with <a href="{% url download_latest %}">the latest stable release</a> or if you want to check out the <a href="#">latest version in the repository</a>.
+                    Adding androrm to your project is as simple as 1, 2, 3. The only descission, you have to make right from the start is, whether you want to go with <a href="{% url 'downloads.views.latest' %}">the latest stable release</a> or if you want to check out the <a href="#">latest version in the repository</a>.
                 </p>
 
                 <p>
@@ -34,7 +34,7 @@
                 </figure>
 
                 <p>
-                    <strong>That's it!</strong> You're done and can now start <a href="{% url documentation_models %}">defining your models</a>.
+                    <strong>That's it!</strong> You're done and can now start <a href="{% url 'documentation.views.models' %}">defining your models</a>.
                 </p>
             </section>
 
@@ -62,7 +62,7 @@
 
 {% block menu_content %}
 
-    <li><a href="{% url documentation_beginners %}">Beginners</a></li>
+    <li><a href="{% url 'documentation.views.beginners' %}">Beginners</a></li>
     <ul>
         <li>Installation</li>
         <ul>

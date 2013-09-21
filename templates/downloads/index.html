@@ -47,11 +47,11 @@
         <pre class="prettyprint linenums">{% include "downloads/examples/download.sh" %}</pre>
 
         <p>
-            Otherwise you can also <a href="{% url download_latest_tarball %}">download the file</a> and extract it manually.
+            Otherwise you can also <a href="{% url 'downloads.views.download_latest_tar' %}">download the file</a> and extract it manually.
         </p>
 
         <p>
-            Those of you, that aren't too comfortable with tar.gz files, can now also use the <a href="{% url download_latest_zip %}">zip download</a> to acquire the latest release.
+            Those of you, that aren't too comfortable with tar.gz files, can now also use the <a href="{% url 'downloads.views.download_latest_zip' %}">zip download</a> to acquire the latest release.
         </p>
 
         <hr />
@@ -61,7 +61,7 @@
         </p>
 
         <p>
-            Androrm is completely open source and is distributed under the <a href="{% url download_license %}">MIT License</a>. It is hosted in a public repository on <a href="http://github.com">github.com</a>. So if you want to check out the latest development version of the code, open a shell and execute the following command:
+            Androrm is completely open source and is distributed under the <a href="{% url 'downloads.views.license' %}">MIT License</a>. It is hosted in a public repository on <a href="http://github.com">github.com</a>. So if you want to check out the latest development version of the code, open a shell and execute the following command:
         </p>
 
         <pre class="prettyprint linenums">{% include "downloads/examples/github.sh" %}</pre>
@@ -69,7 +69,7 @@
         <hr />
 
         <p>
-            After you downloaded the jar, have a look at the <a href="{% url documentation_installation %}">installation guide</a> and <a href="{% url documentation_index %}">read the documentation</a>, to get your project up and running with the support of androrm.
+            After you downloaded the jar, have a look at the <a href="{% url 'documentation.views.installation' %}">installation guide</a> and <a href="{% url 'documentation.views.index' %}">read the documentation</a>, to get your project up and running with the support of androrm.
         </p>
     </div>
 
@@ -89,7 +89,7 @@
             <li>Available releases</li>
             <ul>
                 {% for release in releases %}
-                    <li><a href="{% url download_release version=release.version %}">{{ release.version }}</a></li>
+                    <li><a href="{% url 'downloads.views.release' version=release.version %}">{{ release.version }}</a></li>
                 {% endfor %}
             </ul>
 
@@ -98,7 +98,7 @@
 
     <div class="content-menu padding-bottom-menu center">
         Androrm is <a href="http://opensource.org" target="_blank">open source</a> and distributed under the
-        <a href="{% url download_license %}">MIT License</a>.
+        <a href="{% url 'downloads.views.license' %}">MIT License</a>.
     </div>
 
 {% endblock %}

@@ -10,7 +10,7 @@
 
             <header>
                 <p>
-                    Androrm does not only provide automatic serialization/ deserialization of your models, but also gives you the opportunity, to execute complex queries on them. The only precondition to get started is, that you added all the correct <a href="{% url documentation_relational_fields %}">relational fields</a> to your models.
+                    Androrm does not only provide automatic serialization/ deserialization of your models, but also gives you the opportunity, to execute complex queries on them. The only precondition to get started is, that you added all the correct <a href="{% url 'documentation.views.relational_fields' %}">relational fields</a> to your models.
                 </P>
 
                 <section>
@@ -70,7 +70,7 @@
 {% endblock %}
 
 {% block menu_content %}
-    <li><a href="{% url documentation_index %}">Documentation</a></li>
+    <li><a href="{% url 'documentation.views.index' %}">Documentation</a></li>
     <ul>
         <li>Making Queries</li>
         <ul>

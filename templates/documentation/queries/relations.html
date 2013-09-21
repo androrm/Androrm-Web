@@ -11,7 +11,7 @@
 <pre class="prettyprint linenums">{% include "documentation/queries/examples/author_name_is.java" %}</pre>
 
 <p>
-    Suprised, how few changes we had to make? If you want to traverse relationships, you can do this putting two underscores between the fieldnames. This mechanism scales for any number of fields, as long as the model classes are connected with the correct relations. More information on relationship fields can be found <a href="{% url documentation_relational_fields %}">in the relational field section</a>.
+    Suprised, how few changes we had to make? If you want to traverse relationships, you can do this putting two underscores between the fieldnames. This mechanism scales for any number of fields, as long as the model classes are connected with the correct relations. More information on relationship fields can be found <a href="{% url 'documentation.views.relational_fields' %}">in the relational field section</a>.
 </p>
 
 <section>
@@ -22,7 +22,7 @@
     </header>
 
     <p>
-        Ok, what if you are more interested in getting all books, that are associated with a certain author? You can easily achieve this functionality, by just adding a <a href="{% url documentation_relational_fields %}#OneToManyField">OneToManyField</a> to the <code>Author</code> class.
+        Ok, what if you are more interested in getting all books, that are associated with a certain author? You can easily achieve this functionality, by just adding a <a href="{% url 'documentation.views.relational_fields' %}#OneToManyField">OneToManyField</a> to the <code>Author</code> class.
     </p>
 
     <pre class="prettyprint linenums">{% include "documentation/queries/examples/author_with_o2m.java" %}</pre>

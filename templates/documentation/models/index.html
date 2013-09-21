@@ -35,9 +35,9 @@
 
                 <div class="a-list">
                     <ul class="content-menu">
-                        <li><a href="{% url documentation_fields %}">Field Types</a></li>
-                        <li><a href="{% url documentation_relational_fields %}">Relational fields</a></li>
-                        <li><a href="{% url documentation_making_queries %}">Making queries</a></li>
+                        <li><a href="{% url 'documentation.views.fields' %}">Field Types</a></li>
+                        <li><a href="{% url 'documentation.views.relational_fields' %}">Relational fields</a></li>
+                        <li><a href="{% url 'documentation.views.queries' %}">Making queries</a></li>
                     </ul>
                 </div>
             </footer>
@@ -71,15 +71,15 @@
 {% endblock %}
 
 {% block menu_content %}
-    <li><a href="{% url documentation_index %}">Documentation</a></li>
+    <li><a href="{% url 'documentation.views.index' %}">Documentation</a></li>
     <ul>
         <li>Defining Models</li>
         <ul>
             <li><a href="#basics">The Basics</a></li>
             <li><a href="#fields">Adding fields to your model</a></li>
             <li><a href="#objects">The objects method</a></li>
-            <li><a href="{% url documentation_fields %}">Field Types</a></li>
-            <li><a href="{% url documentation_migrations %}">Migrations</a></li>
+            <li><a href="{% url 'documentation.views.fields' %}">Field Types</a></li>
+            <li><a href="{% url 'documentation.views.migrations' %}">Migrations</a></li>
         </ul>
     </ul>
 {% endblock %}

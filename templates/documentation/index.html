@@ -33,10 +33,10 @@
                 <p class="lead">Get Started</p>
 
                 If you are new to androrm or the world of object relational mapping (ORM), the
-                <a href="{% url documentation_kick_start %}">get started guide</a> is probably what you
+                <a href="{% url 'documentation.views.kick_start' %}">get started guide</a> is probably what you
                 are looking for. If that one has convinced you, check out the
-                <a href="{% url documentation_installation %}">installation guide</a> or kick-start
-                with our <a href="{% url documentation_tutorials %}">tutorial</a>.
+                <a href="{% url 'documentation.views.installation' %}">installation guide</a> or kick-start
+                with our <a href="{% url 'documentation.views.tutorials' %}">tutorial</a>.
             </div>
         </div>
 
@@ -45,7 +45,7 @@
                 <p class="lead">Developer?</p>
 
                 You are looking for more detailed information about classes and functions? Check out the <a href="/documentation/javadoc/">javadoc</a>
-                for the whole project or get more information in the <a href="{% url contribute_index %}">contribute section</a>.
+                for the whole project or get more information in the <a href="{% url 'contribute.views.index' %}">contribute section</a>.
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
         <p class="lead">All other folks...</p>
 
         <p>
-            ...just have a look in the side menu. There you'll find information about <a href='{% url documentation_models %}'>basic model functions</a>, detailed descriptions of all <a href="{% url documentation_fields %}">field types</a> and (maybe the best part) how to <a href="{% url documentation_making_queries %}">write queries</a>. Spoiler alert! No SQL here.
+            ...just have a look in the side menu. There you'll find information about <a href='{% url "documentation.views.models" %}'>basic model functions</a>, detailed descriptions of all <a href="{% url 'documentation.views.fields' %}">field types</a> and (maybe the best part) how to <a href="{% url 'documentation.views.queries' %}">write queries</a>. Spoiler alert! No SQL here.
         </p>
 
         <p>

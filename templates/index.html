@@ -22,7 +22,7 @@
         </blockquote>
 
         <p>
-            Click the button on the side, to download the <a href="{% url download_latest %}">latest release</a>, <a href="{% url documentation_installation %}">read the installation guide</a>, do one <a href='{% url documentation_tutorials %}'>tutorial</a> to get you familiarized with how androrm works and keep your application <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a> as you no longer have to write SQL alongside your class definitions.
+            Click the button on the side, to download the <a href="{% url 'downloads.views.latest' %}">latest release</a>, <a href="{% url 'documentation.views.installation' %}">read the installation guide</a>, do one <a href='{% url "documentation.views.tutorials" %}'>tutorial</a> to get you familiarized with how androrm works and keep your application <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a> as you no longer have to write SQL alongside your class definitions.
         </p>
 
         <hr />
@@ -97,7 +97,7 @@
 
     <div class="content-menu padding-bottom-menu center">
         Androrm is <a href="http://opensource.org" target="_blank">open source</a> and distributed under the
-        <a href="{% url download_license %}">MIT License</a>.
+        <a href="{% url 'downloads.views.license' %}">MIT License</a>.
     </div>
 
 {% endblock %}

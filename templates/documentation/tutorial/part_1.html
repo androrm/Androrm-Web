@@ -43,7 +43,7 @@
                 </ol>
 
                 <p>
-                    If you use the <a href="{% url documentation_fields %}">field types</a> provided by androrm we have a different situation. What I've done here is
+                    If you use the <a href="{% url 'documentation.views.fields' %}">field types</a> provided by androrm we have a different situation. What I've done here is
                 </p>
 
                 <ol>
@@ -72,7 +72,7 @@
                 </p>
 
                 <p>
-                    Actually you don't have to add anything in order to get your models ready for queries. The <code>Model</code>class already defines the <a href="{% url documentation_models %}#objects"><code>objects()</code> method</a>, but I would say it is handy and also good style, to implement this method in every class. Normally you would have to hand in a <code>Context</code> instance and the <code>Class</code> object of your model. You can easily get rid of the second parameter, by implementing <emph>your</emph> <code>objects()</code> method, that will automatically fill in the class for you. On the author class this looks like...
+                    Actually you don't have to add anything in order to get your models ready for queries. The <code>Model</code>class already defines the <a href="{% url 'documentation.views.models' %}#objects"><code>objects()</code> method</a>, but I would say it is handy and also good style, to implement this method in every class. Normally you would have to hand in a <code>Context</code> instance and the <code>Class</code> object of your model. You can easily get rid of the second parameter, by implementing <emph>your</emph> <code>objects()</code> method, that will automatically fill in the class for you. On the author class this looks like...
                 </p>
 
                 <pre class="prettyprint linenums">{% include "documentation/tutorial/examples/part_1/author_class_2.java" %}</pre>
@@ -171,7 +171,7 @@
                 </p>
 
                 <p>
-                    To create some content, continue to <a href="{% url documentation_tutorial part=2 %}">the next step</a> of the tutorial, to learn how to create a form and validate its data.
+                    To create some content, continue to <a href="{% url 'documentation.views.tutorial' part=2 %}">the next step</a> of the tutorial, to learn how to create a form and validate its data.
                 </p>
             </section>
         </div>
@@ -181,7 +181,7 @@
 
 {% block menu_content %}
 
-    <li><a href="{% url documentation_tutorials %}">Tutorials</a></li>
+    <li><a href="{% url 'documentation.views.tutorials' %}">Tutorials</a></li>
     <ul>
         <li>Creating new objects</li>
         <ul>

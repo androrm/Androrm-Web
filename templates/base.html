@@ -14,10 +14,10 @@
 	    if(!Androrm) { var Androrm = {}; }
 
 	    Androrm.Urls = {
-	        home: "{% url index %}",
-	        documentation: "{% url documentation_index %}",
-	        download: "{% url download_index %}",
-	        contribute: "{% url contribute_index %}"
+	        home: "{% url 'page.views.index' %}",
+	        documentation: "{% url 'documentation.views.index' %}",
+	        download: "{% url 'downloads.views.index' %}",
+	        contribute: "{% url 'contribute.views.index' %}"
 	    };
 
 	</script>
@@ -44,25 +44,25 @@
                 <div class="span6 offset2">
                     <div class="a-align-right">
                         <div class="menu-item">
-                            <a href="{% url index %}" class="no-line">
+                            <a href="{% url 'page.views.index' %}" class="no-line">
                                 Home
                             </a>
                         </div>
 
                         <div class="menu-item">
-                            <a href="{% url documentation_index %}" class="no-line">
+                            <a href="{% url 'documentation.views.index' %}" class="no-line">
                                 Documentation
                             </a>
                         </div>
 
                         <div class="menu-item">
-                            <a href="{% url download_index %}" class="no-line">
+                            <a href="{% url 'downloads.views.index' %}" class="no-line">
                                 Downloads
                             </a>
                         </div>
 
                         <div class="menu-item">
-                            <a href="{% url contribute_index %}" class="no-line">
+                            <a href="{% url 'contribute.views.index' %}" class="no-line">
                                 Contribute
                             </a>
                         </div>
